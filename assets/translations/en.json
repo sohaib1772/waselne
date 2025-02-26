@@ -1,0 +1,21 @@
+{
+
+    "appSettings":{
+        "language":"Language",
+        "english":"English",
+        "arabic":"Arabic"
+    },
+    "auth":{
+        "name":"Name",
+        "email":"Email",
+        "password":"Password",
+        "confirmPassword":"Confirm Password",
+        "alreadyHaveAccount":"Already have an account?",
+        "dontHaveAccount":"Don't have an account?",
+        "login":"Login",
+        "signUp":"Register",
+        "forgotPassword":"Forgot Password",
+        "or":"OR",
+        "loginWithGoogle":"Login with Google"
+    }
+}

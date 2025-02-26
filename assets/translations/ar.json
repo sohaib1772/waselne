@@ -1,0 +1,20 @@
+{
+    "appSettings":{
+        "language":"اللغة",
+        "english":"الانجليزية",
+        "arabic":"العربية"
+    },
+    "auth":{
+        "name":"الاسم",
+        "email":"البريد الالكتروني",
+        "password":"كلمة المرور",
+        "confirmPassword":"تأكيد كلمة المرور",
+        "alreadyHaveAccount":"لديك حساب بالفعل؟",
+        "dontHaveAccount":"ليس لديك حساب؟",
+        "login":"تسجيل الدخول",
+        "signUp":"تسجيل حساب جديد",
+        "forgotPassword":"نسيت كلمة المرور",
+        "or":"أو",
+        "loginWithGoogle":"تسجيل الدخول باستخدام جوجل"
+    }
+}
