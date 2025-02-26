@@ -5,4 +5,8 @@ import 'package:waselne/fautures/auth/login/presentation/cubit/login_states.dart
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit(this.loginRepository) : super(LoginInitial());
   final LoginRepository loginRepository;
+
+  void test(){
+    
+  }
 }
