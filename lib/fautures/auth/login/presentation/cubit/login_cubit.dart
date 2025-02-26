@@ -6,7 +6,4 @@ class LoginCubit extends Cubit<LoginStates> {
   LoginCubit(this.loginRepository) : super(LoginInitial());
   final LoginRepository loginRepository;
 
-  void test(){
-    
-  }
 }
