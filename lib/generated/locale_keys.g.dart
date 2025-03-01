@@ -19,5 +19,9 @@ abstract class  LocaleKeys {
   static const auth_or = 'auth.or';
   static const auth_loginWithGoogle = 'auth.loginWithGoogle';
   static const auth = 'auth';
+  static const errors_email = 'errors.email';
+  static const errors_password = 'errors.password';
+  static const errors_thisFieldIsRequired = 'errors.thisFieldIsRequired';
+  static const errors = 'errors';
 
 }

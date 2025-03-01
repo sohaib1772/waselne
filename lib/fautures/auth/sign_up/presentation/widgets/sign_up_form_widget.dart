@@ -2,25 +2,26 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:waselne/core/router/app_router.dart';
-import 'package:waselne/core/router/app_router_names.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
-class LoginFormWidget extends StatefulWidget {
-  const LoginFormWidget({super.key});
+class SignUpFormWidget extends StatefulWidget {
+  const SignUpFormWidget({super.key});
 
   @override
-  State<LoginFormWidget> createState() => _LoginFormWidgetState();
+  State<SignUpFormWidget> createState() => _SignUpFormWidgetState();
 }
 
-class _LoginFormWidgetState extends State<LoginFormWidget> {
+class _SignUpFormWidgetState extends State<SignUpFormWidget> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController passwordConfirmController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool showPassword = false;
+  bool showConfirmPassword = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -29,7 +30,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppDividers.devider(height: 40),
-          Text("auth.login".tr()),
+          Text("auth.signUp".tr()),
           AppDividers.devider(height: 20),
           AppTextFormField(
             controller: emailController,
@@ -62,28 +63,43 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              TextButton(onPressed: (){}, child: Text(LocaleKeys.auth_forgotPassword.tr())),
-            ],
+          AppDividers.devider(height: 20),
+          AppTextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return LocaleKeys.errors_thisFieldIsRequired;
+              }
+              return null;
+            },
+            controller: passwordConfirmController,
+            isPassword: true,
+            hintText: LocaleKeys.auth_confirmPassword.tr(),
+            prefixIcon: Icons.password,
+            showPassword: !showConfirmPassword,
+            suffixIcon: IconButton(
+              onPressed: () => setState(() => showConfirmPassword = !showConfirmPassword),
+              icon: Icon(
+                showConfirmPassword ? Icons.visibility : Icons.visibility_off,
+              ),
+            ),
           ),
+        
           AppDividers.devider(height: 20),
           AppButtons.iconWithLabel(onPressed: (){
             if(formKey.currentState!.validate()){
               
             }
-          },label: LocaleKeys.auth_login.tr(),icon: Icons.login),
+          },label: LocaleKeys.auth_signUp.tr(),icon: Icons.login),
           AppDividers.devider(height: 10),
           Text.rich(
             TextSpan(
-              text: LocaleKeys.auth_dontHaveAccount.tr(),
+              text: LocaleKeys.auth_alreadyHaveAccount.tr(),
               children: [
                 TextSpan(
                   recognizer: TapGestureRecognizer()..onTap = (){
-                    AppRouter.routes.pushNamed(AppRouterNames.signUp);
+                    AppRouter.routes.pop();
                   },
-                  text: " ${LocaleKeys.auth_signUp.tr()}",
+                  text: " ${LocaleKeys.auth_login.tr()}",
                   style: TextStyle(color: ColorScheme.of(context).secondary,fontWeight: FontWeight.bold),
                 )
               ],
