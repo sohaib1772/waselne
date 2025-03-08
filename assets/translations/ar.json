@@ -20,6 +20,12 @@
     "errors":{
         "email":"البريد الالكتروني غير صحيح",
         "password":"كلمة المرور غير صحيحة",
-        "thisFieldIsRequired":"هذا الحقل مطلوب"
+        "thisFieldIsRequired":"هذا الحقل مطلوب",
+        "somethingWentWrong":"حدث خطأ ما"
+    },
+    "main":{
+        "home":"الصفحة الرئيسية",
+        "favorites":"المفضلة",
+        "profile":"اعداد"
     }
 }

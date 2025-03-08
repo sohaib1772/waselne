@@ -21,6 +21,12 @@
     "errors":{
         "email":"Invalid email",
         "password":"Invalid password",
-        "thisFieldIsRequired":"This field is required"
+        "thisFieldIsRequired":"This field is required",
+        "somethingWentWrong":"Something went wrong"
+    },
+    "main":{
+        "home":"Home",
+        "favorites":"Favorites",
+        "profile":"Profile"
     }
 }

@@ -38,7 +38,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
             prefixIcon: Icons.email,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return LocaleKeys.errors_thisFieldIsRequired;
+                return LocaleKeys.errors_thisFieldIsRequired.tr();
               }
               return null;
             },
@@ -47,7 +47,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
           AppTextFormField(
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return LocaleKeys.errors_thisFieldIsRequired;
+                return LocaleKeys.errors_thisFieldIsRequired.tr();
               }
               return null;
             },
@@ -65,9 +65,10 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
           ),
           AppDividers.devider(height: 20),
           AppTextFormField(
+            textInputAction: TextInputAction.done,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return LocaleKeys.errors_thisFieldIsRequired;
+                return LocaleKeys.errors_thisFieldIsRequired.tr();
               }
               return null;
             },

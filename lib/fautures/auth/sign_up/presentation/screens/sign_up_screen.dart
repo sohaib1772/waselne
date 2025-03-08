@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_popup/flutter_popup.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:waselne/core/helpers/app_cubit/app_cubit.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
@@ -27,6 +28,7 @@ class SignUpScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                SvgPicture.asset("assets/svgs/logo.svg",height: 100.h,),
                 SignUpFormWidget(),
                 AppDividers.devider(height: 20),
                 AppDividers.textDivider(text: "or".tr()),

@@ -4,6 +4,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:waselne/core/helpers/google_sign_in/google_sign_in_helper.dart';
 
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';
@@ -22,13 +25,16 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                SvgPicture.asset("assets/svgs/logo.svg",height: 100.h,),
                 LoginFormWidget(),
                 AppDividers.devider(height: 20),
                 AppDividers.textDivider(text: "or".tr()),
                 AppDividers.devider(height: 10),
                 GoogleAuthButton(
                   text: LocaleKeys.auth_loginWithGoogle.tr(),
-                  onPressed: () {},
+                  onPressed: () async{
+                   
+                  },
                   style: AuthButtonStyle(
                     buttonType: AuthButtonType.secondary,
                     buttonColor: Colors.transparent,

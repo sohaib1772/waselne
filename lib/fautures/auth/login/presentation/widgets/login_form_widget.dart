@@ -37,16 +37,17 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             prefixIcon: Icons.email,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return LocaleKeys.errors_thisFieldIsRequired;
+                return LocaleKeys.errors_thisFieldIsRequired.tr();
               }
               return null;
             },
           ),
           AppDividers.devider(height: 20),
           AppTextFormField(
+            textInputAction: TextInputAction.done,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return LocaleKeys.errors_thisFieldIsRequired;
+                return LocaleKeys.errors_thisFieldIsRequired.tr();
               }
               return null;
             },
@@ -70,6 +71,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
           ),
           AppDividers.devider(height: 20),
           AppButtons.iconWithLabel(onPressed: (){
+            AppRouter.routes.pushReplacementNamed(AppRouterNames.main);
             if(formKey.currentState!.validate()){
               
             }

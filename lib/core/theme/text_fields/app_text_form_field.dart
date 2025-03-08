@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextFormField extends StatelessWidget {
-   AppTextFormField({super.key, this.isPassword = false,this.showPassword = false,required this.controller,required this.hintText,this.prefixIcon,this.suffixIcon,this.width = double.infinity,required this.validator});
+   AppTextFormField({super.key, this.isPassword = false,this.showPassword = false,required this.controller,required this.hintText,this.prefixIcon,this.suffixIcon,this.width = double.infinity,required this.validator,this.textInputAction = TextInputAction.next});
 
   bool isPassword;
   bool showPassword;
@@ -10,7 +10,7 @@ class AppTextFormField extends StatelessWidget {
   String hintText;
   IconData? prefixIcon;
   IconButton ? suffixIcon;
-
+  TextInputAction textInputAction;
   double width;
 
   FormFieldValidator validator;
@@ -20,6 +20,7 @@ class AppTextFormField extends StatelessWidget {
     return SizedBox(
       width: width.w,
       child: TextFormField(
+       textInputAction: textInputAction,
         validator: validator,
         decoration: InputDecoration(
           

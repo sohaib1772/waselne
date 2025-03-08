@@ -36,7 +36,13 @@ class CodegenLoader extends AssetLoader{
   "errors": {
     "email": "البريد الالكتروني غير صحيح",
     "password": "كلمة المرور غير صحيحة",
-    "thisFieldIsRequired": "هذا الحقل مطلوب"
+    "thisFieldIsRequired": "هذا الحقل مطلوب",
+    "somethingWentWrong": "حدث خطأ ما"
+  },
+  "main": {
+    "home": "الصفحة الرئيسية",
+    "favorites": "المفضلة",
+    "profile": "اعداد"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -61,7 +67,13 @@ static const Map<String,dynamic> _en = {
   "errors": {
     "email": "Invalid email",
     "password": "Invalid password",
-    "thisFieldIsRequired": "This field is required"
+    "thisFieldIsRequired": "This field is required",
+    "somethingWentWrong": "Something went wrong"
+  },
+  "main": {
+    "home": "Home",
+    "favorites": "Favorites",
+    "profile": "Profile"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

@@ -22,6 +22,11 @@ abstract class  LocaleKeys {
   static const errors_email = 'errors.email';
   static const errors_password = 'errors.password';
   static const errors_thisFieldIsRequired = 'errors.thisFieldIsRequired';
+  static const errors_somethingWentWrong = 'errors.somethingWentWrong';
   static const errors = 'errors';
+  static const main_home = 'main.home';
+  static const main_favorites = 'main.favorites';
+  static const main_profile = 'main.profile';
+  static const main = 'main';
 
 }
