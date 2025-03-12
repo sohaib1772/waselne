@@ -33,7 +33,14 @@ class LoginScreen extends StatelessWidget {
                 GoogleAuthButton(
                   text: LocaleKeys.auth_loginWithGoogle.tr(),
                   onPressed: () async{
+                    
+                   final account = await GoogleSignInHelper.SignIn();
+                   GoogleSignInAuthentication auth = await account!.authentication;
+                   print("sos: ${auth.accessToken}");
+                   print("sos: ${account.id}");
+                   await GoogleSignInHelper.SignOut();
                    
+
                   },
                   style: AuthButtonStyle(
                     buttonType: AuthButtonType.secondary,

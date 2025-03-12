@@ -3,6 +3,7 @@
         "language":"اللغة",
         "english":"الانجليزية",
         "arabic":"العربية"
+       
     },
     "auth":{
         "name":"الاسم",
@@ -15,7 +16,9 @@
         "signUp":"تسجيل",
         "forgotPassword":"نسيت كلمة المرور",
         "or":"أو",
-        "loginWithGoogle":"تسجيل الدخول باستخدام جوجل"
+        "loginWithGoogle":"تسجيل الدخول باستخدام جوجل",
+        "weHaveSentCodeToYourEmail":" : تم ارسال الكود إلى بريدك الإلكتروني"
+        
     },
     "errors":{
         "email":"البريد الالكتروني غير صحيح",
@@ -26,6 +29,20 @@
     "main":{
         "home":"الصفحة الرئيسية",
         "favorites":"المفضلة",
-        "profile":"اعداد"
-    }
+        "profile":"اعداد",
+        "submit":"ارسال",
+        "confirm":"تأكيد"
+    },
+    "personal":{
+        "firstName":"الاسم الاول",
+        "lastName":"الاسم الاخير",
+        "phone":"رقم الهاتف",
+        "address":"العنوان",
+        "city":"المدينة",
+        "country":"الدولة",
+        "gender":"الجنس",
+        "Male":"ذكر",
+        "Female":"انثى",
+        "dateOfBirth":"تاريخ الميلاد"
+}
 }

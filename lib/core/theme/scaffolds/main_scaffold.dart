@@ -2,7 +2,6 @@ import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_popup/flutter_popup.dart';
-import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 import 'package:waselne/core/helpers/app_cubit/app_cubit.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';

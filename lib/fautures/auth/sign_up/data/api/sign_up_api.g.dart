@@ -10,7 +10,7 @@ part of 'sign_up_api.dart';
 
 class _SignUpApi implements SignUpApi {
   _SignUpApi(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://reqres.in/api/';
+    baseUrl ??= 'http://192.168.169.27:8000/api/';
   }
 
   final Dio _dio;
@@ -30,7 +30,7 @@ class _SignUpApi implements SignUpApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/sign-up',
+            'register',
             queryParameters: queryParameters,
             data: _data,
           )

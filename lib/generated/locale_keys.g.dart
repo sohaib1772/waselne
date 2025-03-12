@@ -18,6 +18,7 @@ abstract class  LocaleKeys {
   static const auth_forgotPassword = 'auth.forgotPassword';
   static const auth_or = 'auth.or';
   static const auth_loginWithGoogle = 'auth.loginWithGoogle';
+  static const auth_weHaveSentCodeToYourEmail = 'auth.weHaveSentCodeToYourEmail';
   static const auth = 'auth';
   static const errors_email = 'errors.email';
   static const errors_password = 'errors.password';
@@ -27,6 +28,19 @@ abstract class  LocaleKeys {
   static const main_home = 'main.home';
   static const main_favorites = 'main.favorites';
   static const main_profile = 'main.profile';
+  static const main_submit = 'main.submit';
+  static const main_confirm = 'main.confirm';
   static const main = 'main';
+  static const personal_firstName = 'personal.firstName';
+  static const personal_lastName = 'personal.lastName';
+  static const personal_phone = 'personal.phone';
+  static const personal_address = 'personal.address';
+  static const personal_city = 'personal.city';
+  static const personal_country = 'personal.country';
+  static const personal_gender = 'personal.gender';
+  static const personal_Male = 'personal.Male';
+  static const personal_Female = 'personal.Female';
+  static const personal_dateOfBirth = 'personal.dateOfBirth';
+  static const personal = 'personal';
 
 }

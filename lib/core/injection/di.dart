@@ -3,9 +3,15 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:waselne/core/network/dio_factory.dart';
+import 'package:waselne/fautures/auth/code_verification/data/api/code_verification_api.dart';
+import 'package:waselne/fautures/auth/code_verification/data/code_verification_repo_impl.dart';
+import 'package:waselne/fautures/auth/code_verification/presentation/cubit/code_verification_cubit.dart';
 import 'package:waselne/fautures/auth/login/data/api/login_api.dart';
 import 'package:waselne/fautures/auth/login/data/login_repository_impl.dart';
 import 'package:waselne/fautures/auth/login/presentation/cubit/login_cubit.dart';
+import 'package:waselne/fautures/auth/personal_info/data/api/personal_info_api.dart';
+import 'package:waselne/fautures/auth/personal_info/data/personal_info_repo_impl.dart';
+import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
 import 'package:waselne/fautures/auth/sign_up/data/api/sign_up_api.dart';
 import 'package:waselne/fautures/auth/sign_up/data/sign_up_repository_impl.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_cubit.dart';
@@ -26,4 +32,12 @@ Future<void> diInit() async {
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()),);
 
   getIt.registerFactory<MainCubit>(() => MainCubit(),);
+
+  getIt.registerLazySingleton<CodeVerificationApi>(() => CodeVerificationApi(getIt()),);
+  getIt.registerLazySingleton<CodeVerificationRepoImpl>(() => CodeVerificationRepoImpl(getIt()),);
+  getIt.registerFactory<CodeVerificationCubit>(() => CodeVerificationCubit(getIt()),);
+
+  getIt.registerLazySingleton<PersonalInfoApi>(() => PersonalInfoApi(getIt()),);
+  getIt.registerLazySingleton<PersonalInfoRepoImpl>(() => PersonalInfoRepoImpl(getIt()),);
+  getIt.registerFactory<PersonalInfoCubit>(() => PersonalInfoCubit(getIt()),);
 }

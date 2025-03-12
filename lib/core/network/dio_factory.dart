@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:waselne/core/helpers/app_local_storage/app_local_storage.dart';
 
 class DioFactory {
   static Dio? _dio;
@@ -24,7 +25,7 @@ class DioFactory {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           //Todo : add token
-          //options.headers['Authorization'] = "Bearer ${await AppLocalStorage.secureStorage.read(key:AppLocalStorageKeys.token)}";
+          options.headers['Authorization'] = "Bearer ${await AppLocalStorage.secureStorage.read(key:AppLocalStorageKeys.token) ?? ""}";
           return handler.next(options);
         },
       ),

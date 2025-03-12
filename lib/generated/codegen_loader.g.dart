@@ -31,7 +31,8 @@ class CodegenLoader extends AssetLoader{
     "signUp": "تسجيل",
     "forgotPassword": "نسيت كلمة المرور",
     "or": "أو",
-    "loginWithGoogle": "تسجيل الدخول باستخدام جوجل"
+    "loginWithGoogle": "تسجيل الدخول باستخدام جوجل",
+    "weHaveSentCodeToYourEmail": " : تم ارسال الكود إلى بريدك الإلكتروني"
   },
   "errors": {
     "email": "البريد الالكتروني غير صحيح",
@@ -42,7 +43,21 @@ class CodegenLoader extends AssetLoader{
   "main": {
     "home": "الصفحة الرئيسية",
     "favorites": "المفضلة",
-    "profile": "اعداد"
+    "profile": "اعداد",
+    "submit": "ارسال",
+    "confirm": "تأكيد"
+  },
+  "personal": {
+    "firstName": "الاسم الاول",
+    "lastName": "الاسم الاخير",
+    "phone": "رقم الهاتف",
+    "address": "العنوان",
+    "city": "المدينة",
+    "country": "الدولة",
+    "gender": "الجنس",
+    "Male": "ذكر",
+    "Female": "انثى",
+    "dateOfBirth": "تاريخ الميلاد"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -62,7 +77,8 @@ static const Map<String,dynamic> _en = {
     "signUp": "Register",
     "forgotPassword": "Forgot Password",
     "or": "OR",
-    "loginWithGoogle": "Login with Google"
+    "loginWithGoogle": "Login with Google",
+    "weHaveSentCodeToYourEmail": "We have sent code to your email :"
   },
   "errors": {
     "email": "Invalid email",
@@ -73,7 +89,21 @@ static const Map<String,dynamic> _en = {
   "main": {
     "home": "Home",
     "favorites": "Favorites",
-    "profile": "Profile"
+    "profile": "Profile",
+    "submit": "Submit",
+    "confirm": "Confirm"
+  },
+  "personal": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Phone",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "gender": "Gender",
+    "Male": "Male",
+    "Female": "Female",
+    "dateOfBirth": "Date of Birth"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

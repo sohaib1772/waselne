@@ -16,7 +16,8 @@
         "signUp":"Register",
         "forgotPassword":"Forgot Password",
         "or":"OR",
-        "loginWithGoogle":"Login with Google"
+        "loginWithGoogle":"Login with Google",
+        "weHaveSentCodeToYourEmail":"We have sent code to your email :"
     },
     "errors":{
         "email":"Invalid email",
@@ -27,6 +28,21 @@
     "main":{
         "home":"Home",
         "favorites":"Favorites",
-        "profile":"Profile"
+        "profile":"Profile",
+        "submit":"Submit",
+        "confirm":"Confirm"
+    },
+    "personal":{
+        "firstName":"First Name",
+        "lastName":"Last Name",
+        "phone":"Phone",
+        "address":"Address",
+        "city":"City",
+        "country":"Country",
+        "gender":"Gender",
+        "Male":"Male",
+        "Female":"Female",
+        "dateOfBirth":"Date of Birth"
+        
     }
 }

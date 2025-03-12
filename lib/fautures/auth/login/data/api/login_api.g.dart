@@ -10,7 +10,7 @@ part of 'login_api.dart';
 
 class _LoginApi implements LoginApi {
   _LoginApi(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://reqres.in/api/';
+    baseUrl ??= 'http://192.168.169.27:8000/api/';
   }
 
   final Dio _dio;

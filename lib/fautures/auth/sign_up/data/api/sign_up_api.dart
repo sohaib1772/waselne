@@ -9,6 +9,6 @@ part 'sign_up_api.g.dart';
 abstract class SignUpApi {
   factory SignUpApi(Dio dio, {String? baseUrl}) = _SignUpApi;
 
-  @POST('/sign-up')
+  @POST('register')
   Future<void> signUp(@Body() Map<String, dynamic> body);
 }

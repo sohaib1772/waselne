@@ -20,6 +20,7 @@ class AppTextFormField extends StatelessWidget {
     return SizedBox(
       width: width.w,
       child: TextFormField(
+        controller: controller,
        textInputAction: textInputAction,
         validator: validator,
         decoration: InputDecoration(
