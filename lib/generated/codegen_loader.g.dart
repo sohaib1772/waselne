@@ -58,6 +58,23 @@ class CodegenLoader extends AssetLoader{
     "Male": "ذكر",
     "Female": "انثى",
     "dateOfBirth": "تاريخ الميلاد"
+  },
+  "inputValidation": {
+    "passwordLength": "يجب ان تكون كلمة المرور 6 احرف على الاقل",
+    "passwordMatch": "كلمة المرور غير متطابقة",
+    "emailExist": "البريد الالكتروني موجود بالفعل",
+    "emailNotExist": "البريد الالكتروني غير موجود",
+    "codeNotMatch": "الكود غير متطابق",
+    "phoneLength": "رقم الهاتف يجب ان يكون 10 ارقام",
+    "emailFormat": "البريد الالكتروني غير صحيح",
+    "passwordFormat": "كلمة المرور يجب ان تحتوي على حرف كبير \n وصغير ورقم و علامة مثل @ و تكون على الاقل 8 احرف",
+    "codeLength": "الكود يجب ان يكون 6 ارقام",
+    "firstNameLength": "الاسم الاول يجب ان يكون 3 احرف على الاقل",
+    "lastNameLength": "الاسم الاخير يجب ان يكون 3 احرف على الاقل",
+    "addressLength": "العنوان يجب ان يكون 10 احرف على الاقل",
+    "genderRequired": "الجنس مطلوب",
+    "dateOfBirthRequired": "تاريخ الميلاد مطلوب",
+    "nameFormat": "الاسم يجب ان يحتوي على حروف فقط"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -104,6 +121,23 @@ static const Map<String,dynamic> _en = {
     "Male": "Male",
     "Female": "Female",
     "dateOfBirth": "Date of Birth"
+  },
+  "inputValidation": {
+    "passwordLength": "Password must be at least 6 characters",
+    "passwordMatch": "Passwords do not match",
+    "emailExist": "Email already exists",
+    "emailNotExist": "Email does not exist",
+    "codeNotMatch": "Code does not match",
+    "phoneLength": "Phone number must be 10 digits",
+    "emailFormat": "Invalid email format",
+    "passwordFormat": "Password must contain uppercase, lowercase, number, \n and special character like @ and be at least 8 characters",
+    "codeLength": "Code must be 6 digits",
+    "firstNameLength": "First name must be at least 3 characters",
+    "lastNameLength": "Last name must be at least 3 characters",
+    "addressLength": "Address must be at least 10 characters",
+    "genderRequired": "Gender is required",
+    "dateOfBirthRequired": "Date of birth is required",
+    "nameFormat": "Name must contain only letters"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

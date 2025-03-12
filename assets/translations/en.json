@@ -44,5 +44,22 @@
         "Female":"Female",
         "dateOfBirth":"Date of Birth"
         
+    },
+    "inputValidation":{
+        "passwordLength":"Password must be at least 6 characters",
+        "passwordMatch":"Passwords do not match",
+        "emailExist":"Email already exists",
+        "emailNotExist":"Email does not exist",
+        "codeNotMatch":"Code does not match",
+        "phoneLength":"Phone number must be 10 digits",
+        "emailFormat":"Invalid email format",
+        "passwordFormat":"Password must contain uppercase, lowercase, number, \n and special character like @ and be at least 8 characters",
+        "codeLength":"Code must be 6 digits",
+        "firstNameLength":"First name must be at least 3 characters",
+        "lastNameLength":"Last name must be at least 3 characters",
+        "addressLength":"Address must be at least 10 characters",
+        "genderRequired":"Gender is required",
+        "dateOfBirthRequired":"Date of birth is required",
+        "nameFormat":"Name must contain only letters"
     }
 }

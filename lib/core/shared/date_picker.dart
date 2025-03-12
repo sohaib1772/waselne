@@ -24,7 +24,7 @@ class _BirthDatePickerState extends State<BirthDatePicker> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    widget.dateController.text = "${DateTime.now().year - 10}-01-01";
     for (int x = 1950, y = DateTime.now().year - 10; x <= y; x++) {
       year.add(x.toString());
     }

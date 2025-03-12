@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
+import 'package:waselne/core/shared/app_regex.dart';
 import 'package:waselne/core/shared/country_picker.dart';
 import 'package:waselne/core/shared/date_picker.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
@@ -55,6 +56,12 @@ class _PersonailInfoWidgetState extends State<PersonalInfoFormWidget> {
                   if (value == null || value.isEmpty) {
                     return LocaleKeys.errors_thisFieldIsRequired.tr();
                   }
+                  if(!AppRegex.isValidName(value)){
+                    return LocaleKeys.inputValidation_nameFormat.tr();
+                  }
+                  if(value.length < 3){
+                    return LocaleKeys.inputValidation_firstNameLength.tr();
+                  }
                   return null;
                 },
               ),
@@ -64,6 +71,12 @@ class _PersonailInfoWidgetState extends State<PersonalInfoFormWidget> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return LocaleKeys.errors_thisFieldIsRequired.tr();
+                  }
+                   if(!AppRegex.isValidName(value)){
+                    return LocaleKeys.inputValidation_nameFormat.tr();
+                  }
+                  if(value.length < 3){
+                    return LocaleKeys.inputValidation_lastNameLength.tr();
                   }
                   return null;
                 },
@@ -106,10 +119,13 @@ class _PersonailInfoWidgetState extends State<PersonalInfoFormWidget> {
           AppDividers.devider(height: 20),
           AppTextFormField(
             controller: phoneController,
-            hintText: LocaleKeys.personal_phone.tr(),
+            hintText: "+963xxxxxxxxxx",
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return LocaleKeys.errors_thisFieldIsRequired.tr();
+              }
+              if(!AppRegex.isValidPhoneNumber(value)){
+                return LocaleKeys.inputValidation_phoneLength.tr();
               }
               return null;
             },
@@ -122,11 +138,21 @@ class _PersonailInfoWidgetState extends State<PersonalInfoFormWidget> {
               if (value == null || value.isEmpty) {
                 return LocaleKeys.errors_thisFieldIsRequired.tr();
               }
+              if(value.length < 10){
+                return LocaleKeys.inputValidation_addressLength.tr();
+              }
               return null;
             },
           ),
           AppDividers.devider(height: 20),
-          CountryPicker(controller: countryController,),
+          BlocBuilder<PersonalInfoCubit, PersonalInfoStates>(
+            buildWhen: (previous, current) => current is PersonalInfoGetCountriesSuccess,
+            builder: (context, state) {
+            if (state is PersonalInfoGetCountriesSuccess) {
+              return CountryPicker(controller: countryController, countries: state.countries);
+            } 
+            return Container();
+          },),
           AppDividers.devider(height: 20),
           BlocBuilder<PersonalInfoCubit, PersonalInfoStates>(
             builder: (context, state) {
@@ -135,6 +161,14 @@ class _PersonailInfoWidgetState extends State<PersonalInfoFormWidget> {
               } else {
                 return AppButtons.iconWithLabel(
                   onPressed: () {
+                    if(gender == null){
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(LocaleKeys.inputValidation_genderRequired.tr()),
+                        ),
+                      );
+                      return;
+                    }
                     if (formKey.currentState!.validate()) {
                       context.read<PersonalInfoCubit>().createProfile(
                         PersonalInfoModel(

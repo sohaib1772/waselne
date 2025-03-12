@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
+import 'package:waselne/core/shared/app_regex.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
@@ -55,6 +56,9 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                 if (value == null || value.isEmpty) {
                   return LocaleKeys.errors_thisFieldIsRequired.tr();
                 }
+                if(!AppRegex.isValidEmail(value)){
+                  return LocaleKeys.inputValidation_emailFormat.tr();
+                }
                 return null;
               },
             ),
@@ -63,6 +67,9 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return LocaleKeys.errors_thisFieldIsRequired.tr();
+                }
+                if(!AppRegex.isValidPassword(value)){
+                  return LocaleKeys.inputValidation_passwordFormat.tr();
                 }
                 return null;
               },
@@ -82,8 +89,8 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
             AppTextFormField(
               textInputAction: TextInputAction.done,
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return LocaleKeys.errors_thisFieldIsRequired.tr();
+                if (value != context.read<SignUpCubit>().passwordController.text) {
+                  return LocaleKeys.inputValidation_passwordMatch.tr();
                 }
                 return null;
               },

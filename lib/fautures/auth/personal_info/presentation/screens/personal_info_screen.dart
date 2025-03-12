@@ -29,7 +29,7 @@ class PersonalInfoScreen extends StatelessWidget {
             child: BlocListener<PersonalInfoCubit, PersonalInfoStates>(
               listener: (context, state) {
                 if (state is PersonalInfoSuccess) {
-                  AppRouter.routes.pushReplacementNamed(AppRouterNames.main);
+                  AppRouter.routes.goNamed(AppRouterNames.main);
                 }
                 else if (state is PersonalInfoError) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
@@ -39,7 +39,14 @@ class PersonalInfoScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  PersonalInfoFormWidget(),
+                  BlocBuilder<PersonalInfoCubit,PersonalInfoStates>(builder: (context, state) {
+                    if (state is PersonalInfoGetCountriesLoading) {
+                      return Center(child: CircularProgressIndicator(),);
+                    } else {
+                      return PersonalInfoFormWidget();
+                    }
+                  },)
+                  
                 
                 ],
               ),

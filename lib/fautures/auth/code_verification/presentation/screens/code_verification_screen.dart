@@ -19,6 +19,7 @@ class CodeVerificationScreen extends StatelessWidget {
   CodeVerificationScreen({super.key, required this.email});
   String email;
   TextEditingController codeController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
@@ -28,8 +29,10 @@ class CodeVerificationScreen extends StatelessWidget {
           listener: (context, state) {
             if (state is CodeVerificationSuccess) {
               AppRouter.routes.pushNamed(AppRouterNames.personalInfo);
-            }else if (state is CodeVerificationError) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error)));
+            } else if (state is CodeVerificationError) {
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(state.error)));
             }
           },
           child: Column(
@@ -48,29 +51,39 @@ class CodeVerificationScreen extends StatelessWidget {
                 ),
               ),
               AppDividers.devider(height: 20),
-              VerificationPinput(controller: codeController),
-              AppDividers.devider(height: 20),
-              BlocBuilder<CodeVerificationCubit, CodeVerificationStates>(
-                builder: (context, state) {
-                  if (state is CodeVerificationLoading) {
-                    return Center(child: CircularProgressIndicator());
-                  } else {
-                    return AppButtons.normalButton(
-                      onPressed: () {
-                        if (email != "" &&
-                            codeController.text != "" &&
-                            codeController.text.isNotEmpty) {
-                          context.read<CodeVerificationCubit>().emailVerification(
-                            
-                            codeController.text,
-                            email,
+              Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    VerificationPinput(controller: codeController),
+                    AppDividers.devider(height: 20),
+                    BlocBuilder<CodeVerificationCubit, CodeVerificationStates>(
+                      builder: (context, state) {
+                        if (state is CodeVerificationLoading) {
+                          return Center(child: CircularProgressIndicator());
+                        } else {
+                          return AppButtons.normalButton(
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                if (email != "" &&
+                                    codeController.text != "" &&
+                                    codeController.text.isNotEmpty) {
+                                  context
+                                      .read<CodeVerificationCubit>()
+                                      .emailVerification(
+                                        codeController.text,
+                                        email,
+                                      );
+                                }
+                              }
+                            },
+                            label: LocaleKeys.main_confirm.tr(),
                           );
                         }
                       },
-                      label: LocaleKeys.main_confirm.tr(),
-                    );
-                  }
-                },
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

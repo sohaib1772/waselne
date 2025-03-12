@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pinput/pinput.dart';
+import 'package:waselne/generated/locale_keys.g.dart';
 
 class VerificationPinput extends StatelessWidget {
    VerificationPinput({super.key,required this.controller});
@@ -58,7 +60,13 @@ class VerificationPinput extends StatelessWidget {
                 )),
 
             )),
-   
+   validator: (value) {
+      if (value == null || value.isEmpty || value.length != 6) {
+        return LocaleKeys.inputValidation_codeLength.tr();
+      }
+     
+      return null;
+   },
     );
   }
 }

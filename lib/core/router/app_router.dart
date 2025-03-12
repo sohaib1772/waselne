@@ -73,7 +73,7 @@ class AppRouter {
         name: AppRouterNames.personalInfo,
         builder: (context, state) {
           String? token = state.uri.queryParameters["token"];
-          return BlocProvider(create: (context) => getIt<PersonalInfoCubit>(), child: PersonalInfoScreen(token: token,));
+          return BlocProvider(create: (context) => getIt<PersonalInfoCubit>()..getCountries(), child: PersonalInfoScreen(token: token,));
         },
       ),
     ],

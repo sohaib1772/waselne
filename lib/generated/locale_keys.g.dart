@@ -42,5 +42,21 @@ abstract class  LocaleKeys {
   static const personal_Female = 'personal.Female';
   static const personal_dateOfBirth = 'personal.dateOfBirth';
   static const personal = 'personal';
+  static const inputValidation_passwordLength = 'inputValidation.passwordLength';
+  static const inputValidation_passwordMatch = 'inputValidation.passwordMatch';
+  static const inputValidation_emailExist = 'inputValidation.emailExist';
+  static const inputValidation_emailNotExist = 'inputValidation.emailNotExist';
+  static const inputValidation_codeNotMatch = 'inputValidation.codeNotMatch';
+  static const inputValidation_phoneLength = 'inputValidation.phoneLength';
+  static const inputValidation_emailFormat = 'inputValidation.emailFormat';
+  static const inputValidation_passwordFormat = 'inputValidation.passwordFormat';
+  static const inputValidation_codeLength = 'inputValidation.codeLength';
+  static const inputValidation_firstNameLength = 'inputValidation.firstNameLength';
+  static const inputValidation_lastNameLength = 'inputValidation.lastNameLength';
+  static const inputValidation_addressLength = 'inputValidation.addressLength';
+  static const inputValidation_genderRequired = 'inputValidation.genderRequired';
+  static const inputValidation_dateOfBirthRequired = 'inputValidation.dateOfBirthRequired';
+  static const inputValidation_nameFormat = 'inputValidation.nameFormat';
+  static const inputValidation = 'inputValidation';
 
 }
