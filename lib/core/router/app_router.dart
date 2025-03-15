@@ -3,10 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:waselne/core/injection/di.dart';
 import 'package:waselne/core/router/app_router_animations.dart';
 import 'package:waselne/core/router/app_router_names.dart';
+import 'package:waselne/fautures/auth/change_password/presentation/cubit/change_password_cubit.dart';
+import 'package:waselne/fautures/auth/change_password/presentation/screens/change_password_screen.dart';
 import 'package:waselne/fautures/auth/code_verification/presentation/cubit/code_verification_cubit.dart';
 import 'package:waselne/fautures/auth/code_verification/presentation/screens/code_verification_screen.dart';
 import 'package:waselne/fautures/auth/login/presentation/cubit/login_cubit.dart';
 import 'package:waselne/fautures/auth/login/presentation/screens/login_screen.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/screens/personal_info_screen.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_cubit.dart';
@@ -64,8 +67,11 @@ class AppRouter {
           
           
           String? email = state.uri.queryParameters["email"];
+          String? sendCode = state.uri.queryParameters["sendCode"];
+          String? type = state.uri.queryParameters["type"];
+
           print("email: ${state.uri.queryParameters}");
-          return BlocProvider(create: (context) => getIt<CodeVerificationCubit>(), child: CodeVerificationScreen(email: email ?? "email not found",));
+          return BlocProvider(create: (context) => getIt<CodeVerificationCubit>()..resendCode( email ?? "", sendCode == null ? false : true , ), child: CodeVerificationScreen(email: email ?? "",type: type ?? "",));
         },
       ),
       GoRoute(
@@ -73,7 +79,20 @@ class AppRouter {
         name: AppRouterNames.personalInfo,
         builder: (context, state) {
           String? token = state.uri.queryParameters["token"];
-          return BlocProvider(create: (context) => getIt<PersonalInfoCubit>()..getCountries(), child: PersonalInfoScreen(token: token,));
+          List<CountryModel> countries = state.extra as List<CountryModel>;
+          print(countries);
+          return BlocProvider(create: (context) => getIt<PersonalInfoCubit>(), child: PersonalInfoScreen(token: token,countries: countries,));
+        },
+      ),
+      GoRoute(
+        path: "/change-password",
+        name: AppRouterNames.changePassword,
+        builder: (context, state) {
+          String? type = state.uri.queryParameters["type"];
+          String? email = state.uri.queryParameters["email"];
+                    String? code = state.uri.queryParameters["code"];
+
+          return BlocProvider(create: (context) => getIt<ChangePasswordCubit>(), child: ChangePasswordScreen(type: type ?? "",email: email ?? "",code: code,));
         },
       ),
     ],

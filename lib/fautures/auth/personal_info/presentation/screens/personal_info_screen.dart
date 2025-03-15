@@ -1,23 +1,18 @@
-import 'package:auth_buttons/auth_buttons.dart';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
-import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_states.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/widgets/personal_info_form_widget.dart';
-import 'package:waselne/fautures/auth/sign_up/presentation/widgets/sign_up_form_widget.dart';
-import 'package:waselne/generated/locale_keys.g.dart';
 
 class PersonalInfoScreen extends StatelessWidget {
-  PersonalInfoScreen({super.key,this.token});
+  PersonalInfoScreen({super.key,this.token,this.countries});
   String? token;
+  List<CountryModel>?countries;
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
@@ -43,7 +38,7 @@ class PersonalInfoScreen extends StatelessWidget {
                     if (state is PersonalInfoGetCountriesLoading) {
                       return Center(child: CircularProgressIndicator(),);
                     } else {
-                      return PersonalInfoFormWidget();
+                      return PersonalInfoFormWidget(countries: countries,);
                     }
                   },)
                   

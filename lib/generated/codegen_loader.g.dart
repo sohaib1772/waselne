@@ -32,7 +32,9 @@ class CodegenLoader extends AssetLoader{
     "forgotPassword": "نسيت كلمة المرور",
     "or": "أو",
     "loginWithGoogle": "تسجيل الدخول باستخدام جوجل",
-    "weHaveSentCodeToYourEmail": " : تم ارسال الكود إلى بريدك الإلكتروني"
+    "weHaveSentCodeToYourEmail": " : تم ارسال كود التحقق إلى بريدك الإلكتروني",
+    "resendCode": "اعادة ارسال الكود",
+    "resentCode": "تم ارسال كود التحقق"
   },
   "errors": {
     "email": "البريد الالكتروني غير صحيح",
@@ -75,6 +77,22 @@ class CodegenLoader extends AssetLoader{
     "genderRequired": "الجنس مطلوب",
     "dateOfBirthRequired": "تاريخ الميلاد مطلوب",
     "nameFormat": "الاسم يجب ان يحتوي على حروف فقط"
+  },
+  "dioErrors": {
+    "connectionTimeout": "انتهت مهلة الاتصال",
+    "sendTimeout": "انتهت مهلة الارسال",
+    "receiveTimeout": "انتهت مهلة الاستقبال",
+    "badCertificate": "شهادة خاطئة",
+    "badResponse": "استجابة خاطئة",
+    "cancel": "تم الغاء الطلب",
+    "connectionError": "خطأ في الاتصال",
+    "notFound": "غير موجود",
+    "unauthorized": "غير مصرح به",
+    "forbidden": "ممنوع",
+    "internalServerError": "خطأ داخلي في الخادم",
+    "unknownError": "خطأ غير معروف",
+    "validationOccurred": "حدث خطأ في التحقق من البيانات",
+    "tooManyRequests": "طلبات كثيرة يرجى المحاولة لاحقا"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -95,7 +113,9 @@ static const Map<String,dynamic> _en = {
     "forgotPassword": "Forgot Password",
     "or": "OR",
     "loginWithGoogle": "Login with Google",
-    "weHaveSentCodeToYourEmail": "We have sent code to your email :"
+    "weHaveSentCodeToYourEmail": "We have sent code to your email :",
+    "resendCode": "Resend code",
+    "resentCode": "Code sent Successfully"
   },
   "errors": {
     "email": "Invalid email",
@@ -138,6 +158,22 @@ static const Map<String,dynamic> _en = {
     "genderRequired": "Gender is required",
     "dateOfBirthRequired": "Date of birth is required",
     "nameFormat": "Name must contain only letters"
+  },
+  "dioErrors": {
+    "connectionTimeout": "Connection timeout",
+    "sendTimeout": "Send timeout",
+    "receiveTimeout": "Receive timeout",
+    "badCertificate": "Bad certificate",
+    "badResponse": "Bad response",
+    "cancel": "Request canceled",
+    "connectionError": "Connection error",
+    "notFound": "Not found",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Forbidden",
+    "internalServerError": "Internal server error",
+    "unknownError": "Unknown error",
+    "validationOccurred": "Validation occurred",
+    "tooManyRequests": "Too many requests, please try again later"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

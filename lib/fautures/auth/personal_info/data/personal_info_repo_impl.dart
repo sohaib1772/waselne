@@ -19,14 +19,13 @@ class PersonalInfoRepoImpl{
       return ApiResult(
         data: data,
         code: 200,
-        message: data.message,
         success: true
       );
     }on DioException catch(e){
       return ApiResult(
         data: null,
         code: e.response?.statusCode,
-        message: e.response?.data['message'],
+        dioError: e,
         success: false
       );
     }
@@ -39,14 +38,13 @@ class PersonalInfoRepoImpl{
       return ApiResult(
         data: res.data,
         code: 200,
-        message: 'success',
         success: true
       );
     }on DioException catch(e){
       return ApiResult(
         data: null,
         code: e.response?.statusCode,
-        message: e.response?.data['message'],
+        dioError: e,
         success: false
       );
     }

@@ -17,7 +17,9 @@
         "forgotPassword":"Forgot Password",
         "or":"OR",
         "loginWithGoogle":"Login with Google",
-        "weHaveSentCodeToYourEmail":"We have sent code to your email :"
+        "weHaveSentCodeToYourEmail":"We have sent code to your email :",
+        "resendCode":"Resend code",
+        "resentCode":"Code sent Successfully"
     },
     "errors":{
         "email":"Invalid email",
@@ -61,5 +63,21 @@
         "genderRequired":"Gender is required",
         "dateOfBirthRequired":"Date of birth is required",
         "nameFormat":"Name must contain only letters"
+    },
+    "dioErrors":{
+        "connectionTimeout":"Connection timeout",
+        "sendTimeout":"Send timeout",
+        "receiveTimeout":"Receive timeout",
+        "badCertificate":"Bad certificate",
+        "badResponse":"Bad response",
+        "cancel":"Request canceled",
+        "connectionError":"Connection error",
+        "notFound":"Not found",
+        "unauthorized":"Unauthorized",
+        "forbidden":"Forbidden",
+        "internalServerError":"Internal server error",
+        "unknownError":"Unknown error",
+        "validationOccurred":"Validation occurred",
+        "tooManyRequests":"Too many requests, please try again later"
     }
 }

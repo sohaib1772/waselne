@@ -4,5 +4,6 @@ class AppRouterNames {
   static const String signUp = "signUp";
   static const String codeVerification = "codeVerification";
   static const String personalInfo = "personalInfo";
+  static const String changePassword = "changePassword";
 
 }

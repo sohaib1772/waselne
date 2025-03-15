@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pinput/pinput.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
@@ -10,14 +8,14 @@ import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';
 import 'package:waselne/fautures/auth/code_verification/presentation/cubit/code_verification_cubit.dart';
 import 'package:waselne/fautures/auth/code_verification/presentation/cubit/code_verification_states.dart';
+import 'package:waselne/fautures/auth/code_verification/presentation/widgets/resend_verification_code.dart';
 import 'package:waselne/fautures/auth/code_verification/presentation/widgets/verification_pinput.dart';
-import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
-import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_states.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class CodeVerificationScreen extends StatelessWidget {
-  CodeVerificationScreen({super.key, required this.email});
+  CodeVerificationScreen({super.key, required this.email, this.type});
   String email;
+  String? type;
   TextEditingController codeController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
@@ -28,11 +26,16 @@ class CodeVerificationScreen extends StatelessWidget {
         child: BlocListener<CodeVerificationCubit, CodeVerificationStates>(
           listener: (context, state) {
             if (state is CodeVerificationSuccess) {
-              AppRouter.routes.pushNamed(AppRouterNames.personalInfo);
+              AppRouter.routes.pushNamed(
+                AppRouterNames.personalInfo,
+                extra: state.countries,
+              );
             } else if (state is CodeVerificationError) {
               ScaffoldMessenger.of(
                 context,
               ).showSnackBar(SnackBar(content: Text(state.error)));
+            }else if(state is CodeVerificationCheckEmailSuccess){
+              AppRouter.routes.pushNamed(AppRouterNames.changePassword,queryParameters: {"type":"password","email":email,"code":codeController.text});
             }
           },
           child: Column(
@@ -57,6 +60,9 @@ class CodeVerificationScreen extends StatelessWidget {
                   children: [
                     VerificationPinput(controller: codeController),
                     AppDividers.devider(height: 20),
+                    ResendVerificationCode(email: email,isPassword: type == "password" ? true : false,),
+
+                    AppDividers.devider(height: 20),
                     BlocBuilder<CodeVerificationCubit, CodeVerificationStates>(
                       builder: (context, state) {
                         if (state is CodeVerificationLoading) {
@@ -68,12 +74,21 @@ class CodeVerificationScreen extends StatelessWidget {
                                 if (email != "" &&
                                     codeController.text != "" &&
                                     codeController.text.isNotEmpty) {
+                                      if(type == "password"){
+                                        context
+                                            .read<CodeVerificationCubit>()
+                                            .passwordVerification(
+                                          codeController.text,
+                                          email,
+                                        );
+                                      }else{
                                   context
                                       .read<CodeVerificationCubit>()
                                       .emailVerification(
                                         codeController.text,
                                         email,
                                       );
+                                      }
                                 }
                               }
                             },

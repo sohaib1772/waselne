@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/network/api_reasult.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/data/models/personal_info_model.dart';
 import 'package:waselne/fautures/auth/personal_info/data/personal_info_repo_impl.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_states.dart';

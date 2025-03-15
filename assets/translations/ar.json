@@ -17,7 +17,9 @@
         "forgotPassword":"نسيت كلمة المرور",
         "or":"أو",
         "loginWithGoogle":"تسجيل الدخول باستخدام جوجل",
-        "weHaveSentCodeToYourEmail":" : تم ارسال الكود إلى بريدك الإلكتروني"
+        "weHaveSentCodeToYourEmail":" : تم ارسال كود التحقق إلى بريدك الإلكتروني",
+        "resendCode":"اعادة ارسال الكود",
+        "resentCode":"تم ارسال كود التحقق"
         
     },
     "errors":{
@@ -61,8 +63,24 @@
         "genderRequired":"الجنس مطلوب",
         "dateOfBirthRequired":"تاريخ الميلاد مطلوب",
         "nameFormat":"الاسم يجب ان يحتوي على حروف فقط"
+    },
+    "dioErrors":{
+        "connectionTimeout":"انتهت مهلة الاتصال",
+        "sendTimeout":"انتهت مهلة الارسال",
+        "receiveTimeout":"انتهت مهلة الاستقبال",
+        "badCertificate":"شهادة خاطئة",
+        "badResponse":"استجابة خاطئة",
+        "cancel":"تم الغاء الطلب",
+        "connectionError":"خطأ في الاتصال",
+        "notFound":"غير موجود",
+        "unauthorized":"غير مصرح به",
+        "forbidden":"ممنوع",
+        "internalServerError":"خطأ داخلي في الخادم",
+        "unknownError":"خطأ غير معروف",
+        "validationOccurred":"حدث خطأ في التحقق من البيانات",
+        "tooManyRequests":"طلبات كثيرة يرجى المحاولة لاحقا"
         
-
     }
+
     
 }

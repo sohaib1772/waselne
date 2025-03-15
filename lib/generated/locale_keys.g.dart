@@ -19,6 +19,8 @@ abstract class  LocaleKeys {
   static const auth_or = 'auth.or';
   static const auth_loginWithGoogle = 'auth.loginWithGoogle';
   static const auth_weHaveSentCodeToYourEmail = 'auth.weHaveSentCodeToYourEmail';
+  static const auth_resendCode = 'auth.resendCode';
+  static const auth_resentCode = 'auth.resentCode';
   static const auth = 'auth';
   static const errors_email = 'errors.email';
   static const errors_password = 'errors.password';
@@ -58,5 +60,20 @@ abstract class  LocaleKeys {
   static const inputValidation_dateOfBirthRequired = 'inputValidation.dateOfBirthRequired';
   static const inputValidation_nameFormat = 'inputValidation.nameFormat';
   static const inputValidation = 'inputValidation';
+  static const dioErrors_connectionTimeout = 'dioErrors.connectionTimeout';
+  static const dioErrors_sendTimeout = 'dioErrors.sendTimeout';
+  static const dioErrors_receiveTimeout = 'dioErrors.receiveTimeout';
+  static const dioErrors_badCertificate = 'dioErrors.badCertificate';
+  static const dioErrors_badResponse = 'dioErrors.badResponse';
+  static const dioErrors_cancel = 'dioErrors.cancel';
+  static const dioErrors_connectionError = 'dioErrors.connectionError';
+  static const dioErrors_notFound = 'dioErrors.notFound';
+  static const dioErrors_unauthorized = 'dioErrors.unauthorized';
+  static const dioErrors_forbidden = 'dioErrors.forbidden';
+  static const dioErrors_internalServerError = 'dioErrors.internalServerError';
+  static const dioErrors_unknownError = 'dioErrors.unknownError';
+  static const dioErrors_validationOccurred = 'dioErrors.validationOccurred';
+  static const dioErrors_tooManyRequests = 'dioErrors.tooManyRequests';
+  static const dioErrors = 'dioErrors';
 
 }

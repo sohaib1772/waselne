@@ -3,6 +3,9 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:waselne/core/network/dio_factory.dart';
+import 'package:waselne/fautures/auth/change_password/data/api/change_password_api.dart';
+import 'package:waselne/fautures/auth/change_password/data/change_password_repository_impl.dart';
+import 'package:waselne/fautures/auth/change_password/presentation/cubit/change_password_cubit.dart';
 import 'package:waselne/fautures/auth/code_verification/data/api/code_verification_api.dart';
 import 'package:waselne/fautures/auth/code_verification/data/code_verification_repo_impl.dart';
 import 'package:waselne/fautures/auth/code_verification/presentation/cubit/code_verification_cubit.dart';
@@ -40,4 +43,8 @@ Future<void> diInit() async {
   getIt.registerLazySingleton<PersonalInfoApi>(() => PersonalInfoApi(getIt()),);
   getIt.registerLazySingleton<PersonalInfoRepoImpl>(() => PersonalInfoRepoImpl(getIt()),);
   getIt.registerFactory<PersonalInfoCubit>(() => PersonalInfoCubit(getIt()),);
+
+  getIt.registerLazySingleton<ChangePasswordApi>(() => ChangePasswordApi(getIt()),);
+  getIt.registerLazySingleton<ChangePasswordRepositoryImpl>(() => ChangePasswordRepositoryImpl(changePasswordApi: getIt()),);
+  getIt.registerFactory<ChangePasswordCubit>(() => ChangePasswordCubit(getIt()),);
 }

@@ -1,25 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:waselne/core/router/app_router.dart';
-import 'package:waselne/core/router/app_router_names.dart';
 import 'package:waselne/core/shared/app_regex.dart';
 import 'package:waselne/core/shared/country_picker.dart';
 import 'package:waselne/core/shared/date_picker.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/data/models/personal_info_model.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_states.dart';
-import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class PersonalInfoFormWidget extends StatefulWidget {
-  const PersonalInfoFormWidget({super.key});
-
+   PersonalInfoFormWidget({super.key,this.countries});
+  List<CountryModel>? countries;
   @override
   State<PersonalInfoFormWidget> createState() => _PersonailInfoWidgetState();
 }
@@ -145,14 +142,7 @@ class _PersonailInfoWidgetState extends State<PersonalInfoFormWidget> {
             },
           ),
           AppDividers.devider(height: 20),
-          BlocBuilder<PersonalInfoCubit, PersonalInfoStates>(
-            buildWhen: (previous, current) => current is PersonalInfoGetCountriesSuccess,
-            builder: (context, state) {
-            if (state is PersonalInfoGetCountriesSuccess) {
-              return CountryPicker(controller: countryController, countries: state.countries);
-            } 
-            return Container();
-          },),
+          CountryPicker(controller: countryController, countries: widget.countries),
           AppDividers.devider(height: 20),
           BlocBuilder<PersonalInfoCubit, PersonalInfoStates>(
             builder: (context, state) {

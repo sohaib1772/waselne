@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
 import 'package:waselne/core/shared/app_regex.dart';
+import 'package:waselne/core/shared/new_password_fields.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
@@ -21,23 +22,37 @@ class SignUpFormWidget extends StatefulWidget {
 
 class _SignUpFormWidgetState extends State<SignUpFormWidget> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  bool showPassword = false;
-  bool showConfirmPassword = false;
+  
   @override
   Widget build(BuildContext context) {
     return BlocListener<SignUpCubit, SignUpStates>(
       listener: (context, state) {
         if (state is SignUpSuccess) {
-          AppRouter.routes.pushNamed(
+          AppRouter.routes.goNamed(
             AppRouterNames.codeVerification,
             queryParameters: {
               "email": context.read<SignUpCubit>().emailController.text,
             },
           );
-        } else if (state is SignUpError) {
+        }else if (state is SignUpError) {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(state.message)));
+        }else if(state is LoginWithGoogleSuccess){
+          if(state.countries != null){
+            AppRouter.routes.pushNamed(AppRouterNames.personalInfo,extra: state.countries);
+
+          }else{
+            AppRouter.routes.goNamed(AppRouterNames.main);
+          }
+        }else if(state is SignUpResendCode){
+          AppRouter.routes.pushNamed(
+            AppRouterNames.codeVerification,
+            queryParameters: {
+              "email": state.email,
+              "sendCode": "true"
+            },
+          );
         }
       },
       child: Form(
@@ -63,51 +78,9 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
               },
             ),
             AppDividers.devider(height: 20),
-            AppTextFormField(
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return LocaleKeys.errors_thisFieldIsRequired.tr();
-                }
-                if(!AppRegex.isValidPassword(value)){
-                  return LocaleKeys.inputValidation_passwordFormat.tr();
-                }
-                return null;
-              },
-              controller: context.read<SignUpCubit>().passwordController,
-              isPassword: true,
-              hintText: LocaleKeys.auth_password.tr(),
-              prefixIcon: Icons.password,
-              showPassword: !showPassword,
-              suffixIcon: IconButton(
-                onPressed: () => setState(() => showPassword = !showPassword),
-                icon: Icon(
-                  showPassword ? Icons.visibility : Icons.visibility_off,
-                ),
-              ),
-            ),
-            AppDividers.devider(height: 20),
-            AppTextFormField(
-              textInputAction: TextInputAction.done,
-              validator: (value) {
-                if (value != context.read<SignUpCubit>().passwordController.text) {
-                  return LocaleKeys.inputValidation_passwordMatch.tr();
-                }
-                return null;
-              },
-              controller: context.read<SignUpCubit>().passwordConfirmController,
-              isPassword: true,
-              hintText: LocaleKeys.auth_confirmPassword.tr(),
-              prefixIcon: Icons.password,
-              showPassword: !showConfirmPassword,
-              suffixIcon: IconButton(
-                onPressed:
-                    () => setState(
-                      () => showConfirmPassword = !showConfirmPassword,
-                    ),
-                icon: Icon(
-                  showConfirmPassword ? Icons.visibility : Icons.visibility_off,
-                ),
-              ),
+            NewPasswordFields(
+              passwordConfirmController: context.read<SignUpCubit>().passwordConfirmController,
+              passwordController: context.read<SignUpCubit>().passwordController,
             ),
 
             AppDividers.devider(height: 20),

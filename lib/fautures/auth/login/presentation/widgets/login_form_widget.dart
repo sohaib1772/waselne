@@ -1,11 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
+import 'package:waselne/fautures/auth/login/presentation/cubit/login_cubit.dart';
+import 'package:waselne/fautures/auth/login/presentation/cubit/login_states.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class LoginFormWidget extends StatefulWidget {
@@ -66,30 +69,50 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              TextButton(onPressed: (){}, child: Text(LocaleKeys.auth_forgotPassword.tr())),
+              TextButton(
+                onPressed: () {
+                  AppRouter.routes.pushNamed(AppRouterNames.changePassword,queryParameters: {"type":"checkEmail"});
+                },
+                child: Text(LocaleKeys.auth_forgotPassword.tr()),
+              ),
             ],
           ),
           AppDividers.devider(height: 20),
-          AppButtons.iconWithLabel(onPressed: (){
-            AppRouter.routes.pushReplacementNamed(AppRouterNames.main);
-            if(formKey.currentState!.validate()){
-              
-            }
-          },label: LocaleKeys.auth_login.tr(),icon: Icons.login),
+          BlocBuilder<LoginCubit,LoginStates>(
+            builder: (context, state) {
+              if (state is LoginLoading) {
+                return const CircularProgressIndicator();
+              }
+              return AppButtons.iconWithLabel(
+                onPressed: () {
+                  AppRouter.routes.pushReplacementNamed(AppRouterNames.main);
+                  if (formKey.currentState!.validate()) {}
+                },
+                label: LocaleKeys.auth_login.tr(),
+                icon: Icons.login,
+              );
+            },
+          ),
           AppDividers.devider(height: 10),
           Text.rich(
             TextSpan(
               text: LocaleKeys.auth_dontHaveAccount.tr(),
               children: [
                 TextSpan(
-                  recognizer: TapGestureRecognizer()..onTap = (){
-                    AppRouter.routes.pushNamed(AppRouterNames.signUp);
-                  },
+                  recognizer:
+                      TapGestureRecognizer()
+                        ..onTap = () {
+                          AppRouter.routes.pushNamed(AppRouterNames.signUp);
+                        },
                   text: " ${LocaleKeys.auth_signUp.tr()}",
-                  style: TextStyle(color: ColorScheme.of(context).secondary,fontWeight: FontWeight.bold),
-                )
+                  style: TextStyle(
+                    color: ColorScheme.of(context).secondary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
-          ))
+            ),
+          ),
         ],
       ),
     );

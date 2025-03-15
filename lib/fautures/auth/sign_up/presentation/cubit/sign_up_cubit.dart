@@ -21,7 +21,23 @@ class SignUpCubit extends Cubit<SignUpStates> {
     if (result.success! == true){
       emit(SignUpSuccess());
     }else{
+      if(result.code == 400){
+        emit(SignUpResendCode(email: emailController.text));
+      }else{
+      emit(SignUpError(message: result.message??"error"));
+      }
+    }
+  }
+  Future<void> loginWithGoogle(String token) async {
+    emit(SignUpLoading());
+    ApiResult result = await signUpRepository.loginWithGoogle(
+       googleToken: token);
+    if (result.success! == true){
+      emit(LoginWithGoogleSuccess(token: result.data?.token, countries: result.data?.countries));
+    }else{
+      
       emit(SignUpError(message: result.message??"error"));
     }
   }
+
 }

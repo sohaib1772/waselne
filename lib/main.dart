@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/helpers/app_cubit/app_cubit.dart';
 import 'package:waselne/core/helpers/app_cubit/app_states.dart';
+import 'package:waselne/core/helpers/app_local_storage/app_local_storage.dart';
 import 'package:waselne/core/injection/di.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/theme/themes/app_theme.dart';
@@ -11,6 +12,7 @@ import 'package:waselne/generated/codegen_loader.g.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await AppLocalStorage.initSharedPrefrences();
   await diInit();
   await ScreenUtil.ensureScreenSize();
   await EasyLocalization.ensureInitialized();
