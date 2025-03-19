@@ -24,6 +24,8 @@ class DioFactory {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
+          
+
           //Todo : add token
           options.headers['Authorization'] = "Bearer ${await AppLocalStorage.secureStorage.read(key:AppLocalStorageKeys.token) ?? ""}";
           options.headers['Accept-Language'] = await AppLocalStorage.secureStorage.read(key:AppLocalStorageKeys.lang)?? "en";

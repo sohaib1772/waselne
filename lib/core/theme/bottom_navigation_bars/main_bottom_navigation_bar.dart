@@ -11,7 +11,6 @@ class MainBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return StylishBottomBar(
       backgroundColor: ColorScheme.of(context).surface,
-      fabLocation: StylishBarFabLocation.end,
       hasNotch: false,
       currentIndex: cubit.screenIndex,
       onTap: (index) {
@@ -19,29 +18,24 @@ class MainBottomNavigationBar extends StatelessWidget {
       },
       items: [
         BottomBarItem(
-          icon: const Icon(Icons.home),
-          title: Text(LocaleKeys.main_home.tr()),
-          backgroundColor: Colors.red,
-          selectedIcon: const Icon(Icons.read_more),
+          icon:  Icon(Icons.home,color: Theme.of(context).colorScheme.primary,),
+          title: Text(LocaleKeys.main_home.tr(),style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         ),
         BottomBarItem(
-          icon: const Icon(Icons.favorite),
-          title:  Text(LocaleKeys.main_favorites.tr()),
-          backgroundColor: Colors.orange,
+          icon:  Icon(Icons.favorite,color: Theme.of(context).colorScheme.primary,),
+          title:  Text(LocaleKeys.main_favorites.tr(),style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+          
         ),
         BottomBarItem(
-          icon: const Icon(Icons.account_box_rounded),
-          title:  Text(LocaleKeys.main_profile.tr()),
-          backgroundColor: Colors.purple,
+          icon:  Icon(Icons.account_box_rounded,color: Theme.of(context).colorScheme.primary,),
+          title:  Text(LocaleKeys.main_profile.tr(),style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         ),
       ],
-      option: DotBarOptions(
-        dotStyle: DotStyle.tile,
-        gradient: const LinearGradient(
-          colors: [Colors.deepPurple, Colors.pink],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+      option: BubbleBarOptions(
+        
       ),
     );
   }

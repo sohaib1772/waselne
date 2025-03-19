@@ -9,14 +9,18 @@ class AppButtons {
     required Function onPressed,
     double width = 200,
     Color? backgroundColor,
+    Color? textColor,
   }) {
     return SizedBox(
       width: width.w,
       child: FilledButton.icon(
-        style: ButtonStyle(backgroundColor: backgroundColor != null ? WidgetStatePropertyAll(backgroundColor) : null),
+
+        style: ButtonStyle(
+          shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))),
+          backgroundColor: backgroundColor != null ? WidgetStatePropertyAll(backgroundColor) : null),
         onPressed: () => onPressed(),
-        label: Text("$label"),
-        icon: Icon(icon),
+        label: Text("$label",style: TextStyle(color: textColor,fontSize: 18.sp,fontWeight: FontWeight.bold),),
+        icon: Icon(icon,color: textColor,),
       ),
     );
   }

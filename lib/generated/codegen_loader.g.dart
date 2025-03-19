@@ -43,11 +43,13 @@ class CodegenLoader extends AssetLoader{
     "somethingWentWrong": "حدث خطأ ما"
   },
   "main": {
-    "home": "الصفحة الرئيسية",
+    "home": "الرئيسية",
     "favorites": "المفضلة",
     "profile": "اعداد",
     "submit": "ارسال",
-    "confirm": "تأكيد"
+    "confirm": "تأكيد",
+    "search": "بحث",
+    "cancel": "الغاء"
   },
   "personal": {
     "firstName": "الاسم الاول",
@@ -93,6 +95,33 @@ class CodegenLoader extends AssetLoader{
     "unknownError": "خطأ غير معروف",
     "validationOccurred": "حدث خطأ في التحقق من البيانات",
     "tooManyRequests": "طلبات كثيرة يرجى المحاولة لاحقا"
+  },
+  "tripInfo": {
+    "info": "معلومات الرحلة",
+    "tripDate": "تاريخ الرحلة",
+    "tripTime": "وقت الرحلة",
+    "tripPrice": "سعر المقعد",
+    "tripType": "نوع الرحلة",
+    "tripStatus": "حالة الرحلة",
+    "tripStart": "نقطة الانطلاق",
+    "tripEnd": "نقطة الوصول",
+    "tripDetails": "تفاصيل الرحلة",
+    "tripDriver": "السائق",
+    "drivePhone": "رقم الهاتف",
+    "bookingNow": "حجز الان",
+    "saveLater": "حفظ لاحقا",
+    "seatCount": "عدد المقاعد",
+    "avilableSeats": "المقاعد المتاحة",
+    "totalPrice": "السعر الكلي",
+    "bookingAddSuccess": "تم اضافة الحجز بنجاح"
+  },
+  "driverInfo": {
+    "driverName": "اسم السائق",
+    "driverPhone": "رقم الهاتف",
+    "driverEmail": "البريد الالكتروني",
+    "numberOfTrips": "عدد الرحلات",
+    "rating": "التقييم",
+    "aboutMe": "نبذة"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -128,7 +157,9 @@ static const Map<String,dynamic> _en = {
     "favorites": "Favorites",
     "profile": "Profile",
     "submit": "Submit",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "search": "Search",
+    "cancel": "Cancel"
   },
   "personal": {
     "firstName": "First Name",
@@ -174,6 +205,33 @@ static const Map<String,dynamic> _en = {
     "unknownError": "Unknown error",
     "validationOccurred": "Validation occurred",
     "tooManyRequests": "Too many requests, please try again later"
+  },
+  "tripInfo": {
+    "info": "Trip Info",
+    "tripDate": "Trip Start",
+    "tripTime": "Trip Time",
+    "tripPrice": "Seat Price",
+    "tripType": "Trip Type",
+    "tripStatus": "Trip Status",
+    "tripStart": "Start Point",
+    "tripEnd": "End Point",
+    "tripDetails": "Trip Details",
+    "tripDriver": "Trip Driver",
+    "drivePhone": "Driver Phone",
+    "bookingNow": "Book Now",
+    "saveLater": "Save Trip",
+    "seatCount": "Number of Seats You Want",
+    "avilableSeats": "Available Seats",
+    "totalPrice": "Total Price",
+    "bookingAddSuccess": "Booking added successfully"
+  },
+  "driverInfo": {
+    "driverName": "Driver Name",
+    "driverPhone": "Driver Phone",
+    "driverEmail": "Driver Email",
+    "numberOfTrips": "Number of Trips",
+    "rating": "Rating",
+    "aboutMe": "About me"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

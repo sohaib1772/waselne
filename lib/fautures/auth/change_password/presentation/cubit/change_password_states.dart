@@ -1,4 +1,3 @@
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
 
 abstract class ChangePasswordStates {}
 

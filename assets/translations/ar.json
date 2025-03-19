@@ -29,11 +29,13 @@
         "somethingWentWrong":"حدث خطأ ما"
     },
     "main":{
-        "home":"الصفحة الرئيسية",
+        "home":"الرئيسية",
         "favorites":"المفضلة",
         "profile":"اعداد",
         "submit":"ارسال",
-        "confirm":"تأكيد"
+        "confirm":"تأكيد",
+        "search":"بحث",
+        "cancel":"الغاء"
     },
     "personal":{
         "firstName":"الاسم الاول",
@@ -79,6 +81,35 @@
         "unknownError":"خطأ غير معروف",
         "validationOccurred":"حدث خطأ في التحقق من البيانات",
         "tooManyRequests":"طلبات كثيرة يرجى المحاولة لاحقا"
+        
+    },
+    "tripInfo":{
+        "info":"معلومات الرحلة",
+        "tripDate":"تاريخ الرحلة",
+        "tripTime":"وقت الرحلة",
+        "tripPrice":"سعر المقعد",
+        "tripType":"نوع الرحلة",
+        "tripStatus":"حالة الرحلة",
+        "tripStart":"نقطة الانطلاق",
+        "tripEnd":"نقطة الوصول",
+        "tripDetails":"تفاصيل الرحلة",
+        "tripDriver":"السائق",
+        "drivePhone":"رقم الهاتف",
+        "bookingNow":"حجز الان",
+        "saveLater":"حفظ لاحقا",
+        "seatCount":"عدد المقاعد",
+        "avilableSeats":"المقاعد المتاحة",
+        "totalPrice":"السعر الكلي",
+        "bookingAddSuccess":"تم اضافة الحجز بنجاح"
+
+    },
+    "driverInfo":{
+        "driverName":"اسم السائق",
+        "driverPhone":"رقم الهاتف",
+        "driverEmail":"البريد الالكتروني",
+        "numberOfTrips":"عدد الرحلات",
+        "rating":"التقييم",
+        "aboutMe":"نبذة"
         
     }
 

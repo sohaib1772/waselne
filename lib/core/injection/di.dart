@@ -18,7 +18,13 @@ import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_
 import 'package:waselne/fautures/auth/sign_up/data/api/sign_up_api.dart';
 import 'package:waselne/fautures/auth/sign_up/data/sign_up_repository_impl.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_cubit.dart';
+import 'package:waselne/fautures/home/data/api/home_api.dart';
+import 'package:waselne/fautures/home/data/home_repository_impl.dart';
+import 'package:waselne/fautures/home/presentation/cubit/home_cubit.dart';
 import 'package:waselne/fautures/main_layout/presentation/cubit/main_cubit.dart';
+import 'package:waselne/fautures/booking/data/api/booking_api.dart';
+import 'package:waselne/fautures/booking/data/booking_repository.dart';
+import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -47,4 +53,13 @@ Future<void> diInit() async {
   getIt.registerLazySingleton<ChangePasswordApi>(() => ChangePasswordApi(getIt()),);
   getIt.registerLazySingleton<ChangePasswordRepositoryImpl>(() => ChangePasswordRepositoryImpl(changePasswordApi: getIt()),);
   getIt.registerFactory<ChangePasswordCubit>(() => ChangePasswordCubit(getIt()),);
+
+  getIt.registerLazySingleton<HomeApi>(() => HomeApi(getIt()),);
+  getIt.registerLazySingleton<HomeRepositoryImpl>(() => HomeRepositoryImpl(getIt()),);
+  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()),);
+
+
+  getIt.registerLazySingleton<BookingApi>(() => BookingApi(getIt()),);
+  getIt.registerLazySingleton<BookingRepository>(() => BookingRepository(getIt()),);
+  getIt.registerFactory<BookingCubit>(() => BookingCubit(getIt()),);
 }

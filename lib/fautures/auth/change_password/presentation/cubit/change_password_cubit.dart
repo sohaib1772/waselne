@@ -2,8 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/network/api_reasult.dart';
 import 'package:waselne/fautures/auth/change_password/data/change_password_repository_impl.dart';
 import 'package:waselne/fautures/auth/change_password/presentation/cubit/change_password_states.dart';
-import 'package:waselne/fautures/auth/login/data/login_repository_impl.dart';
-import 'package:waselne/fautures/auth/login/presentation/cubit/login_states.dart';
 
 class ChangePasswordCubit extends Cubit<ChangePasswordStates> {
   ChangePasswordCubit(this.changePasswordRepository) : super(ChangePasswordInitial());

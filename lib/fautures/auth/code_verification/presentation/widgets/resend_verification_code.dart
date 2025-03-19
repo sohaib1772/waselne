@@ -57,6 +57,7 @@ class _ResendVerificationCodeState extends State<ResendVerificationCode> {
     super.dispose();
   }
 
+  @override
   initState() {
     super.initState();
     _startTimer();

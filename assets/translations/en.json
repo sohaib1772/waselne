@@ -32,7 +32,9 @@
         "favorites":"Favorites",
         "profile":"Profile",
         "submit":"Submit",
-        "confirm":"Confirm"
+        "confirm":"Confirm",
+        "search":"Search",
+        "cancel":"Cancel"
     },
     "personal":{
         "firstName":"First Name",
@@ -79,5 +81,33 @@
         "unknownError":"Unknown error",
         "validationOccurred":"Validation occurred",
         "tooManyRequests":"Too many requests, please try again later"
+    },
+    "tripInfo":{
+        "info":"Trip Info",
+        "tripDate":"Trip Start",
+        "tripTime":"Trip Time",
+        "tripPrice":"Seat Price",
+        "tripType":"Trip Type",
+        "tripStatus":"Trip Status",
+        "tripStart":"Start Point",
+        "tripEnd":"End Point",
+        "tripDetails":"Trip Details",
+        "tripDriver":"Trip Driver",
+        "drivePhone":"Driver Phone",
+        "bookingNow":"Book Now",
+        "saveLater":"Save Trip",
+        "seatCount":"Number of Seats You Want",
+        "avilableSeats":"Available Seats",
+        "totalPrice":"Total Price",
+        "bookingAddSuccess":"Booking added successfully"
+    },
+    "driverInfo":{
+        "driverName":"Driver Name",
+        "driverPhone":"Driver Phone",
+        "driverEmail":"Driver Email",
+        "numberOfTrips":"Number of Trips",
+        "rating":"Rating",
+        "aboutMe":"About me"
     }
+    
 }

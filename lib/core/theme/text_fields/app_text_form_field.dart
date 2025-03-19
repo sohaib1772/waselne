@@ -29,7 +29,7 @@ class AppTextFormField extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          suffixIcon: isPassword ? suffixIcon :null,
+          suffixIcon: suffixIcon,
           hintText: hintText,
           prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
           

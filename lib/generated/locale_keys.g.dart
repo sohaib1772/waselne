@@ -32,6 +32,8 @@ abstract class  LocaleKeys {
   static const main_profile = 'main.profile';
   static const main_submit = 'main.submit';
   static const main_confirm = 'main.confirm';
+  static const main_search = 'main.search';
+  static const main_cancel = 'main.cancel';
   static const main = 'main';
   static const personal_firstName = 'personal.firstName';
   static const personal_lastName = 'personal.lastName';
@@ -75,5 +77,30 @@ abstract class  LocaleKeys {
   static const dioErrors_validationOccurred = 'dioErrors.validationOccurred';
   static const dioErrors_tooManyRequests = 'dioErrors.tooManyRequests';
   static const dioErrors = 'dioErrors';
+  static const tripInfo_info = 'tripInfo.info';
+  static const tripInfo_tripDate = 'tripInfo.tripDate';
+  static const tripInfo_tripTime = 'tripInfo.tripTime';
+  static const tripInfo_tripPrice = 'tripInfo.tripPrice';
+  static const tripInfo_tripType = 'tripInfo.tripType';
+  static const tripInfo_tripStatus = 'tripInfo.tripStatus';
+  static const tripInfo_tripStart = 'tripInfo.tripStart';
+  static const tripInfo_tripEnd = 'tripInfo.tripEnd';
+  static const tripInfo_tripDetails = 'tripInfo.tripDetails';
+  static const tripInfo_tripDriver = 'tripInfo.tripDriver';
+  static const tripInfo_drivePhone = 'tripInfo.drivePhone';
+  static const tripInfo_bookingNow = 'tripInfo.bookingNow';
+  static const tripInfo_saveLater = 'tripInfo.saveLater';
+  static const tripInfo_seatCount = 'tripInfo.seatCount';
+  static const tripInfo_avilableSeats = 'tripInfo.avilableSeats';
+  static const tripInfo_totalPrice = 'tripInfo.totalPrice';
+  static const tripInfo_bookingAddSuccess = 'tripInfo.bookingAddSuccess';
+  static const tripInfo = 'tripInfo';
+  static const driverInfo_driverName = 'driverInfo.driverName';
+  static const driverInfo_driverPhone = 'driverInfo.driverPhone';
+  static const driverInfo_driverEmail = 'driverInfo.driverEmail';
+  static const driverInfo_numberOfTrips = 'driverInfo.numberOfTrips';
+  static const driverInfo_rating = 'driverInfo.rating';
+  static const driverInfo_aboutMe = 'driverInfo.aboutMe';
+  static const driverInfo = 'driverInfo';
 
 }

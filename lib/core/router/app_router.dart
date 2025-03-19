@@ -14,8 +14,11 @@ import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_
 import 'package:waselne/fautures/auth/personal_info/presentation/screens/personal_info_screen.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/screens/sign_up_screen.dart';
+import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 import 'package:waselne/fautures/main_layout/presentation/cubit/main_cubit.dart';
 import 'package:waselne/fautures/main_layout/presentation/screens/main_layout_screen.dart';
+import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
+import 'package:waselne/fautures/booking/presentation/screen/booking_screen.dart';
 
 class AppRouter {
   static final GoRouter routes = GoRouter(
@@ -33,6 +36,19 @@ class AppRouter {
             state: state,
           );
         },
+        routes: [
+          GoRoute(
+            path: "trip-info",
+            name: AppRouterNames.tripInfo,
+            pageBuilder: (context, state) {
+              HomeTripModel model = state.extra as HomeTripModel;
+              return AppRouterAnimations.slideAnimation(
+                child: BlocProvider(create: (context) => getIt<BookingCubit>(), child: BookingScreen(model: model,)),
+                state: state,
+              );
+            },
+          )
+        ]
       ),
       GoRoute(
         path: "/login",
