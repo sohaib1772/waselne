@@ -29,7 +29,7 @@ class SignUpScreen extends StatelessWidget {
                 SvgPicture.asset("assets/svgs/logo.svg",height: 100.h,),
                 SignUpFormWidget(),
                 AppDividers.devider(height: 20),
-                AppDividers.textDivider(text: "or".tr()),
+                AppDividers.textDivider(text: LocaleKeys.auth_or.tr()),
                 AppDividers.devider(height: 10),
                 GoogleAuthButton(
                   text: LocaleKeys.auth_loginWithGoogle.tr(),

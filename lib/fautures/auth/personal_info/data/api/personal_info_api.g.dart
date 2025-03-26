@@ -10,7 +10,7 @@ part of 'personal_info_api.dart';
 
 class _PersonalInfoApi implements PersonalInfoApi {
   _PersonalInfoApi(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'http://192.168.30.27:8000/api/';
+    baseUrl ??= 'http://192.168.219.27:8000/api/';
   }
 
   final Dio _dio;
@@ -50,12 +50,12 @@ class _PersonalInfoApi implements PersonalInfoApi {
   }
 
   @override
-  Future<CountriesResponseModel> getCountries() async {
+  Future<CitiesResponseModel> getCountries() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<CountriesResponseModel>(
+    final _options = _setStreamType<CitiesResponseModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -66,9 +66,9 @@ class _PersonalInfoApi implements PersonalInfoApi {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CountriesResponseModel _value;
+    late CitiesResponseModel _value;
     try {
-      _value = CountriesResponseModel.fromJson(_result.data!);
+      _value = CitiesResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

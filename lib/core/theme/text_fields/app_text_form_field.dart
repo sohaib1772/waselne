@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextFormField extends StatelessWidget {
-   AppTextFormField({super.key, this.isPassword = false,this.showPassword = false,required this.controller,required this.hintText,this.prefixIcon,this.suffixIcon,this.width = double.infinity,required this.validator,this.textInputAction = TextInputAction.next});
+   AppTextFormField({super.key, this.isPassword = false,this.showPassword = false,required this.controller,required this.hintText,this.prefixIcon,this.suffixIcon,this.width = double.infinity,required this.validator,this.textInputAction = TextInputAction.next,this.keyboardType = TextInputType.text});
 
   bool isPassword;
   bool showPassword;
@@ -12,7 +12,7 @@ class AppTextFormField extends StatelessWidget {
   IconButton ? suffixIcon;
   TextInputAction textInputAction;
   double width;
-
+  TextInputType keyboardType;
   FormFieldValidator validator;
 
   @override
@@ -23,8 +23,9 @@ class AppTextFormField extends StatelessWidget {
         controller: controller,
        textInputAction: textInputAction,
         validator: validator,
+        keyboardType: keyboardType,
         decoration: InputDecoration(
-          
+          label: Text(hintText),
           contentPadding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),

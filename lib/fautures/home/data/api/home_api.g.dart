@@ -10,7 +10,7 @@ part of 'home_api.dart';
 
 class _HomeApi implements HomeApi {
   _HomeApi(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'http://192.168.30.27:8000/api/';
+    baseUrl ??= 'http://192.168.219.27:8000/api/';
   }
 
   final Dio _dio;
@@ -27,16 +27,18 @@ class _HomeApi implements HomeApi {
     String? time,
     double? type,
     int? availableSeats,
+    String? seatPrice,
     int? page,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'from': from,
       r'to': to,
-      r'trip_start': date,
-      r'status': time,
+      r'startDate': date,
+      r'startTime': time,
       r'seat_price': type,
       r'available_seats': availableSeats,
+      r'seat_price': seatPrice,
       r'page': page,
     };
     queryParameters.removeWhere((k, v) => v == null);
@@ -56,6 +58,33 @@ class _HomeApi implements HomeApi {
     late HomeResponseModel _value;
     try {
       _value = HomeResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<HomeCitiesResponseModel> getCities() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<HomeCitiesResponseModel>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'cities',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late HomeCitiesResponseModel _value;
+    try {
+      _value = HomeCitiesResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -34,7 +34,10 @@
         "submit":"Submit",
         "confirm":"Confirm",
         "search":"Search",
-        "cancel":"Cancel"
+        "cancel":"Cancel",
+        "tryAgain":"Try Again",
+        "areYouSure":"Are you sure?",
+        "any":"Any"
     },
     "personal":{
         "firstName":"First Name",
@@ -102,12 +105,61 @@
         "bookingAddSuccess":"Booking added successfully"
     },
     "driverInfo":{
+        "driverInfo":"Driver Info",
         "driverName":"Driver Name",
         "driverPhone":"Driver Phone",
         "driverEmail":"Driver Email",
         "numberOfTrips":"Number of Trips",
         "rating":"Rating",
         "aboutMe":"About me"
+    },
+    "profileInfo":{
+        "profileInfo":"Profile Info",
+        "updateProfile":"Update Profile",
+        "updateProfileSuccess":"Profile updated successfully",
+        "favoritesUsers":"Favorites",
+        "myBooking":"Bookings",
+        "myTrips":"My Trips",
+        "savedTrips":"Saved Trips"
+    },
+    "myBookingInfo":{
+        "bookID" : "Booking ID",
+        "status":"Status",
+        "bookingDate":"Trip Date",
+        "bookingPrice":"Total Price",
+        "tripType":"Type",
+        "bookingStart":"Start Point",
+        "bookingEnd":"End Point",
+        "bookingDetails":"Details",
+        "tripDriver":"Driver",
+        "bookSeatNumber":"Number of Seats",
+        "editBooking":"Edit Booking",
+        "cancelBooking":"Cancel Booking",
+        "pending":"Pending",
+        "accepted":"Accepted",
+        "rejected":"Rejected"
+    },
+    "others":{
+        "city":"City"
+    },
+    "home":{
+        "cityStart":"From",
+        "cityEnd":"To",
+        "date":"Date",
+        "time":"Time",
+        "search":"Search",
+        "tripType":"Trip Type",
+        "tripDate":"Trip Date",
+        "tripPrice":"Seat Price",
+        "noData":"No trips available",
+        "citiesShouldBeDifferent":"Cities should be different",
+        "availableSeats":"Available Seats",
+        "reasultsCount":"Results Count",
+        "theresNoMoreData":"There is no more data"
     }
+    
+    
+    
+    
     
 }

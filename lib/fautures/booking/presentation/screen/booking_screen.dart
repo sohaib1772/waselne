@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';
-import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_states.dart';
 import 'package:waselne/fautures/booking/presentation/widgets/trip_info.dart';
@@ -13,7 +13,7 @@ import 'package:waselne/generated/locale_keys.g.dart';
 
 class BookingScreen extends StatelessWidget {
   BookingScreen({super.key, required this.model});
-  HomeTripModel model;
+  var model;
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
@@ -35,6 +35,16 @@ class BookingScreen extends StatelessWidget {
                   content: Text(state.message),
                 ),
               );
+              AppRouter.routes.pop();
+            }
+
+            if(state is BookingUnSaveTripSuccessState){
+              model.isSaved = 0;
+             
+            }
+            if(state is BookingSaveTripSuccessState){
+              model.isSaved = 1;
+             
             }
           },
           child: Column(
@@ -42,11 +52,8 @@ class BookingScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TripScreenDriverInfo(
-                driverRating: "4.2",
-                driverPhone: "+9937734326683",
                 driverName: model.nameOfDriver ?? "",
-                driverAboutMe:
-                    "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                driverId: model.driverId ?? 0,
               ),
               AppDividers.devider(height: 5),
               TripInfo(model: model),

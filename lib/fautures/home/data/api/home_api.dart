@@ -15,10 +15,14 @@ abstract class HomeApi{
   Future<HomeResponseModel> getTrips(
     {@Query('from') String? from,
     @Query('to') String? to,
-    @Query('trip_start') String? date,
-    @Query('status') String? time,
+    @Query('startDate') String? date,
+    @Query('startTime') String? time,
     @Query('seat_price') double? type,
     @Query('available_seats') int? availableSeats,
+    @Query('seat_price') String? seatPrice,
     @Query('page') int? page}
   );
+
+  @GET("cities")
+  Future<HomeCitiesResponseModel> getCities();
 }

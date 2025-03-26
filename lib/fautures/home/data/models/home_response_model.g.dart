@@ -30,6 +30,25 @@ Map<String, dynamic> _$HomeResponseModelToJson(HomeResponseModel instance) =>
       'data': instance.data,
     };
 
+HomeCitiesResponseModel _$HomeCitiesResponseModelFromJson(
+  Map<String, dynamic> json,
+) => HomeCitiesResponseModel(
+  status: json['status'] as String?,
+  message: json['message'] as String?,
+  data:
+      (json['data'] as List<dynamic>?)
+          ?.map((e) => CityModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+);
+
+Map<String, dynamic> _$HomeCitiesResponseModelToJson(
+  HomeCitiesResponseModel instance,
+) => <String, dynamic>{
+  'status': instance.status,
+  'message': instance.message,
+  'data': instance.data,
+};
+
 HomePaginationModel _$HomePaginationModelFromJson(Map<String, dynamic> json) =>
     HomePaginationModel(
       total: (json['total'] as num?)?.toInt(),

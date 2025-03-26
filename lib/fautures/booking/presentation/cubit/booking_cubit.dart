@@ -15,7 +15,7 @@ class BookingCubit extends Cubit<BookingStates> {
 
   Future<void> bookTrip({required int seatCount,String? details,required int tripId})async{
     emit(BookingLoadingState());
-    ApiResult result = await tripRepository.bookTrip({"seats_number":seatCount,"details":details,"trip_id":tripId});
+    ApiResult result = await tripRepository.bookTrip({"seats_number":seatCount,"nots":details,"trip_id":tripId});
     if(result.success!){
       emit(BookingSuccessState());
     }else{
@@ -23,5 +23,23 @@ class BookingCubit extends Cubit<BookingStates> {
     }
   }
 
+  Future<void> saveTrip({required int tripId})async{
+    emit(BookingLoadingState());
+    ApiResult result = await tripRepository.saveTrip({"tripId":tripId});
+    if(result.success!){
+      emit(BookingSaveTripSuccessState());
+    }else{
+      emit(BookingErrorState(result.message ?? ""));
+    }
+  }
+  Future<void> unSaveTrip({required int tripId,})async{
+    emit(BookingLoadingState());
+    ApiResult result = await tripRepository.unSaveTrip({"tripId":tripId});
+    if(result.success!){
+      emit(BookingUnSaveTripSuccessState());
+    }else{
+      emit(BookingErrorState(result.message ?? ""));
+    }
+  }
 
 }

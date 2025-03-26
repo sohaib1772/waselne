@@ -31,14 +31,11 @@ CreateAccountSuccessResponseDataModel
 _$CreateAccountSuccessResponseDataModelFromJson(Map<String, dynamic> json) =>
     CreateAccountSuccessResponseDataModel(
       json['token'] as String?,
-      (json['countries'] as List<dynamic>?)
-          ?.map((e) => CountryModel.fromJson(e as Map<String, dynamic>))
+      (json['cities'] as List<dynamic>?)
+          ?.map((e) => CityModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$CreateAccountSuccessResponseDataModelToJson(
   CreateAccountSuccessResponseDataModel instance,
-) => <String, dynamic>{
-  'token': instance.token,
-  'countries': instance.countries,
-};
+) => <String, dynamic>{'token': instance.token, 'cities': instance.cities};

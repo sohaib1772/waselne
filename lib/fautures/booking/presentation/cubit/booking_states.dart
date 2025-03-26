@@ -10,6 +10,8 @@ class BookingSuccessState extends BookingStates {
   BookingSuccessState({this.message});
 }
 
+class BookingSaveTripSuccessState extends BookingStates {}
+class BookingUnSaveTripSuccessState extends BookingStates {}
 class BookingErrorState extends BookingStates {
   final String message;
 

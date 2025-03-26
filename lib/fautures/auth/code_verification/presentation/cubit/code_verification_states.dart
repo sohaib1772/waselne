@@ -1,4 +1,4 @@
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 
 sealed class CodeVerificationStates {}
 
@@ -8,7 +8,7 @@ class CodeVerificationLoading extends CodeVerificationStates {}
 
 class CodeVerificationSuccess extends CodeVerificationStates {
   String token;
-  List<CountryModel> countries;
+  List<CityModel> countries;
   CodeVerificationSuccess({required this.token,required this.countries});
 }
 class CodeVerificationCheckEmailSuccess extends CodeVerificationStates {}

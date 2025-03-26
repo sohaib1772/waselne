@@ -11,7 +11,7 @@ class LoginCubit extends Cubit<LoginStates> {
       ApiResult result = await loginRepository.loginWithGoogle(
         googleToken: token);
       if (result.success! == true){
-        emit(LoginWithGoogleSuccess(token: result.data?.token, countries: result.data?.countries));
+        emit(LoginWithGoogleSuccess(token: result.data?.token, cities: result.data?.cities));
       }else{
         emit(LoginError(message: result.message??"error"));
       }

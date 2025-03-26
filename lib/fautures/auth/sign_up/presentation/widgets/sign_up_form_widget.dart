@@ -39,8 +39,8 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
             context,
           ).showSnackBar(SnackBar(content: Text(state.message)));
         }else if(state is LoginWithGoogleSuccess){
-          if(state.countries != null){
-            AppRouter.routes.pushNamed(AppRouterNames.personalInfo,extra: state.countries);
+          if(state.cities != null){
+            AppRouter.routes.pushNamed(AppRouterNames.personalInfo,extra: state.cities);
 
           }else{
             AppRouter.routes.goNamed(AppRouterNames.main);

@@ -27,7 +27,7 @@ class ErrorHandler {
       case DioExceptionType.connectionError:
         return LocaleKeys.dioErrors_connectionError.tr();
       case DioExceptionType.unknown:
-        return 'Unknown error occurred';
+        return LocaleKeys.dioErrors_unknownError.tr();
     }
   }
 }
@@ -46,6 +46,8 @@ class DioErrorCodes{
         return LocaleKeys.dioErrors_unknownError.tr();
       case 403:
         return LocaleKeys.dioErrors_forbidden.tr();
+      case 409:
+        return _handleValidationErrors(res.data);
       case 404:
         return LocaleKeys.dioErrors_notFound.tr();
       case 422:

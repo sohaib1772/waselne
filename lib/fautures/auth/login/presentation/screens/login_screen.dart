@@ -30,9 +30,9 @@ class LoginScreen extends StatelessWidget {
             child: BlocListener<LoginCubit, LoginStates>(
             listener: (context, state) {
               if (state is LoginWithGoogleSuccess) {
-                if (state.countries != null) {
+                if (state.cities != null) {
                   AppRouter.routes.pushNamed(AppRouterNames.personalInfo,
-                      extra: state.countries);
+                      extra: state.cities);
                 } else {
                   AppRouter.routes.goNamed(AppRouterNames.main);
                 }
@@ -48,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                 SvgPicture.asset("assets/svgs/logo.svg",height: 100.h,),
                 LoginFormWidget(),
                 AppDividers.devider(height: 20),
-                AppDividers.textDivider(text: "or".tr()),
+                AppDividers.textDivider(text: LocaleKeys.auth_or.tr()),
                 AppDividers.devider(height: 10),
                 GoogleAuthButton(
                   text: LocaleKeys.auth_loginWithGoogle.tr(),

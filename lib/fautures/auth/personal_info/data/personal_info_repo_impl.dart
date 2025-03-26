@@ -3,7 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:waselne/core/network/api_reasult.dart';
 import 'package:waselne/fautures/auth/personal_info/data/api/personal_info_api.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/data/models/personal_info_model.dart';
 
 class PersonalInfoRepoImpl{
@@ -34,7 +34,7 @@ class PersonalInfoRepoImpl{
 
   Future<ApiResult> getCountries() async{
     try{
-      CountriesResponseModel res = await personalInfoApi.getCountries();
+      CitiesResponseModel res = await personalInfoApi.getCountries();
       return ApiResult(
         data: res.data,
         code: 200,

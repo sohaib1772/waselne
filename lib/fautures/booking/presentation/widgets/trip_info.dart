@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:waselne/core/shared/app_formater.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
+import 'package:waselne/fautures/booking/presentation/cubit/booking_states.dart';
 import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
 import 'package:waselne/fautures/booking/presentation/widgets/trip_booking_bottom_sheet.dart';
@@ -12,7 +14,7 @@ import 'dart:ui' as ui;
 
 class TripInfo extends StatelessWidget {
   TripInfo({super.key, required this.model});
-  HomeTripModel model;
+  var model;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -106,7 +108,7 @@ class TripInfo extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      model.seatPrice.toString() ?? "",
+                      AppFormater.moneyFormat(model.seatPrice.toString()) ?? "",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,
@@ -136,7 +138,7 @@ class TripInfo extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      model.tripStart.toString() ?? "",
+                      AppFormater.dateFormat(model.tripStart ?? ""),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -175,8 +177,24 @@ class TripInfo extends StatelessWidget {
                   ),
                   IconButton(
                     color: Colors.red,
-                    onPressed: () {},
-                    icon: Icon(Icons.bookmark_add_outlined),
+                    onPressed: () {
+                      print(model.isSaved);
+                      if (model.isSaved == 0) {
+                        context.read<BookingCubit>().saveTrip(tripId: model.id ?? 0);
+                      }else if(model.isSaved == 1){ 
+                        context.read<BookingCubit>().unSaveTrip(tripId: model.id ?? 0);
+                      }
+                    },
+                    icon: BlocBuilder<BookingCubit, BookingStates>(
+                      builder: (context, state) {
+                        return Icon(
+                          model.isSaved == 0
+                              ? Icons.bookmark_added_outlined
+                              : Icons.bookmark,
+                          color: Colors.red,
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

@@ -15,5 +15,11 @@ abstract class BookingApi{
 
   @POST("booking")
   Future<void> bookTrip(@Body() Map<String,dynamic> body);
+
+  @POST("trips/saved")
+  Future<void> saveTrip(@Body() Map<String,dynamic> body);
+  
+  @POST("trips/remove")
+  Future<void> unSaveTrip(@Body() Map<String,dynamic> body);
  
 }

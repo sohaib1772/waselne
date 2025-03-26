@@ -1,4 +1,4 @@
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 
 abstract class LoginStates {}
 
@@ -10,9 +10,9 @@ class LoginSuccess extends LoginStates {}
 
 class LoginWithGoogleSuccess extends LoginStates {
   String? token;
-  List<CountryModel>? countries;
+  List<CityModel>? cities;
 
-  LoginWithGoogleSuccess({this.token, this.countries});
+  LoginWithGoogleSuccess({this.token, this.cities});
 }
 
 class LoginError extends LoginStates {

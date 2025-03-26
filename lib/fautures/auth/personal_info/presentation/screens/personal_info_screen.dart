@@ -4,15 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_states.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/widgets/personal_info_form_widget.dart';
 
 class PersonalInfoScreen extends StatelessWidget {
-  PersonalInfoScreen({super.key,this.token,this.countries});
+  PersonalInfoScreen({super.key,this.token,this.cities});
   String? token;
-  List<CountryModel>?countries;
+  List<CityModel>?cities;
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
@@ -38,7 +38,7 @@ class PersonalInfoScreen extends StatelessWidget {
                     if (state is PersonalInfoGetCountriesLoading) {
                       return Center(child: CircularProgressIndicator(),);
                     } else {
-                      return PersonalInfoFormWidget(countries: countries,);
+                      return PersonalInfoFormWidget(cities: cities,);
                     }
                   },)
                   

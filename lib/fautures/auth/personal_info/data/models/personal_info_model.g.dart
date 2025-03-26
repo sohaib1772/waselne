@@ -16,7 +16,7 @@ PersonalInfoModel _$PersonalInfoModelFromJson(Map<String, dynamic> json) =>
       city: json['city'] as String?,
       gender: json['gender'] as String?,
       birthday: json['birthday'] as String?,
-      country: json['country_id'] as String?,
+      cityId: json['city_id'] as String?,
     );
 
 Map<String, dynamic> _$PersonalInfoModelToJson(PersonalInfoModel instance) =>
@@ -29,5 +29,5 @@ Map<String, dynamic> _$PersonalInfoModelToJson(PersonalInfoModel instance) =>
       'city': instance.city,
       'gender': instance.gender,
       'birthday': instance.birthday,
-      'country_id': instance.country,
+      'city_id': instance.cityId,
     };

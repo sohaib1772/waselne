@@ -49,7 +49,10 @@ class CodegenLoader extends AssetLoader{
     "submit": "ارسال",
     "confirm": "تأكيد",
     "search": "بحث",
-    "cancel": "الغاء"
+    "cancel": "الغاء",
+    "tryAgain": "اعادة المحاولة",
+    "areYouSure": "هل انت متاكد؟",
+    "any": "اي"
   },
   "personal": {
     "firstName": "الاسم الاول",
@@ -116,12 +119,57 @@ class CodegenLoader extends AssetLoader{
     "bookingAddSuccess": "تم اضافة الحجز بنجاح"
   },
   "driverInfo": {
+    "driverInfo": "معلومات السائق",
     "driverName": "اسم السائق",
     "driverPhone": "رقم الهاتف",
     "driverEmail": "البريد الالكتروني",
     "numberOfTrips": "عدد الرحلات",
     "rating": "التقييم",
     "aboutMe": "نبذة"
+  },
+  "profileInfo": {
+    "profileInfo": "معلومات الملف الشخصي",
+    "updateProfile": "تحديث الملف الشخصي",
+    "updateProfileSuccess": "تم تحديث الملف الشخصي بنجاح",
+    "favoritesUsers": "المفضلين",
+    "myBooking": "حجوزاتي",
+    "myTrips": "رحلاتي",
+    "savedTrips": "المحفوظة"
+  },
+  "myBookingInfo": {
+    "bookID": "رقم الحجز",
+    "status": "حالة الحجز",
+    "bookingDate": "تاريخ الرحلة",
+    "bookingPrice": "السعر الاجمالي",
+    "tripType": "نوع الرحلة",
+    "bookingStart": "نقطة الانطلاق",
+    "bookingEnd": "نقطة الوصول",
+    "bookingDetails": "تفاصيل",
+    "tripDriver": "السائق",
+    "bookSeatNumber": "عدد المقاعد",
+    "editBooking": "تعديل الحجز",
+    "cancelBooking": "الغاء الحجز",
+    "pending": "قيد المراجعة",
+    "accepted": "مقبول",
+    "rejected": "مرفوض"
+  },
+  "others": {
+    "city": "المدينة"
+  },
+  "home": {
+    "cityStart": "من",
+    "cityEnd": "الى",
+    "date": "التاريخ",
+    "time": "الوقت",
+    "search": "بحث",
+    "tripType": "نوع الرحلة",
+    "tripDate": "تاريخ الرحلة",
+    "tripPrice": "سعر المقعد",
+    "noData": "لا يوجد رحلات متاحة",
+    "citiesShouldBeDifferent": "المدن يجب ان تكون مختلفة",
+    "availableSeats": "المقاعد المتاحة",
+    "reasultsCount": "عدد النتائج",
+    "theresNoMoreData": "لا يوجد المزيد من البيانات"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -159,7 +207,10 @@ static const Map<String,dynamic> _en = {
     "submit": "Submit",
     "confirm": "Confirm",
     "search": "Search",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "tryAgain": "Try Again",
+    "areYouSure": "Are you sure?",
+    "any": "Any"
   },
   "personal": {
     "firstName": "First Name",
@@ -226,12 +277,57 @@ static const Map<String,dynamic> _en = {
     "bookingAddSuccess": "Booking added successfully"
   },
   "driverInfo": {
+    "driverInfo": "Driver Info",
     "driverName": "Driver Name",
     "driverPhone": "Driver Phone",
     "driverEmail": "Driver Email",
     "numberOfTrips": "Number of Trips",
     "rating": "Rating",
     "aboutMe": "About me"
+  },
+  "profileInfo": {
+    "profileInfo": "Profile Info",
+    "updateProfile": "Update Profile",
+    "updateProfileSuccess": "Profile updated successfully",
+    "favoritesUsers": "Favorites",
+    "myBooking": "Bookings",
+    "myTrips": "My Trips",
+    "savedTrips": "Saved Trips"
+  },
+  "myBookingInfo": {
+    "bookID": "Booking ID",
+    "status": "Status",
+    "bookingDate": "Trip Date",
+    "bookingPrice": "Total Price",
+    "tripType": "Type",
+    "bookingStart": "Start Point",
+    "bookingEnd": "End Point",
+    "bookingDetails": "Details",
+    "tripDriver": "Driver",
+    "bookSeatNumber": "Number of Seats",
+    "editBooking": "Edit Booking",
+    "cancelBooking": "Cancel Booking",
+    "pending": "Pending",
+    "accepted": "Accepted",
+    "rejected": "Rejected"
+  },
+  "others": {
+    "city": "City"
+  },
+  "home": {
+    "cityStart": "From",
+    "cityEnd": "To",
+    "date": "Date",
+    "time": "Time",
+    "search": "Search",
+    "tripType": "Trip Type",
+    "tripDate": "Trip Date",
+    "tripPrice": "Seat Price",
+    "noData": "No trips available",
+    "citiesShouldBeDifferent": "Cities should be different",
+    "availableSeats": "Available Seats",
+    "reasultsCount": "Results Count",
+    "theresNoMoreData": "There is no more data"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

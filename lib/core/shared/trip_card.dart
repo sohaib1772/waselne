@@ -1,17 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
+import 'package:waselne/core/shared/app_formater.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
+import 'package:waselne/generated/locale_keys.g.dart';
 
-class HomeScreenTripCard extends StatelessWidget {
-  HomeScreenTripCard({super.key, required this.model});
-  HomeTripModel model;
+class TripCard extends StatelessWidget {
+  TripCard({super.key, required this.model});
+  var model;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        
         AppRouter.routes.pushNamed(AppRouterNames.tripInfo, extra: model);
       },
       child: Container(
@@ -27,26 +31,28 @@ class HomeScreenTripCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 4.r, horizontal: 8.r),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.person),
-                      Text(
-                        model.nameOfDriver ?? "",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                InkWell(
+                  onTap: () => AppRouter.routes.pushNamed(AppRouterNames.driverProfile,queryParameters: {"driverId": model.driverId.toString() ?? "0"}),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 4.r, horizontal: 8.r),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.person),
+                        Text(
+                          model.nameOfDriver ?? "",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.bookmark_add_outlined),
+                Text(
+                  "${LocaleKeys.tripInfo_avilableSeats.tr()} | ${model.availableSeats.toString()}" ?? "",
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -78,15 +84,15 @@ class HomeScreenTripCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                      model.tripStart ?? "",
+                      AppFormater.dateFormat(model.tripStart ?? "") ?? "",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14.sp,
-                        color: Colors.grey
+                        color: Colors.grey.shade700
                       ),
                     ),
                 Text(
-                  model.seatPrice.toString() ?? "",
+                  AppFormater.moneyFormat(model.seatPrice.toString() ?? "") ?? "",
                   style: TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,

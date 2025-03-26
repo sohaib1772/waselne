@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/shared/app_regex.dart';
-import 'package:waselne/core/shared/country_picker.dart';
+import 'package:waselne/core/shared/city_picker.dart';
 import 'package:waselne/core/shared/date_picker.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/data/models/personal_info_model.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_states.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class PersonalInfoFormWidget extends StatefulWidget {
-   PersonalInfoFormWidget({super.key,this.countries});
-  List<CountryModel>? countries;
+   PersonalInfoFormWidget({super.key,this.cities});
+  List<CityModel>? cities;
   @override
   State<PersonalInfoFormWidget> createState() => _PersonailInfoWidgetState();
 }
@@ -142,7 +142,7 @@ class _PersonailInfoWidgetState extends State<PersonalInfoFormWidget> {
             },
           ),
           AppDividers.devider(height: 20),
-          CountryPicker(controller: countryController, countries: widget.countries),
+          CityPicker(controller: countryController, cities: widget.cities,labelText: LocaleKeys.others_city.tr(),),
           AppDividers.devider(height: 20),
           BlocBuilder<PersonalInfoCubit, PersonalInfoStates>(
             builder: (context, state) {
@@ -166,7 +166,7 @@ class _PersonailInfoWidgetState extends State<PersonalInfoFormWidget> {
                           lastName: lastNameController.text,
                           phone: phoneController.text,
                           address: addressController.text,
-                          country: countryController.text,
+                          cityId: countryController.text,
                           birthday: birthDateController.text,
                           gender: gender,
                         ),

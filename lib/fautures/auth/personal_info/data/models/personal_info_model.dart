@@ -19,11 +19,11 @@ class PersonalInfoModel{
   String? gender;
   String? birthday;
 
-  @JsonKey(name: "country_id")
-  String? country;
+  @JsonKey(name: "city_id")
+  String? cityId;
 
 
-  PersonalInfoModel({this.firstName, this.lastName, this.email, this.phone, this.address, this.city, this.gender, this.birthday, this.country});
+  PersonalInfoModel({this.firstName, this.lastName, this.email, this.phone, this.address, this.city, this.gender, this.birthday, this.cityId});
 
   factory PersonalInfoModel.fromJson(Map<String, dynamic> json) => _$PersonalInfoModelFromJson(json);
 

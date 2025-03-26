@@ -1,4 +1,5 @@
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
+
+import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 
 abstract class PersonalInfoStates {}
 
@@ -12,7 +13,7 @@ class PersonalInfoSuccess extends PersonalInfoStates {
 }
 
 class PersonalInfoGetCountriesSuccess extends PersonalInfoStates {
-  final List<CountryModel> countries;
+  final List<CityModel> countries;
 
   PersonalInfoGetCountriesSuccess(this.countries);
 }

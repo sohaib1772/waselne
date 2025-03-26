@@ -1,6 +1,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 
 part 'create_account_response_model.g.dart';
 @JsonSerializable()
@@ -16,9 +16,9 @@ class CreateAccountResponseModel {
 @JsonSerializable()
 class CreateAccountSuccessResponseDataModel{
   String? token;
-  List<CountryModel>? countries;
+  List<CityModel>? cities;
 
-  CreateAccountSuccessResponseDataModel(this.token,this.countries);
+  CreateAccountSuccessResponseDataModel(this.token,this.cities);
 
   factory CreateAccountSuccessResponseDataModel.fromJson(Map<String, dynamic> json) => _$CreateAccountSuccessResponseDataModelFromJson(json);
 }

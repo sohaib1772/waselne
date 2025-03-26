@@ -9,16 +9,24 @@ import 'package:waselne/fautures/auth/code_verification/presentation/cubit/code_
 import 'package:waselne/fautures/auth/code_verification/presentation/screens/code_verification_screen.dart';
 import 'package:waselne/fautures/auth/login/presentation/cubit/login_cubit.dart';
 import 'package:waselne/fautures/auth/login/presentation/screens/login_screen.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/screens/personal_info_screen.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/screens/sign_up_screen.dart';
+import 'package:waselne/fautures/driver_profile/presentation/cubit/driver_profile_cubit.dart';
+import 'package:waselne/fautures/driver_profile/presentation/screens/driver_profile_screen.dart';
 import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 import 'package:waselne/fautures/main_layout/presentation/cubit/main_cubit.dart';
 import 'package:waselne/fautures/main_layout/presentation/screens/main_layout_screen.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
 import 'package:waselne/fautures/booking/presentation/screen/booking_screen.dart';
+import 'package:waselne/fautures/my_booking/data/models/my_booking_response_model.dart';
+import 'package:waselne/fautures/my_booking/presentation/cubit/my_booking_cubit.dart';
+import 'package:waselne/fautures/my_booking/presentation/screen/my_booking_edit_screen.dart';
+import 'package:waselne/fautures/my_booking/presentation/screen/my_booking_screen.dart';
+import 'package:waselne/fautures/my_save_trips/presentation/cubit/my_saved_trips_cubit.dart';
+import 'package:waselne/fautures/my_save_trips/presentation/screen/my_saved_trips_screen.dart';
 
 class AppRouter {
   static final GoRouter routes = GoRouter(
@@ -38,23 +46,85 @@ class AppRouter {
         },
         routes: [
           GoRoute(
-            path: "trip-info",
+            path: "trip-info", // show trip details
             name: AppRouterNames.tripInfo,
             pageBuilder: (context, state) {
-              HomeTripModel model = state.extra as HomeTripModel;
+              var model = state.extra; // trip model
               return AppRouterAnimations.slideAnimation(
-                child: BlocProvider(create: (context) => getIt<BookingCubit>(), child: BookingScreen(model: model,)),
+                child: BlocProvider(
+                  create: (context) => getIt<BookingCubit>(),
+                  child: BookingScreen(model: model),
+                ),
                 state: state,
               );
             },
-          )
-        ]
+          ),
+          GoRoute(
+            path: "driver-profile",
+            name: AppRouterNames.driverProfile,
+            pageBuilder: (context, state) {
+              // int driverId = state.extra as int;
+              var driverId = state.uri.queryParameters["driverId"] ?? "0";
+              return AppRouterAnimations.fadeAnimation(
+                child: BlocProvider(
+                  create: (context) => getIt<DriverProfileCubit>(),
+                  child: DriverProfileScreen(
+                    driverId: int.tryParse(driverId) ?? 0,
+                  ),
+                ),
+                state: state,
+              );
+            },
+          ),
+          GoRoute(
+            path: "my-booking",
+            name: AppRouterNames.myBooking,
+            pageBuilder: (context, state) {
+              return AppRouterAnimations.fadeAnimation(
+                child: BlocProvider(
+                  create: (context) => getIt<MyBookingCubit>()..getMyBooking(),
+                  child: MyBookingScreen(),
+                ),
+                state: state,
+              );
+            },
+          ),
+          GoRoute(
+            path: "my-booking-edit",
+            name: AppRouterNames.myBookingEditScreen,
+            pageBuilder: (context, state) {
+              MyBookingModel model = state.extra as MyBookingModel;
+              return AppRouterAnimations.fadeAnimation(
+                child: BlocProvider(
+                  create: (context) => getIt<MyBookingCubit>(),
+                  child: MyBookingEditScreen(model: model),
+                ),
+                state: state,
+              );
+            },
+          ),
+          GoRoute(
+            path: "my-saved-trips",
+            name: AppRouterNames.mySavedTrips,
+            pageBuilder: (context, state) {
+              return AppRouterAnimations.fadeAnimation(
+                child: BlocProvider(
+                  create:
+                      (context) =>
+                          getIt<MySavedTripsCubit>()..getMySavedTrips(),
+                  child: MySavedTripsScreen(),
+                ),
+                state: state,
+              );
+            },
+          ),
+        ],
       ),
       GoRoute(
         path: "/login",
         name: AppRouterNames.login,
         pageBuilder: (context, state) {
-          return AppRouterAnimations.slideAnimation(
+          return AppRouterAnimations.fadeAnimation(
             child: BlocProvider(
               create: (context) => getIt<LoginCubit>(),
               child: LoginScreen(),
@@ -67,7 +137,7 @@ class AppRouter {
         path: "/signUp",
         name: AppRouterNames.signUp,
         pageBuilder: (context, state) {
-          return AppRouterAnimations.slideAnimation(
+          return AppRouterAnimations.fadeAnimation(
             child: BlocProvider(
               create: (context) => getIt<SignUpCubit>(),
               child: SignUpScreen(),
@@ -80,14 +150,20 @@ class AppRouter {
         path: "/code-verification",
         name: AppRouterNames.codeVerification,
         builder: (context, state) {
-          
-          
           String? email = state.uri.queryParameters["email"];
           String? sendCode = state.uri.queryParameters["sendCode"];
           String? type = state.uri.queryParameters["type"];
 
           print("email: ${state.uri.queryParameters}");
-          return BlocProvider(create: (context) => getIt<CodeVerificationCubit>()..resendCode( email ?? "", sendCode == null ? false : true , ), child: CodeVerificationScreen(email: email ?? "",type: type ?? "",));
+          return BlocProvider(
+            create:
+                (context) =>
+                    getIt<CodeVerificationCubit>()..resendCode(
+                      email ?? "",
+                      sendCode == null ? false : true,
+                    ),
+            child: CodeVerificationScreen(email: email ?? "", type: type ?? ""),
+          );
         },
       ),
       GoRoute(
@@ -95,9 +171,11 @@ class AppRouter {
         name: AppRouterNames.personalInfo,
         builder: (context, state) {
           String? token = state.uri.queryParameters["token"];
-          List<CountryModel> countries = state.extra as List<CountryModel>;
-          print(countries);
-          return BlocProvider(create: (context) => getIt<PersonalInfoCubit>(), child: PersonalInfoScreen(token: token,countries: countries,));
+          List<CityModel> cities = state.extra as List<CityModel>;
+          return BlocProvider(
+            create: (context) => getIt<PersonalInfoCubit>(),
+            child: PersonalInfoScreen(token: token, cities: cities),
+          );
         },
       ),
       GoRoute(
@@ -106,9 +184,16 @@ class AppRouter {
         builder: (context, state) {
           String? type = state.uri.queryParameters["type"];
           String? email = state.uri.queryParameters["email"];
-                    String? code = state.uri.queryParameters["code"];
+          String? code = state.uri.queryParameters["code"];
 
-          return BlocProvider(create: (context) => getIt<ChangePasswordCubit>(), child: ChangePasswordScreen(type: type ?? "",email: email ?? "",code: code,));
+          return BlocProvider(
+            create: (context) => getIt<ChangePasswordCubit>(),
+            child: ChangePasswordScreen(
+              type: type ?? "",
+              email: email ?? "",
+              code: code,
+            ),
+          );
         },
       ),
     ],

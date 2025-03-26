@@ -1,4 +1,4 @@
-import 'package:waselne/fautures/auth/personal_info/data/models/countries_response_model.dart';
+import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 
 abstract class SignUpStates {}
 
@@ -9,9 +9,9 @@ class SignUpLoading extends SignUpStates {}
 class SignUpSuccess extends SignUpStates {}
 class LoginWithGoogleSuccess extends SignUpStates {
   String? token;
-  List<CountryModel>? countries;
+  List<CityModel>? cities;
 
-  LoginWithGoogleSuccess({this.token, this.countries});
+  LoginWithGoogleSuccess({this.token, this.cities});
 }
 
 class SignUpResendCode extends SignUpStates{

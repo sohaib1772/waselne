@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/router/app_router.dart';
+import 'package:waselne/core/shared/app_formater.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
@@ -118,7 +119,7 @@ class _TripBookingBottomSheetState extends State<TripBookingBottomSheet> {
                   ),
                 ),
                 Text(
-                  "$price",
+                  AppFormater.moneyFormat(price.toString()),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.blue,
