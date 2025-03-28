@@ -19,7 +19,7 @@ Map<String, dynamic> _$CitiesResponseModelToJson(
 ) => <String, dynamic>{'data': instance.data};
 
 CityModel _$CityModelFromJson(Map<String, dynamic> json) => CityModel(
-  name: json['city_name'] as String?,
+  name: json['city_name'] as Map<String, dynamic>?,
   id: (json['id'] as num?)?.toInt(),
 );
 

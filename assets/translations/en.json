@@ -49,7 +49,9 @@
         "gender":"Gender",
         "Male":"Male",
         "Female":"Female",
-        "dateOfBirth":"Date of Birth"
+        "dateOfBirth":"Date of Birth",
+        "name":"Name",
+        "age":"Age"
         
     },
     "inputValidation":{

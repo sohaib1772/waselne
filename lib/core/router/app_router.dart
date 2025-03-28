@@ -27,6 +27,8 @@ import 'package:waselne/fautures/my_booking/presentation/screen/my_booking_edit_
 import 'package:waselne/fautures/my_booking/presentation/screen/my_booking_screen.dart';
 import 'package:waselne/fautures/my_save_trips/presentation/cubit/my_saved_trips_cubit.dart';
 import 'package:waselne/fautures/my_save_trips/presentation/screen/my_saved_trips_screen.dart';
+import 'package:waselne/fautures/notifications/presentation/cubit/notifications_cubit.dart';
+import 'package:waselne/fautures/notifications/presentation/screens/notifications_screen.dart';
 
 class AppRouter {
   static final GoRouter routes = GoRouter(
@@ -45,6 +47,20 @@ class AppRouter {
           );
         },
         routes: [
+          GoRoute(
+            path: "notifications", // show trip details
+            name: AppRouterNames.notifications,
+            pageBuilder: (context, state) {
+              var model = state.extra; // trip model
+              return AppRouterAnimations.slideAnimation(
+                child: BlocProvider(
+                  create: (context) => getIt<NotificationsCubit>(),
+                  child: NotificationsScreen(),
+                ),
+                state: state,
+              );
+            },
+          ),
           GoRoute(
             path: "trip-info", // show trip details
             name: AppRouterNames.tripInfo,

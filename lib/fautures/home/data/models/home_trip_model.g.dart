@@ -9,9 +9,9 @@ part of 'home_trip_model.dart';
 HomeTripModel _$HomeTripModelFromJson(Map<String, dynamic> json) =>
     HomeTripModel(
       id: (json['trip_id'] as num?)?.toInt(),
-      from: json['from_city'] as String?,
+      from: json['from_city'] as Map<String, dynamic>?,
       description: json['description'] as String?,
-      to: json['to_city'] as String?,
+      to: json['to_city'] as Map<String, dynamic>?,
       nameOfDriver: json['name'] as String?,
       tripStart: json['trip_start'] as String?,
       status: json['status'] as String?,

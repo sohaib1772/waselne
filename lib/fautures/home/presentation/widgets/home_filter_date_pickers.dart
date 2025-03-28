@@ -27,7 +27,7 @@ class _HomeFilterDatePickersState extends State<HomeFilterDatePickers> {
                   children: [
                     Text(LocaleKeys.home_date.tr()),
                     AppButtons.normalButton(
-                      backgroundColor: Theme.of(context).disabledColor,
+                      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
                       textColor: Colors.grey,
                       borderColor: Colors.grey,
                       onPressed: () async {
@@ -55,7 +55,7 @@ class _HomeFilterDatePickersState extends State<HomeFilterDatePickers> {
                       Text(LocaleKeys.home_time.tr()),
                       AppButtons.normalButton(
                         width: 100.w,
-                        backgroundColor: Theme.of(context).disabledColor,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
                         textColor: Colors.grey,
                         borderColor: Colors.grey,
                         onPressed: () async {

@@ -15,7 +15,7 @@ class CitiesResponseModel {
 @JsonSerializable()
 class CityModel {
   @JsonKey(name:"city_name")
-  final String? name;
+  final Map<String,dynamic>? name;
   final int? id;
 
   CityModel({required this.name, required this.id});

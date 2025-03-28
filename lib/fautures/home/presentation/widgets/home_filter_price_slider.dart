@@ -21,14 +21,15 @@ class _HomeFilterPriceSliderState extends State<HomeFilterPriceSlider> {
             child: Column(
               children: [
                 Text(LocaleKeys.home_tripPrice.tr()),
-                Text(AppFormater.moneyFormat(widget.price.text)),
+                Text(double.parse(widget.price.text)== 0 ? LocaleKeys.main_any.tr() :AppFormater.moneyFormat(widget.price.text)),
                 Slider(
 
                   divisions: (50000 / 1000).round(),
-                  label: AppFormater.moneyFormat(widget.price.text),
+                  label: double.parse(widget.price.text)== 0 ? LocaleKeys.main_any.tr() :AppFormater.moneyFormat(widget.price.text),
                   max: 50000,
                   min: 1000,
-                  value: double.parse(widget.price.text), onChanged: (value) {
+                  value:  double.parse(widget.price.text)== 0 ? 1000:double.parse(widget.price.text), 
+                  onChanged: (value) {
                   setState(() {
                     widget.price.text = ((value / 1000).round() * 1000).toString();
                   });

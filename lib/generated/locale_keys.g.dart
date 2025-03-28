@@ -48,6 +48,8 @@ abstract class  LocaleKeys {
   static const personal_Male = 'personal.Male';
   static const personal_Female = 'personal.Female';
   static const personal_dateOfBirth = 'personal.dateOfBirth';
+  static const personal_name = 'personal.name';
+  static const personal_age = 'personal.age';
   static const personal = 'personal';
   static const inputValidation_passwordLength = 'inputValidation.passwordLength';
   static const inputValidation_passwordMatch = 'inputValidation.passwordMatch';

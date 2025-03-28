@@ -10,5 +10,6 @@ class AppRouterNames {
   static const String myBookingEditScreen = "myBookingEditScreen";
   static const String mySavedTrips = "mySavedTrips";
   static const String driverProfile = "driverProfile";
+  static const String notifications = "notifications";
 
 }

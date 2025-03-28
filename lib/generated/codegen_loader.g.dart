@@ -64,7 +64,9 @@ class CodegenLoader extends AssetLoader{
     "gender": "الجنس",
     "Male": "ذكر",
     "Female": "انثى",
-    "dateOfBirth": "تاريخ الميلاد"
+    "dateOfBirth": "تاريخ الميلاد",
+    "name": "الاسم",
+    "age": "العمر"
   },
   "inputValidation": {
     "passwordLength": "يجب ان تكون كلمة المرور 6 احرف على الاقل",
@@ -222,7 +224,9 @@ static const Map<String,dynamic> _en = {
     "gender": "Gender",
     "Male": "Male",
     "Female": "Female",
-    "dateOfBirth": "Date of Birth"
+    "dateOfBirth": "Date of Birth",
+    "name": "Name",
+    "age": "Age"
   },
   "inputValidation": {
     "passwordLength": "Password must be at least 6 characters",

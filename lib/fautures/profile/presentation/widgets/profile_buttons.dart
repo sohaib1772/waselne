@@ -25,7 +25,7 @@ class ProfileButtons extends StatelessWidget {
             AppRouter.routes.pushNamed(AppRouterNames.mySavedTrips);
           },),
           AppDividers.devider(width: 20.w),
-          ProfileButtonsCard(context: context, icon: Icons.settings, lable: "Settings",onTap: (){},),
+          ProfileButtonsCard(context: context, icon: Icons.local_taxi, lable: LocaleKeys.profileInfo_myTrips.tr(),onTap: (){},),
           AppDividers.devider(width: 20.w),
           ProfileButtonsCard(context: context, icon: Icons.bookmark, lable: LocaleKeys.profileInfo_myBooking.tr(), onTap: (){
             AppRouter.routes.pushNamed(AppRouterNames.myBooking);

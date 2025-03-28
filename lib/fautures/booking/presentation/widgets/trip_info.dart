@@ -69,7 +69,7 @@ class TripInfo extends StatelessWidget {
                         Icon(Icons.arrow_forward),
                       ],
                     ),
-                    Text(model.from ?? ""),
+                    Text(model.from[context.locale.languageCode] ?? ""),
                     AppDividers.devider(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,7 +84,7 @@ class TripInfo extends StatelessWidget {
                         Icon(Icons.arrow_back),
                       ],
                     ),
-                    Text(model.to ?? ""),
+                    Text(model.to[context.locale.languageCode] ?? ""),
                   ],
                 ),
               ),

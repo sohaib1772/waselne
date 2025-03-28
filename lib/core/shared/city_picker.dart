@@ -2,6 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:waselne/core/helpers/app_local_storage/app_local_storage.dart';
 import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
@@ -16,12 +17,9 @@ class CityPicker extends StatefulWidget {
 
 class _CityPickerState extends State<CityPicker> {
   final dropDownKey = GlobalKey<DropdownSearchState>();
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-   
   }
   
   @override
@@ -33,7 +31,7 @@ class _CityPickerState extends State<CityPicker> {
 
       items: (filter, infiniteScrollProps) => widget.cities ?? [],
       itemAsString:
-          (CityModel item) => item.name ?? "", 
+          (CityModel item) => item.name![context.locale.languageCode] ?? "", 
       compareFn: (item1, item2) => item1.id == item2.id, 
       onChanged: (CityModel? selectedCity) {
         if (selectedCity != null) {

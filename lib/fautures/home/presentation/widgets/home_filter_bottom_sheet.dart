@@ -24,7 +24,7 @@ class HomeFilterBottomSheet extends StatefulWidget {
 class _HomeFilterBottomSheetState extends State<HomeFilterBottomSheet> {
   TextEditingController cityStartController = TextEditingController();
   TextEditingController cityEndController = TextEditingController();
-  TextEditingController priceController = TextEditingController(text: "1000");
+  TextEditingController priceController = TextEditingController(text: "0");
   TextEditingController availableSeatsController = TextEditingController(
     text: "1",
   );
@@ -80,7 +80,7 @@ class _HomeFilterBottomSheetState extends State<HomeFilterBottomSheet> {
                     widget.cubit.params = {
                       "from": cityStartController.text,
                       "to": cityEndController.text,
-                      "seatPrice": priceController.text,
+                      "seatPrice": priceController.text == "0" ? null : priceController.text,
                       "startDate": tripStartDateController.text,
                       "startTime": tripStartTimeController.text,
                       "availableSeats":

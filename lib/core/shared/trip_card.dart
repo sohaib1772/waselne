@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:waselne/core/helpers/app_local_storage/app_local_storage.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
 import 'package:waselne/core/shared/app_formater.dart';
@@ -60,21 +61,25 @@ class TripCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  model.from ?? "",
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    model.from[context.locale.languageCode] ?? "",
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 AppDividers.devider(width: 10),
                 Icon(Icons.arrow_forward),
                 AppDividers.devider(width: 10),
-                Text(
-                  model.to ?? "",
-                  style: TextStyle(
-                    color: Colors.pink,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                   model.to[context.locale.languageCode] ?? "",
+                    style: TextStyle(
+                      color: Colors.pink,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],

@@ -8,6 +8,7 @@ import 'package:waselne/core/injection/di.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/theme/themes/app_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:waselne/fautures/notifications/presentation/cubit/notifications_cubit.dart';
 import 'package:waselne/generated/codegen_loader.g.dart';
 
 void main() async {
@@ -16,13 +17,16 @@ void main() async {
   await diInit();
   await ScreenUtil.ensureScreenSize();
   await EasyLocalization.ensureInitialized();
-  runApp(EasyLocalization(
+  runApp(
+    EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
-      path: 'assets/translations', // <-- change the path of the translation files 
+      path:
+          'assets/translations', // <-- change the path of the translation files
       fallbackLocale: Locale('en'),
       assetLoader: CodegenLoader(),
-      child: MyApp()
-    ),);
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -33,8 +37,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(360, 690),
-      child: BlocProvider(
-        create: (context) => AppCubit(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => AppCubit()),
+          BlocProvider(create: (context) => getIt<NotificationsCubit>()..getNotifications()),
+        ],
         child: BlocBuilder<AppCubit, AppStates>(
           builder: (context, state) {
             return MaterialApp.router(
@@ -42,7 +49,10 @@ class MyApp extends StatelessWidget {
               supportedLocales: context.supportedLocales,
               locale: context.locale,
               title: 'Flutter Demo',
-              themeMode: context.read<AppCubit>().isDark ? ThemeMode.dark : ThemeMode.light,
+              themeMode:
+                  context.read<AppCubit>().isDark
+                      ? ThemeMode.dark
+                      : ThemeMode.light,
               darkTheme: AppTheme.dark,
               theme: AppTheme.light,
               debugShowCheckedModeBanner: false,

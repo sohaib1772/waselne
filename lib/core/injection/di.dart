@@ -37,7 +37,10 @@ import 'package:waselne/fautures/my_booking/presentation/cubit/my_booking_cubit.
 import 'package:waselne/fautures/my_save_trips/data/api/my_saved_trips_api.dart';
 import 'package:waselne/fautures/my_save_trips/data/my_saved_trips_repository.dart';
 import 'package:waselne/fautures/my_save_trips/presentation/cubit/my_saved_trips_cubit.dart';
+import 'package:waselne/fautures/notifications/data/notifications_channle.dart';
+import 'package:waselne/fautures/notifications/presentation/cubit/notifications_cubit.dart';
 import 'package:waselne/fautures/profile/presentation/cubit/profile_cubit.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -92,6 +95,12 @@ Future<void> diInit() async {
   getIt.registerLazySingleton<FavoritesDriversApi>(() => FavoritesDriversApi(getIt()),);
   getIt.registerLazySingleton<FavoritesDriversRepository>(() => FavoritesDriversRepository(api:  getIt()),);
   getIt.registerFactory<FavoritesDriversCubit>(() => FavoritesDriversCubit(getIt()),);
+
+
+  
+
+  getIt.registerLazySingleton<NotificationsChannle>(() => NotificationsChannle(),);
+  getIt.registerFactory<NotificationsCubit>(() => NotificationsCubit(getIt()),);
 
   
   getIt.registerFactory<ProfileCubit>(() => ProfileCubit(),);

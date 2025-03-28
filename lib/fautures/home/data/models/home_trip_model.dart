@@ -5,10 +5,10 @@ class HomeTripModel{
   @JsonKey(name: 'trip_id')
   int? id;
   @JsonKey(name: 'from_city')
-  String? from;
+  Map<String,dynamic>? from;
   String? description;
   @JsonKey(name: 'to_city')
-  String? to;
+  Map<String,dynamic>? to;
   @JsonKey(name: 'name')
   String? nameOfDriver;
   @JsonKey(name: 'trip_start')
