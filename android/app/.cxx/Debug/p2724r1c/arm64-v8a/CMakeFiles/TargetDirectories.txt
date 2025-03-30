@@ -1,0 +1,2 @@
+C:/Users/joker/OneDrive/Desktop/flutter_waselne/new/waselne/android/app/.cxx/Debug/p2724r1c/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/joker/OneDrive/Desktop/flutter_waselne/new/waselne/android/app/.cxx/Debug/p2724r1c/arm64-v8a/CMakeFiles/rebuild_cache.dir

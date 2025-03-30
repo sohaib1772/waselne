@@ -1,0 +1,170 @@
+{
+    "appSettings":{
+        "language":"اللغة",
+        "english":"الانجليزية",
+        "arabic":"العربية"
+       
+    },
+    "auth":{
+        "name":"الاسم",
+        "email":"البريد الالكتروني",
+        "password":"كلمة المرور",
+        "confirmPassword":"تأكيد كلمة المرور",
+        "alreadyHaveAccount":"لديك حساب بالفعل؟",
+        "dontHaveAccount":"ليس لديك حساب؟",
+        "login":"تسجيل الدخول",
+        "signUp":"تسجيل",
+        "forgotPassword":"نسيت كلمة المرور",
+        "or":"أو",
+        "loginWithGoogle":"تسجيل الدخول باستخدام جوجل",
+        "weHaveSentCodeToYourEmail":" : تم ارسال كود التحقق إلى بريدك الإلكتروني",
+        "resendCode":"اعادة ارسال الكود",
+        "resentCode":"تم ارسال كود التحقق"
+        
+    },
+    "errors":{
+        "email":"البريد الالكتروني غير صحيح",
+        "password":"كلمة المرور غير صحيحة",
+        "thisFieldIsRequired":"هذا الحقل مطلوب",
+        "somethingWentWrong":"حدث خطأ ما"
+    },
+    "main":{
+        "home":"الرئيسية",
+        "favorites":"المفضلة",
+        "profile":"اعداد",
+        "submit":"ارسال",
+        "confirm":"تأكيد",
+        "search":"بحث",
+        "cancel":"الغاء",
+        "tryAgain":"اعادة المحاولة",
+        "areYouSure":"هل انت متاكد؟",
+        "any":"اي"
+    },
+    "personal":{
+        "firstName":"الاسم الاول",
+        "lastName":"الاسم الاخير",
+        "phone":"رقم الهاتف",
+        "address":"العنوان",
+        "city":"المدينة",
+        "country":"الدولة",
+        "gender":"الجنس",
+        "Male":"ذكر",
+        "Female":"انثى",
+        "dateOfBirth":"تاريخ الميلاد",
+        "name":"الاسم",
+        "age":"العمر"
+        
+    },
+    "inputValidation":{
+        "passwordLength":"يجب ان تكون كلمة المرور 6 احرف على الاقل",
+        "passwordMatch":"كلمة المرور غير متطابقة",
+        "emailExist":"البريد الالكتروني موجود بالفعل",
+        "emailNotExist":"البريد الالكتروني غير موجود",
+        "codeNotMatch":"الكود غير متطابق",
+        "phoneLength":"رقم الهاتف يجب ان يكون 10 ارقام",
+        "emailFormat":"البريد الالكتروني غير صحيح",
+        "passwordFormat":"كلمة المرور يجب ان تحتوي على حرف كبير \n وصغير ورقم و علامة مثل @ و تكون على الاقل 8 احرف",
+        "codeLength":"الكود يجب ان يكون 6 ارقام",
+        "firstNameLength":"الاسم الاول يجب ان يكون 3 احرف على الاقل",
+        "lastNameLength":"الاسم الاخير يجب ان يكون 3 احرف على الاقل",
+        "addressLength":"العنوان يجب ان يكون 10 احرف على الاقل",
+        "genderRequired":"الجنس مطلوب",
+        "dateOfBirthRequired":"تاريخ الميلاد مطلوب",
+        "nameFormat":"الاسم يجب ان يحتوي على حروف فقط"
+    },
+    "dioErrors":{
+        "connectionTimeout":"انتهت مهلة الاتصال",
+        "sendTimeout":"انتهت مهلة الارسال",
+        "receiveTimeout":"انتهت مهلة الاستقبال",
+        "badCertificate":"شهادة خاطئة",
+        "badResponse":"استجابة خاطئة",
+        "cancel":"تم الغاء الطلب",
+        "connectionError":"خطأ في الاتصال",
+        "notFound":"غير موجود",
+        "unauthorized":"غير مصرح به",
+        "forbidden":"ممنوع",
+        "internalServerError":"خطأ داخلي في الخادم",
+        "unknownError":"خطأ غير معروف",
+        "validationOccurred":"حدث خطأ في التحقق من البيانات",
+        "tooManyRequests":"طلبات كثيرة يرجى المحاولة لاحقا"
+        
+    },
+    "tripInfo":{
+        "info":"معلومات الرحلة",
+        "tripDate":"تاريخ الرحلة",
+        "tripTime":"وقت الرحلة",
+        "tripPrice":"سعر المقعد",
+        "tripType":"نوع الرحلة",
+        "tripStatus":"حالة الرحلة",
+        "tripStart":"نقطة الانطلاق",
+        "tripEnd":"نقطة الوصول",
+        "tripDetails":"تفاصيل الرحلة",
+        "tripDriver":"السائق",
+        "drivePhone":"رقم الهاتف",
+        "bookingNow":"حجز الان",
+        "saveLater":"حفظ لاحقا",
+        "seatCount":"عدد المقاعد",
+        "avilableSeats":"المقاعد المتاحة",
+        "totalPrice":"السعر الكلي",
+        "bookingAddSuccess":"تم اضافة الحجز بنجاح"
+
+    },
+    "driverInfo":{
+        "driverInfo":"معلومات السائق",
+        "driverName":"اسم السائق",
+        "driverPhone":"رقم الهاتف",
+        "driverEmail":"البريد الالكتروني",
+        "numberOfTrips":"عدد الرحلات",
+        "rating":"التقييم",
+        "aboutMe":"نبذة"
+    },
+    "profileInfo":{
+        "profileInfo":"معلومات الملف الشخصي",
+        "updateProfile":"تحديث الملف الشخصي",
+        "updateProfileSuccess":"تم تحديث الملف الشخصي بنجاح",
+        "favoritesUsers":"المفضلين",
+        "myBooking":"حجوزاتي",
+        "myTrips":"رحلاتي",
+        "savedTrips":"المحفوظة"
+    },
+    "myBookingInfo":{
+        "bookID" : "رقم الحجز",
+        "status":"حالة الحجز",
+        "bookingDate":"تاريخ الرحلة",
+        "bookingPrice":"السعر الاجمالي",
+        "tripType":"نوع الرحلة",
+        "bookingStart":"نقطة الانطلاق",
+        "bookingEnd":"نقطة الوصول",
+        "bookingDetails":"تفاصيل",
+        "tripDriver":"السائق",
+        "bookSeatNumber":"عدد المقاعد",
+        "editBooking":"تعديل الحجز",
+        "cancelBooking":"الغاء الحجز",
+        "pending":"قيد المراجعة",
+        "accepted":"مقبول",
+        "rejected":"مرفوض"
+        
+       
+    },
+    "others":{
+        "city":"المدينة"
+    },
+    "home":{
+        "cityStart":"من",
+        "cityEnd":"الى",
+        "date":"التاريخ",
+        "time":"الوقت",
+        "search":"بحث",
+        "tripType":"نوع الرحلة",
+        "tripDate":"تاريخ الرحلة",
+        "tripPrice":"سعر المقعد",
+        "noData":"لا يوجد رحلات متاحة",
+        "citiesShouldBeDifferent":"المدن يجب ان تكون مختلفة",
+        "availableSeats":"المقاعد المتاحة",
+        "reasultsCount":"عدد النتائج",
+        "theresNoMoreData":"لا يوجد المزيد من البيانات"
+    }
+
+
+    
+}

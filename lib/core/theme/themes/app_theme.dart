@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:waselne/core/theme/themes/app_colors.dart';
+
+class AppTheme {
+  static ThemeData dark = ThemeData(
+    useMaterial3: false,
+    scaffoldBackgroundColor: AppColors.darkerBlue,
+    primaryColor: AppColors.darkerBlue,
+    appBarTheme: const AppBarTheme(backgroundColor: AppColors.darkerBlue,elevation: 0),
+    primaryColorDark: AppColors.darkBlue,
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: AppColors.filled,
+      filled: true,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: AppColors.border, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: AppColors.border, width: 1),
+      ),
+      hintStyle: TextStyle(color: AppColors.whiteText,fontWeight: FontWeight.w500,wordSpacing: 0.24,fontSize: 16.sp),
+      labelStyle: TextStyle(color: AppColors.whiteText,fontWeight: FontWeight.w500,wordSpacing: 0.24,fontSize: 16.sp),
+      prefixStyle: TextStyle(color: AppColors.whiteText,fontWeight: FontWeight.w500,wordSpacing: 0.24,fontSize: 16.sp),
+      suffixStyle: TextStyle(color: AppColors.whiteText,fontWeight: FontWeight.w500,wordSpacing: 0.24,fontSize: 16.sp),
+      iconColor: AppColors.whiteText,
+      suffixIconColor: AppColors.whiteText,
+      prefixIconColor: AppColors.whiteText,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        padding: EdgeInsets.zero,
+        minimumSize: Size.zero,
+        alignment: Alignment.bottomCenter,
+        
+      )
+    )
+  );
+}

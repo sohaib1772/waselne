@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1069560849407",
+    "project_id": "waselne-notifications",
+    "storage_bucket": "waselne-notifications.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069560849407:android:cedf322db95ab37f763dca",
+        "android_client_info": {
+          "package_name": "com.sohaib.waselne.waselne"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHNTUWIg1u4qRt2L_2wsIAH-7VIlIM6j0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
