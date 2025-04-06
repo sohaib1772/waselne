@@ -7,9 +7,19 @@ class AppTheme {
     useMaterial3: false,
     scaffoldBackgroundColor: AppColors.darkerBlue,
     primaryColor: AppColors.darkerBlue,
-    appBarTheme: const AppBarTheme(backgroundColor: AppColors.darkerBlue,elevation: 0),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.darkBlue,
+      elevation: 0,
+      toolbarHeight: 60.h,
+    ),
     primaryColorDark: AppColors.darkBlue,
+    textTheme: TextTheme(
+      bodyLarge: TextStyle(color: AppColors.whiteText),
+      titleMedium: TextStyle(color: AppColors.whiteText),
+    ),
     inputDecorationTheme: InputDecorationTheme(
+      focusColor: AppColors.whiteText,
+
       fillColor: AppColors.filled,
       filled: true,
       border: OutlineInputBorder(
@@ -20,10 +30,30 @@ class AppTheme {
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(color: AppColors.border, width: 1),
       ),
-      hintStyle: TextStyle(color: AppColors.whiteText,fontWeight: FontWeight.w500,wordSpacing: 0.24,fontSize: 16.sp),
-      labelStyle: TextStyle(color: AppColors.whiteText,fontWeight: FontWeight.w500,wordSpacing: 0.24,fontSize: 16.sp),
-      prefixStyle: TextStyle(color: AppColors.whiteText,fontWeight: FontWeight.w500,wordSpacing: 0.24,fontSize: 16.sp),
-      suffixStyle: TextStyle(color: AppColors.whiteText,fontWeight: FontWeight.w500,wordSpacing: 0.24,fontSize: 16.sp),
+      hintStyle: TextStyle(
+        color: AppColors.whiteText,
+        fontWeight: FontWeight.w500,
+        wordSpacing: 0.24,
+        fontSize: 16.sp,
+      ),
+      labelStyle: TextStyle(
+        color: AppColors.whiteText,
+        fontWeight: FontWeight.w500,
+        wordSpacing: 0.24,
+        fontSize: 16.sp,
+      ),
+      prefixStyle: TextStyle(
+        color: AppColors.whiteText,
+        fontWeight: FontWeight.w500,
+        wordSpacing: 0.24,
+        fontSize: 16.sp,
+      ),
+      suffixStyle: TextStyle(
+        color: AppColors.whiteText,
+        fontWeight: FontWeight.w500,
+        wordSpacing: 0.24,
+        fontSize: 16.sp,
+      ),
       iconColor: AppColors.whiteText,
       suffixIconColor: AppColors.whiteText,
       prefixIconColor: AppColors.whiteText,
@@ -33,8 +63,8 @@ class AppTheme {
         padding: EdgeInsets.zero,
         minimumSize: Size.zero,
         alignment: Alignment.bottomCenter,
-        
-      )
-    )
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+    ),
   );
 }

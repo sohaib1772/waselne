@@ -1,16 +1,25 @@
 import 'package:country_flags/country_flags.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_popup/flutter_popup.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/helpers/app_cubit/app_cubit.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
+import 'package:waselne/core/shared/lang_picker.dart';
+import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
+import 'package:waselne/core/theme/themes/app_colors.dart';
+import 'package:waselne/core/theme/themes/app_text_style.dart';
 import 'package:waselne/fautures/notifications/presentation/cubit/notifications_cubit.dart';
 import 'package:waselne/fautures/notifications/presentation/cubit/notifications_states.dart';
+import 'package:waselne/generated/locale_keys.g.dart';
 
 class MainScaffold extends StatelessWidget {
-   MainScaffold({super.key,required this.body,this.haveFloatingActionButton = false ,this.bottomNavigationBar});
+   MainScaffold({super.key,required this.body,this.haveFloatingActionButton = false ,this.bottomNavigationBar,this.showAppBar = true});
+   bool showAppBar;
   final Widget body;
   bool haveFloatingActionButton;
   Widget? bottomNavigationBar;
@@ -18,94 +27,36 @@ class MainScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      bottomNavigationBar: bottomNavigationBar,
-      appBar: AppBar(
+      appBar:showAppBar ? AppBar(
+        automaticallyImplyLeading: false,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        actionsPadding: EdgeInsets.zero,
+
+        backgroundColor: AppColors.darkBlue,
+        toolbarHeight: 60.h,
         iconTheme: IconThemeData(
           color: ColorScheme.of(context).primary),
         actionsIconTheme: IconThemeData(
           color: ColorScheme.of(context).primary
         ),
+        title: Text(
+          "Waselni",          
+        ),
+        centerTitle: true,
+        leading: Center(child: Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: AppButtons.iconButton(onPressed: (){}, icon: Icons.menu_sharp),
+          )),
         actions: [
-         
-          IconButton(
-            onPressed: () {
-              context.read<AppCubit>().changeThemeMode();
-            },
-            icon: Icon(
-              context.read<AppCubit>().isDark
-                  ? Icons.light_mode
-                  : Icons.dark_mode,
-            ),
-          ),
-          CustomPopup(
-            backgroundColor: ColorScheme.of(context).onSecondaryFixedVariant,
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                InkWell(
-                  onTap: () {
-                    AppRouter.routes.pop();
-                    context.read<AppCubit>().changeLanguage(context, "ar");
-                  },
-                  child: CountryFlag.fromCountryCode('sa',width: 40,height: 30,)),
-                AppDividers.devider(height: 10),
-                InkWell(
-                  onTap: () {
-                    AppRouter.routes.pop();
-                    context.read<AppCubit>().changeLanguage(context, "en");
-                  },
-                  child: CountryFlag.fromCountryCode('us',width: 40,height: 30,)),
-              ],
-            ),
-            child: const Icon(Icons.language_outlined),
-          ),
-           AppDividers.devider(width: 10),
-           
-        
+          Center(child: Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: AppButtons.iconButton(onPressed: (){}, icon: Icons.search),
+          ))
         ],
-        leading: BlocBuilder<NotificationsCubit, NotificationsStates>(
-          builder: (context, state) {
-            return IconButton(
-              onPressed: () {
-                if (state is NotificationsCount) {
-                  AppRouter.routes.pushNamed(AppRouterNames.notifications);
-                }
-              },
-              icon: Stack(
-                children: [
-                  const Icon(
-                    Icons.notifications_outlined,
-                    size: 30,
-                  ),
-                  if (state is NotificationsCount)
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: Container(
-                        width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: Center(
-                          child: Text(
-                            state.count.toString(),
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                      ),
-                      )
-                ]
-              ),
-            );
-            
-        },),
-      ),
+        
+      ):null,
       body: body,
+    
     );
   }
 }

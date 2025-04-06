@@ -138,7 +138,7 @@ class TripInfo extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      AppFormater.dateFormat(model.tripStart ?? ""),
+                      model.tripStart?? "",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

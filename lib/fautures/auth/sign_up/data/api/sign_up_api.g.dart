@@ -10,7 +10,7 @@ part of 'sign_up_api.dart';
 
 class _SignUpApi implements SignUpApi {
   _SignUpApi(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'http://192.168.219.27:8000/api/';
+    baseUrl ??= 'http://192.168.170.27:8000/api/';
   }
 
   final Dio _dio;

@@ -19,7 +19,15 @@
         "loginWithGoogle":"تسجيل الدخول باستخدام جوجل",
         "weHaveSentCodeToYourEmail":" : تم ارسال كود التحقق إلى بريدك الإلكتروني",
         "resendCode":"اعادة ارسال الكود",
-        "resentCode":"تم ارسال كود التحقق"
+        "resentCode":"تم ارسال كود التحقق",
+        "passwordWeak":"كلمة المرور ضعيفة",
+        "passwordMedium":"كلمة المرور متوسطة",
+        "passwordStrong":"كلمة المرور قوية",
+        "passwordVeryStrong":"كلمة المرور قوية جدا",
+        "verifyCode":"تحقق من الكود",
+        "enterCodeWeSentToYourEmail":"ادخل الكود الذي ارسلناه الى بريدك الالكتروني",
+        "itsOkItHappensToTheBestOfUsEnterYourEmail":"لا عليك، يحدث هذا مع الجميع. ادخل بريدك الالكتروني وسنساعدك في استعادة حسابك",
+        "weMayUserYourEmailAddressToSendYouVirifcationCode":"قد نستخدم عنوان بريدك الالكتروني لارسال كود التحقق"
         
     },
     "errors":{
@@ -38,7 +46,11 @@
         "cancel":"الغاء",
         "tryAgain":"اعادة المحاولة",
         "areYouSure":"هل انت متاكد؟",
-        "any":"اي"
+        "any":"اي",
+        "welcomeToWaselni":"مرحبا بك في وصلني",
+        "yourFavoriteAppRightHere":"تطبيقك المفضل هنا",
+        "startYourJourney":"ابدأ رحلتك من هنا !"
+        
     },
     "personal":{
         "firstName":"الاسم الاول",
@@ -63,7 +75,7 @@
         "codeNotMatch":"الكود غير متطابق",
         "phoneLength":"رقم الهاتف يجب ان يكون 10 ارقام",
         "emailFormat":"البريد الالكتروني غير صحيح",
-        "passwordFormat":"كلمة المرور يجب ان تحتوي على حرف كبير \n وصغير ورقم و علامة مثل @ و تكون على الاقل 8 احرف",
+        "passwordFormat":"* يجب أن تحتوي كلمة المرور على حرف كبير وحرف صغير ورقم \n* وحرف خاص مثل @ \n* ويجب أن تكون مكونة من 8 أحرف على الأقل",
         "codeLength":"الكود يجب ان يكون 6 ارقام",
         "firstNameLength":"الاسم الاول يجب ان يكون 3 احرف على الاقل",
         "lastNameLength":"الاسم الاخير يجب ان يكون 3 احرف على الاقل",

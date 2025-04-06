@@ -23,43 +23,29 @@ class _HomeScreenSearchWidgetState extends State<HomeScreenSearchWidget> {
   late HomeCubit cubit;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     cubit = context.read<HomeCubit>();
   }
   @override
   Widget build(BuildContext context) {
     return Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                width: 250.w,
-                child: AppTextFormField(
-                  suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.search_rounded),
-                ),
-                  controller:searchController , hintText: LocaleKeys.main_search.tr(), validator: (value) {
-                  return null;
-                },),
-                ),
-            
-              Row(
-                children: [
-                 
-                  IconButton(
-                    onPressed: () {
-                      if(cubit.state is HomeLoadingState) return;
+             AppButtons.iconButton(onPressed: (){
+                   if(cubit.state is HomeLoadingState) return;
                       showBottomSheet(
                         context: context, builder: (context) {
                         return HomeFilterBottomSheet(cubit: cubit,);
                       });
-                    },
-                    icon: Icon(Icons.filter_list),
-                  ),
-                ],
-              ),
+                 }, icon: Icons.swap_vert,darker: false),
+              
+                 AppButtons.iconButton(onPressed: (){
+                   if(cubit.state is HomeLoadingState) return;
+                      showBottomSheet(
+                        context: context, builder: (context) {
+                        return HomeFilterBottomSheet(cubit: cubit,);
+                      });
+                 }, icon: Icons.filter_alt_rounded,darker: false),
             ],
           );
   }

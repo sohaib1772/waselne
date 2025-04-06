@@ -6,6 +6,7 @@ import 'package:waselne/core/shared/app_formater.dart';
 import 'package:waselne/core/shared/city_picker.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
+import 'package:waselne/core/theme/themes/app_colors.dart';
 import 'package:waselne/fautures/home/presentation/cubit/home_cubit.dart';
 import 'package:waselne/fautures/home/presentation/cubit/home_states.dart';
 import 'package:waselne/fautures/home/presentation/widgets/home_filter_available_seats_slider.dart';
@@ -36,12 +37,12 @@ class _HomeFilterBottomSheetState extends State<HomeFilterBottomSheet> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20.r),
-      height: MediaQuery.of(context).size.height / 1.4,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: AppColors.darkBlue,
       ),
       child: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             HomeFilterCitiesPickers(
               cities: widget.cubit.cities,

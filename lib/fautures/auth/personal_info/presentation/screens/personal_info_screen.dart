@@ -24,7 +24,7 @@ class PersonalInfoScreen extends StatelessWidget {
             child: BlocListener<PersonalInfoCubit, PersonalInfoStates>(
               listener: (context, state) {
                 if (state is PersonalInfoSuccess) {
-                  AppRouter.routes.goNamed(AppRouterNames.main);
+                  AppRouter.routes.goNamed(AppRouterNames.home);
                 }
                 else if (state is PersonalInfoError) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));

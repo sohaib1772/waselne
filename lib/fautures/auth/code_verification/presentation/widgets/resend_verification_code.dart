@@ -76,7 +76,7 @@ class _ResendVerificationCodeState extends State<ResendVerificationCode> {
           },
           child: TextButton(
           onPressed: _isButtonDisabled ? null : _resendCode,
-          child: Text(_isButtonDisabled ? _secondsRemaining.toString() : LocaleKeys.auth_resendCode.tr()),
+          child: Text(_isButtonDisabled ? _secondsRemaining.toString() : LocaleKeys.auth_resendCode.tr(),style: TextStyle(color: Colors.blue,)),
         ),
         )
         

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/shared/app_error_widget.dart';
-import 'package:waselne/core/shared/trip_card.dart';
+import 'package:waselne/core/shared/trip_card/trip_card.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';
 import 'package:waselne/fautures/my_save_trips/presentation/cubit/my_saved_trips_cubit.dart';

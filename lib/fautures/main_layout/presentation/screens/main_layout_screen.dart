@@ -13,6 +13,7 @@ class MainLayoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
+      showAppBar:true,
       bottomNavigationBar: BlocBuilder<MainCubit,MainStates>(
         buildWhen: (previous, current) => current is MainChangeScreenState,
         builder: (context, state) {

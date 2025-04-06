@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/shared/app_formater.dart';
+import 'package:waselne/core/theme/themes/app_colors.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class HomeFilterAvailableSeatsSlider extends StatefulWidget {
@@ -16,7 +17,7 @@ class _HomeFilterAvailableSeatsSliderStates extends State<HomeFilterAvailableSea
   Widget build(BuildContext context) {
     return Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).splashColor,
+              color: AppColors.filled,
               borderRadius: BorderRadius.circular(10.r),),
             child: Column(
               children: [

@@ -5,13 +5,14 @@ import 'package:waselne/core/shared/app_regex.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
+import 'package:waselne/core/theme/themes/app_text_style.dart';
 import 'package:waselne/fautures/auth/change_password/presentation/cubit/change_password_cubit.dart';
 import 'package:waselne/fautures/auth/change_password/presentation/cubit/change_password_states.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class ChangePasswordCheckEmail extends StatelessWidget {
-  ChangePasswordCheckEmail({super.key,required this.emailController});
-  TextEditingController emailController ;
+  ChangePasswordCheckEmail({super.key, required this.emailController});
+  TextEditingController emailController;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -34,17 +35,23 @@ class ChangePasswordCheckEmail extends StatelessWidget {
             },
           ),
         ),
-        AppDividers.devider(height: 20),
-
+        AppDividers.devider(height: 30),
+        Text(
+          LocaleKeys.auth_weMayUserYourEmailAddressToSendYouVirifcationCode.tr(),
+          style:  AppTextStyle.white14W500,
+        ),
+        AppDividers.devider(height: 60),
         BlocBuilder<ChangePasswordCubit, ChangePasswordStates>(
           builder: (context, state) {
-           if(state is ChangePasswordLoading){
-             return Center(child: CircularProgressIndicator());
-           }
+            if (state is ChangePasswordLoading) {
+              return Center(child: CircularProgressIndicator());
+            }
             return AppButtons.normalButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  context.read<ChangePasswordCubit>().checkEmail(emailController.text);
+                  context.read<ChangePasswordCubit>().checkEmail(
+                    emailController.text,
+                  );
                 }
               },
               label: LocaleKeys.main_submit.tr(),

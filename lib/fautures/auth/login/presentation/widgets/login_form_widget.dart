@@ -34,15 +34,13 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
 
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppDividers.devider(height: 40),
-          Text("auth.login".tr()),
+
           AppDividers.devider(height: 20),
-          Text(LocaleKeys.auth_email.tr(),style: AppTextStyle.white14W500,),
-          AppDividers.devider(height: 5),
+          
           AppTextFormField(
             controller: emailController,
             hintText: LocaleKeys.auth_email.tr(),
-            prefixIcon: Icons.email,
+            prefixIcon: Icons.email_outlined,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return LocaleKeys.errors_thisFieldIsRequired.tr();
@@ -51,26 +49,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             },
           ),
           AppDividers.devider(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(LocaleKeys.auth_password.tr(),style: AppTextStyle.white14W500,),
-              TextButton(
-                style: ButtonStyle(
-                  padding: WidgetStatePropertyAll(EdgeInsets.zero),
-                  alignment: AlignmentDirectional.centerEnd,
-                  minimumSize: WidgetStatePropertyAll(Size.zero),
-                  fixedSize: WidgetStatePropertyAll(Size(double.infinity, 20.h)),
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap
-                ),
-                onPressed: () {
-                  AppRouter.routes.pushNamed(AppRouterNames.changePassword,queryParameters: {"type":"checkEmail"});
-                },
-                child: Text(LocaleKeys.auth_forgotPassword.tr()),
-              ),
-            ],
-          ),
-          AppDividers.devider(height: 5),
+          
           AppTextFormField(
             textInputAction: TextInputAction.done,
             validator: (value) {
@@ -82,49 +61,48 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             controller: passwordController,
             isPassword: true,
             hintText: LocaleKeys.auth_password.tr(),
-            prefixIcon: Icons.password,
+            prefixIcon: Icons.lock_outline,
             showPassword: !showPassword,
             suffixIcon: IconButton(
               onPressed: () => setState(() => showPassword = !showPassword),
               icon: Icon(
-                showPassword ? Icons.visibility : Icons.visibility_off,
+                showPassword ? Icons.visibility_outlined : Icons.visibility_off_outlined,
               ),
             ),
           ),
-          
-          AppDividers.devider(height: 20),
-          BlocBuilder<LoginCubit,LoginStates>(
-            builder: (context, state) {
-              if (state is LoginLoading) {
-                return const CircularProgressIndicator();
-              }
-              return AppButtons.iconWithLabel(
-                onPressed: () {
-                  AppRouter.routes.pushReplacementNamed(AppRouterNames.main);
-                  if (formKey.currentState!.validate()) {}
-                },
-                label: LocaleKeys.auth_login.tr(),
-                icon: Icons.login,
-              );
-            },
-          ),
-          AppDividers.devider(height: 10),
-          Text.rich(
-            TextSpan(
-              text: LocaleKeys.auth_dontHaveAccount.tr(),
-              children: [
-                TextSpan(
-                  recognizer:
-                      TapGestureRecognizer()
-                        ..onTap = () {
-                          AppRouter.routes.pushNamed(AppRouterNames.signUp);
-                        },
-                  text: " ${LocaleKeys.auth_signUp.tr()}",
-                  style: TextStyle(
-                    color: ColorScheme.of(context).secondary,
-                    fontWeight: FontWeight.bold,
+          AppDividers.devider(height: 5),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+             children: [
+               TextButton(
+                    
+                    onPressed: () {
+                      AppRouter.routes.pushNamed(AppRouterNames.changePassword,queryParameters: {"type":"checkEmail"});
+                    },
+                    child: Text(LocaleKeys.auth_forgotPassword.tr(),style: TextStyle(decoration: TextDecoration.underline),),
                   ),
-                ),
+             ],
+           ),
+          AppDividers.devider(height: 20),
+          SizedBox(
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                BlocBuilder<LoginCubit,LoginStates>(
+                  builder: (context, state) {
+                    if (state is LoginLoading) {
+                      return const CircularProgressIndicator();
+                    }
+                    return AppButtons.normalButton(
+                      onPressed: () {
+                        AppRouter.routes.pushReplacementNamed(AppRouterNames.main);
+                        if (formKey.currentState!.validate()) {}
+                      },
+                      label: LocaleKeys.auth_login.tr(),
+                    );
+                  },
+                ),                
               ],
             ),
           ),

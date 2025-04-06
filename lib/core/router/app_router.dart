@@ -17,6 +17,8 @@ import 'package:waselne/fautures/auth/sign_up/presentation/screens/sign_up_scree
 import 'package:waselne/fautures/driver_profile/presentation/cubit/driver_profile_cubit.dart';
 import 'package:waselne/fautures/driver_profile/presentation/screens/driver_profile_screen.dart';
 import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
+import 'package:waselne/fautures/home/presentation/cubit/home_cubit.dart';
+import 'package:waselne/fautures/home/presentation/screen/home_screen.dart';
 import 'package:waselne/fautures/main_layout/presentation/cubit/main_cubit.dart';
 import 'package:waselne/fautures/main_layout/presentation/screens/main_layout_screen.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
@@ -34,21 +36,21 @@ class AppRouter {
   static final GoRouter routes = GoRouter(
     initialLocation: "/login",
     routes: [
-      GoRoute(
-        path: "/main",
-        name: AppRouterNames.main,
-        pageBuilder: (context, state) {
-          return AppRouterAnimations.fadeAnimation(
-            child: BlocProvider(
-              create: (context) => getIt<MainCubit>()..initScreens(),
-              child: MainLayoutScreen(),
-            ),
-            state: state,
-          );
-        },
-        routes: [
-          GoRoute(
-            path: "notifications", // show trip details
+      GoRoute(path: "/home",
+          name: AppRouterNames.home,
+          
+          pageBuilder: (context, state) {
+            return AppRouterAnimations.fadeAnimation(
+              child: BlocProvider(
+                create: (context) => getIt<HomeCubit>()..getHomeData(),
+                child: HomeScreen(),
+              ),
+              state: state,
+            );
+          },
+      ),
+     GoRoute(
+            path: "/notifications", // show trip details
             name: AppRouterNames.notifications,
             pageBuilder: (context, state) {
               var model = state.extra; // trip model
@@ -62,7 +64,7 @@ class AppRouter {
             },
           ),
           GoRoute(
-            path: "trip-info", // show trip details
+            path: "/trip-info", // show trip details
             name: AppRouterNames.tripInfo,
             pageBuilder: (context, state) {
               var model = state.extra; // trip model
@@ -76,7 +78,7 @@ class AppRouter {
             },
           ),
           GoRoute(
-            path: "driver-profile",
+            path: "/driver-profile",
             name: AppRouterNames.driverProfile,
             pageBuilder: (context, state) {
               // int driverId = state.extra as int;
@@ -93,7 +95,7 @@ class AppRouter {
             },
           ),
           GoRoute(
-            path: "my-booking",
+            path: "/my-booking",
             name: AppRouterNames.myBooking,
             pageBuilder: (context, state) {
               return AppRouterAnimations.fadeAnimation(
@@ -106,7 +108,7 @@ class AppRouter {
             },
           ),
           GoRoute(
-            path: "my-booking-edit",
+            path: "/my-booking-edit",
             name: AppRouterNames.myBookingEditScreen,
             pageBuilder: (context, state) {
               MyBookingModel model = state.extra as MyBookingModel;
@@ -120,7 +122,7 @@ class AppRouter {
             },
           ),
           GoRoute(
-            path: "my-saved-trips",
+            path: "/my-saved-trips",
             name: AppRouterNames.mySavedTrips,
             pageBuilder: (context, state) {
               return AppRouterAnimations.fadeAnimation(
@@ -134,8 +136,6 @@ class AppRouter {
               );
             },
           ),
-        ],
-      ),
       GoRoute(
         path: "/login",
         name: AppRouterNames.login,

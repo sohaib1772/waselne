@@ -18,12 +18,11 @@ import 'package:waselne/generated/codegen_loader.g.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppLocalStorage.initSharedPrefrences();
+  await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-   await NotificationsApi.initNotifications();
-   print(NotificationsApi.getFCMToken());
+  await NotificationsApi.initNotifications();
   await diInit();
   await ScreenUtil.ensureScreenSize();
-  await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
@@ -43,12 +42,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => AppCubit()),
-          BlocProvider(create: (context) => getIt<NotificationsCubit>()..getNotifications()),
-        ],
+      designSize:  Size(393, 852),
+      child:BlocProvider(
+        create: (context) => AppCubit(),
         child: BlocBuilder<AppCubit, AppStates>(
           builder: (context, state) {
             return MaterialApp.router(
@@ -56,10 +52,7 @@ class MyApp extends StatelessWidget {
               supportedLocales: context.supportedLocales,
               locale: context.locale,
               title: 'Flutter Demo',
-              themeMode:
-                  context.read<AppCubit>().isDark
-                      ? ThemeMode.dark
-                      : ThemeMode.light,
+              themeMode:ThemeMode.dark,
               darkTheme: AppTheme.dark,
               theme: AppTheme.dark,
               

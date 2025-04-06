@@ -21,6 +21,14 @@ abstract class  LocaleKeys {
   static const auth_weHaveSentCodeToYourEmail = 'auth.weHaveSentCodeToYourEmail';
   static const auth_resendCode = 'auth.resendCode';
   static const auth_resentCode = 'auth.resentCode';
+  static const auth_passwordWeak = 'auth.passwordWeak';
+  static const auth_passwordMedium = 'auth.passwordMedium';
+  static const auth_passwordStrong = 'auth.passwordStrong';
+  static const auth_passwordVeryStrong = 'auth.passwordVeryStrong';
+  static const auth_verifyCode = 'auth.verifyCode';
+  static const auth_enterCodeWeSentToYourEmail = 'auth.enterCodeWeSentToYourEmail';
+  static const auth_itsOkItHappensToTheBestOfUsEnterYourEmail = 'auth.itsOkItHappensToTheBestOfUsEnterYourEmail';
+  static const auth_weMayUserYourEmailAddressToSendYouVirifcationCode = 'auth.weMayUserYourEmailAddressToSendYouVirifcationCode';
   static const auth = 'auth';
   static const errors_email = 'errors.email';
   static const errors_password = 'errors.password';
@@ -37,6 +45,9 @@ abstract class  LocaleKeys {
   static const main_tryAgain = 'main.tryAgain';
   static const main_areYouSure = 'main.areYouSure';
   static const main_any = 'main.any';
+  static const main_welcomeToWaselni = 'main.welcomeToWaselni';
+  static const main_yourFavoriteAppRightHere = 'main.yourFavoriteAppRightHere';
+  static const main_startYourJourney = 'main.startYourJourney';
   static const main = 'main';
   static const personal_firstName = 'personal.firstName';
   static const personal_lastName = 'personal.lastName';

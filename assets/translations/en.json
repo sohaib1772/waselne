@@ -15,11 +15,19 @@
         "login":"Login",
         "signUp":"Register",
         "forgotPassword":"Forgot Password",
-        "or":"OR",
+        "or":"Or",
         "loginWithGoogle":"Login with Google",
         "weHaveSentCodeToYourEmail":"We have sent code to your email :",
         "resendCode":"Resend code",
-        "resentCode":"Code sent Successfully"
+        "resentCode":"Code sent Successfully",
+        "passwordWeak":"Weak",
+        "passwordMedium":"Medium",
+        "passwordStrong":"Strong",
+        "passwordVeryStrong":"Very Strong",
+        "verifyCode":"Verify Code",
+        "enterCodeWeSentToYourEmail":"Enter the code we sent to your email",
+        "itsOkItHappensToTheBestOfUsEnterYourEmail":"It's ok, it happens to the best of us. Enter your email and we will help you recover your account",
+        "weMayUserYourEmailAddressToSendYouVirifcationCode":"We may use your email address to send you a verification code"
     },
     "errors":{
         "email":"Invalid email",
@@ -37,7 +45,11 @@
         "cancel":"Cancel",
         "tryAgain":"Try Again",
         "areYouSure":"Are you sure?",
-        "any":"Any"
+        "any":"Any",
+        "welcomeToWaselni":"Welcome to Waselni",
+        "yourFavoriteAppRightHere":"Your favorite app right here",
+        "startYourJourney":"Start your journey from here!"
+
     },
     "personal":{
         "firstName":"First Name",
@@ -62,7 +74,7 @@
         "codeNotMatch":"Code does not match",
         "phoneLength":"Phone number must be 10 digits",
         "emailFormat":"Invalid email format",
-        "passwordFormat":"Password must contain uppercase, lowercase, number, \n and special character like @ and be at least 8 characters",
+        "passwordFormat":"* Password must contain uppercase, lowercase, number, \n* and special character like @ \n* and be at least 8 characters",
         "codeLength":"Code must be 6 digits",
         "firstNameLength":"First name must be at least 3 characters",
         "lastNameLength":"Last name must be at least 3 characters",

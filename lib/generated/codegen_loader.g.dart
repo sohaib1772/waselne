@@ -34,7 +34,15 @@ class CodegenLoader extends AssetLoader{
     "loginWithGoogle": "تسجيل الدخول باستخدام جوجل",
     "weHaveSentCodeToYourEmail": " : تم ارسال كود التحقق إلى بريدك الإلكتروني",
     "resendCode": "اعادة ارسال الكود",
-    "resentCode": "تم ارسال كود التحقق"
+    "resentCode": "تم ارسال كود التحقق",
+    "passwordWeak": "كلمة المرور ضعيفة",
+    "passwordMedium": "كلمة المرور متوسطة",
+    "passwordStrong": "كلمة المرور قوية",
+    "passwordVeryStrong": "كلمة المرور قوية جدا",
+    "verifyCode": "تحقق من الكود",
+    "enterCodeWeSentToYourEmail": "ادخل الكود الذي ارسلناه الى بريدك الالكتروني",
+    "itsOkItHappensToTheBestOfUsEnterYourEmail": "لا عليك، يحدث هذا مع الجميع. ادخل بريدك الالكتروني وسنساعدك في استعادة حسابك",
+    "weMayUserYourEmailAddressToSendYouVirifcationCode": "قد نستخدم عنوان بريدك الالكتروني لارسال كود التحقق"
   },
   "errors": {
     "email": "البريد الالكتروني غير صحيح",
@@ -52,7 +60,10 @@ class CodegenLoader extends AssetLoader{
     "cancel": "الغاء",
     "tryAgain": "اعادة المحاولة",
     "areYouSure": "هل انت متاكد؟",
-    "any": "اي"
+    "any": "اي",
+    "welcomeToWaselni": "مرحبا بك في وصلني",
+    "yourFavoriteAppRightHere": "تطبيقك المفضل هنا",
+    "startYourJourney": "ابدأ رحلتك من هنا !"
   },
   "personal": {
     "firstName": "الاسم الاول",
@@ -76,7 +87,7 @@ class CodegenLoader extends AssetLoader{
     "codeNotMatch": "الكود غير متطابق",
     "phoneLength": "رقم الهاتف يجب ان يكون 10 ارقام",
     "emailFormat": "البريد الالكتروني غير صحيح",
-    "passwordFormat": "كلمة المرور يجب ان تحتوي على حرف كبير \n وصغير ورقم و علامة مثل @ و تكون على الاقل 8 احرف",
+    "passwordFormat": "* يجب أن تحتوي كلمة المرور على حرف كبير وحرف صغير ورقم \n* وحرف خاص مثل @ \n* ويجب أن تكون مكونة من 8 أحرف على الأقل",
     "codeLength": "الكود يجب ان يكون 6 ارقام",
     "firstNameLength": "الاسم الاول يجب ان يكون 3 احرف على الاقل",
     "lastNameLength": "الاسم الاخير يجب ان يكون 3 احرف على الاقل",
@@ -190,11 +201,19 @@ static const Map<String,dynamic> _en = {
     "login": "Login",
     "signUp": "Register",
     "forgotPassword": "Forgot Password",
-    "or": "OR",
+    "or": "Or",
     "loginWithGoogle": "Login with Google",
     "weHaveSentCodeToYourEmail": "We have sent code to your email :",
     "resendCode": "Resend code",
-    "resentCode": "Code sent Successfully"
+    "resentCode": "Code sent Successfully",
+    "passwordWeak": "Weak",
+    "passwordMedium": "Medium",
+    "passwordStrong": "Strong",
+    "passwordVeryStrong": "Very Strong",
+    "verifyCode": "Verify Code",
+    "enterCodeWeSentToYourEmail": "Enter the code we sent to your email",
+    "itsOkItHappensToTheBestOfUsEnterYourEmail": "It's ok, it happens to the best of us. Enter your email and we will help you recover your account",
+    "weMayUserYourEmailAddressToSendYouVirifcationCode": "We may use your email address to send you a verification code"
   },
   "errors": {
     "email": "Invalid email",
@@ -212,7 +231,10 @@ static const Map<String,dynamic> _en = {
     "cancel": "Cancel",
     "tryAgain": "Try Again",
     "areYouSure": "Are you sure?",
-    "any": "Any"
+    "any": "Any",
+    "welcomeToWaselni": "Welcome to Waselni",
+    "yourFavoriteAppRightHere": "Your favorite app right here",
+    "startYourJourney": "Start your journey from here!"
   },
   "personal": {
     "firstName": "First Name",
@@ -236,7 +258,7 @@ static const Map<String,dynamic> _en = {
     "codeNotMatch": "Code does not match",
     "phoneLength": "Phone number must be 10 digits",
     "emailFormat": "Invalid email format",
-    "passwordFormat": "Password must contain uppercase, lowercase, number, \n and special character like @ and be at least 8 characters",
+    "passwordFormat": "* Password must contain uppercase, lowercase, number, \n* and special character like @ \n* and be at least 8 characters",
     "codeLength": "Code must be 6 digits",
     "firstNameLength": "First name must be at least 3 characters",
     "lastNameLength": "Last name must be at least 3 characters",

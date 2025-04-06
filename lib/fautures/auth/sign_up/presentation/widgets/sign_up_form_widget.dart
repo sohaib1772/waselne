@@ -9,6 +9,7 @@ import 'package:waselne/core/shared/new_password_fields.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
+import 'package:waselne/core/theme/themes/app_text_style.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_states.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
@@ -43,7 +44,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
             AppRouter.routes.pushNamed(AppRouterNames.personalInfo,extra: state.cities);
 
           }else{
-            AppRouter.routes.goNamed(AppRouterNames.main);
+            AppRouter.routes.goNamed(AppRouterNames.home);
           }
         }else if(state is SignUpResendCode){
           AppRouter.routes.pushNamed(
@@ -58,11 +59,11 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
       child: Form(
         key: formKey,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppDividers.devider(height: 40),
-            Text("auth.signUp".tr()),
-            AppDividers.devider(height: 20),
+                     AppDividers.devider(height: 20),
+
+            
             AppTextFormField(
               controller: context.read<SignUpCubit>().emailController,
               hintText: LocaleKeys.auth_email.tr(),
@@ -99,25 +100,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
               }
             }),
             AppDividers.devider(height: 10),
-            Text.rich(
-              TextSpan(
-                text: LocaleKeys.auth_alreadyHaveAccount.tr(),
-                children: [
-                  TextSpan(
-                    recognizer:
-                        TapGestureRecognizer()
-                          ..onTap = () {
-                            AppRouter.routes.pop();
-                          },
-                    text: " ${LocaleKeys.auth_login.tr()}",
-                    style: TextStyle(
-                      color: ColorScheme.of(context).secondary,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            
           ],
         ),
       ),

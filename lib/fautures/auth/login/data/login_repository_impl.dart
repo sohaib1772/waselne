@@ -30,4 +30,16 @@ class LoginRepositoryImpl{
       );
     }
   }
+
+  Future<ApiResult> uploadUserDevice(String fcmToken,String uuid)async{
+    try {
+      await loginApi.userDevice({"fcm_token": fcmToken,"uidd":uuid});
+      return ApiResult(data: null, code: 200, success: true);
+    } on DioException catch (e) { 
+
+      return ApiResult(data: null, code: e.response?.statusCode, success: false,dioError: e);
+
+    }
+
+  }
 }

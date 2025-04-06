@@ -7,8 +7,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:waselne/core/helpers/google_sign_in/google_sign_in_helper.dart';
+import 'package:waselne/core/router/app_router.dart';
+import 'package:waselne/core/shared/entry_screens_header.dart';
+import 'package:waselne/core/shared/lang_picker.dart';
+import 'package:waselne/core/theme/buttons/app_auth_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';
+import 'package:waselne/core/theme/themes/app_text_style.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/widgets/sign_up_form_widget.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
@@ -18,42 +23,55 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
+      showAppBar: false,
       body: Padding(
         padding: EdgeInsets.all(20),
-        child: Center(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [// make listner to state manage
-                SvgPicture.asset("assets/svgs/logo.svg",height: 100.h,),
-                SignUpFormWidget(),
-                AppDividers.devider(height: 20),
-                AppDividers.textDivider(text: LocaleKeys.auth_or.tr()),
-                AppDividers.devider(height: 10),
-                GoogleAuthButton(
-                  text: LocaleKeys.auth_loginWithGoogle.tr(),
-                  onPressed: () async{
-                     final account = await GoogleSignInHelper.SignIn();
-                   GoogleSignInAuthentication auth = await account!.authentication;
-                   print("sos: ${auth.accessToken}");
-                   print("sos: ${account.id}");
-                   context.read<SignUpCubit>().loginWithGoogle(auth.accessToken ?? "");
-                   await GoogleSignInHelper.SignOut();
-                  },
-                  style: AuthButtonStyle(
-                    buttonType: AuthButtonType.secondary,
-                    buttonColor: Colors.transparent,
-                    elevation: 0,
-                    textStyle: TextStyle(
-                      color: ColorScheme.of(context).primary,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [// make listner to state manage
+              entryScreensHeader("Sign Up", "Your journey start here", dividerHeight: 40),
+              SignUpFormWidget(),
+              AppDividers.devider(height: 20),
+              AppDividers.textDivider(text: LocaleKeys.auth_or.tr()),
+              AppDividers.devider(height: 10),
+              AppAuthButtons.appAuthButton(()async{
+                final account = await GoogleSignInHelper.SignIn();
+                 GoogleSignInAuthentication auth = await account!.authentication;
+                 print("sos: ${auth.accessToken}");
+                 print("sos: ${account.id}");
+                 context.read<SignUpCubit>().loginWithGoogle(auth.accessToken ?? "");
+                 await GoogleSignInHelper.SignOut();
+              }, type: AppAuthButtonsType.google),
+              AppDividers.devider(height: 20),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      LocaleKeys.auth_alreadyHaveAccount.tr(),
+                      style: AppTextStyle.white14W500.copyWith(
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 2,
+                      ),
                     ),
-                  ),
+                    AppDividers.devider(width: 4),
+                    TextButton(
+                      onPressed: () {
+                        AppRouter.routes.pop();
+                      },
+                      child: Text(
+                        LocaleKeys.auth_login.tr(),
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationThickness: 2,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+            ],
+           
           ),
         ),
       ),
