@@ -48,6 +48,10 @@ abstract class  LocaleKeys {
   static const main_welcomeToWaselni = 'main.welcomeToWaselni';
   static const main_yourFavoriteAppRightHere = 'main.yourFavoriteAppRightHere';
   static const main_startYourJourney = 'main.startYourJourney';
+  static const main_next = 'main.next';
+  static const main_skip = 'main.skip';
+  static const main_previous = 'main.previous';
+  static const main_done = 'main.done';
   static const main = 'main';
   static const personal_firstName = 'personal.firstName';
   static const personal_lastName = 'personal.lastName';
@@ -61,6 +65,12 @@ abstract class  LocaleKeys {
   static const personal_dateOfBirth = 'personal.dateOfBirth';
   static const personal_name = 'personal.name';
   static const personal_age = 'personal.age';
+  static const personal_personalInfo = 'personal.personalInfo';
+  static const personal_joinUsToday = 'personal.joinUsToday';
+  static const personal_location = 'personal.location';
+  static const personal_wehreAreYoulocated = 'personal.wehreAreYoulocated';
+  static const personal_waselniWillUseYourLocation = 'personal.waselniWillUseYourLocation';
+  static const personal_byEnteringYourLocation = 'personal.byEnteringYourLocation';
   static const personal = 'personal';
   static const inputValidation_passwordLength = 'inputValidation.passwordLength';
   static const inputValidation_passwordMatch = 'inputValidation.passwordMatch';
@@ -77,6 +87,8 @@ abstract class  LocaleKeys {
   static const inputValidation_genderRequired = 'inputValidation.genderRequired';
   static const inputValidation_dateOfBirthRequired = 'inputValidation.dateOfBirthRequired';
   static const inputValidation_nameFormat = 'inputValidation.nameFormat';
+  static const inputValidation_cityRequired = 'inputValidation.cityRequired';
+  static const inputValidation_pleaseCheckThePoints = 'inputValidation.pleaseCheckThePoints';
   static const inputValidation = 'inputValidation';
   static const dioErrors_connectionTimeout = 'dioErrors.connectionTimeout';
   static const dioErrors_sendTimeout = 'dioErrors.sendTimeout';

@@ -9,9 +9,11 @@ import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
+import 'package:waselne/core/theme/themes/app_text_style.dart';
 import 'package:waselne/fautures/home/presentation/cubit/home_cubit.dart';
 import 'package:waselne/fautures/home/presentation/cubit/home_states.dart';
 import 'package:waselne/fautures/home/presentation/widgets/home_screen_search_widget.dart';
+import 'package:waselne/fautures/home/presentation/widgets/trip_group_widget.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -55,38 +57,11 @@ class HomeScreen extends StatelessWidget {
                     return Center(child: CircularProgressIndicator());
                   } else if (state is HomeSuccessState) {
                     return Container(
-                      height: MediaQuery.of(context).size.height / 1.5,
-                      child: Column(
-                        children: [
-                          AppDividers.devider(height: 10),
-                          Expanded(
-                            child:
-                                state.trips.isEmpty
-                                    ? Center(
-                                      child: Text(LocaleKeys.home_noData.tr()),
-                                    )
-                                    : ListView.separated(
-                                      controller:
-                                          context
-                                              .read<HomeCubit>()
-                                              .scrollController,
-                                      itemBuilder: (context, index) {
-                                        if (index == state.trips.length) {
-                                          //Todo: add loading indicator
-                                        } else {
-                                          return TripCard(
-                                            model: state.trips[index],
-                                          );
-                                        }
-                                      },
-                                      itemCount: state.trips.length + 1,
-                                      separatorBuilder: (context, index) {
-                                        return AppDividers.devider(height: 10);
-                                      },
-                                    ),
-                          ),
-                        ],
-                      ),
+                      child: state.trips.isEmpty
+                          ? Center(
+                            child: Text(LocaleKeys.home_noData.tr()),
+                          )
+                          : Expanded(child: TripGroupWidget(tripGroup: state.trips,)),
                     );
                   } else if (state is HomeErrorState) {
                     return AppErrorWidget(

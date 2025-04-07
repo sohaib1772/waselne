@@ -49,7 +49,11 @@
         "any":"اي",
         "welcomeToWaselni":"مرحبا بك في وصلني",
         "yourFavoriteAppRightHere":"تطبيقك المفضل هنا",
-        "startYourJourney":"ابدأ رحلتك من هنا !"
+        "startYourJourney":"ابدأ رحلتك من هنا !",
+        "next":"التالي",
+        "skip":"تخطي",
+        "previous":"السابق",
+        "done":"تم"
         
     },
     "personal":{
@@ -64,7 +68,13 @@
         "Female":"انثى",
         "dateOfBirth":"تاريخ الميلاد",
         "name":"الاسم",
-        "age":"العمر"
+        "age":"العمر",
+        "personalInfo":"المعلومات الشخصية",
+        "joinUsToday":"انضم الينا اليوم",
+        "location":"الموقع",
+        "wehreAreYoulocated":"اين تسكن ؟",
+        "waselniWillUseYourLocation":"سيستخدم تطبيق وصلني موقعك لتزويد برحلات و عروض خاصة لك",
+        "byEnteringYourLocation":"من خلال ادخال موقعك فانك توافق على شروط خدمة تطبيق وصلني و تقر بان اشعار الخصوصية الخاص بنا يطبق"
         
     },
     "inputValidation":{
@@ -82,7 +92,9 @@
         "addressLength":"العنوان يجب ان يكون 10 احرف على الاقل",
         "genderRequired":"الجنس مطلوب",
         "dateOfBirthRequired":"تاريخ الميلاد مطلوب",
-        "nameFormat":"الاسم يجب ان يحتوي على حروف فقط"
+        "nameFormat":"الاسم يجب ان يحتوي على حروف فقط",
+        "cityRequired":"المدينة مطلوبة",
+        "pleaseCheckThePoints":"يرجى تأكيد نقطة الانطلاق و الوصول"
     },
     "dioErrors":{
         "connectionTimeout":"انتهت مهلة الاتصال",
@@ -118,7 +130,8 @@
         "seatCount":"عدد المقاعد",
         "avilableSeats":"المقاعد المتاحة",
         "totalPrice":"السعر الكلي",
-        "bookingAddSuccess":"تم اضافة الحجز بنجاح"
+        "bookingAddSuccess":"تم ارسال الحجز للسائق بنجاح"
+        
 
     },
     "driverInfo":{

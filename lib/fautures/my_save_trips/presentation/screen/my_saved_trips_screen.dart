@@ -42,7 +42,7 @@ class MySavedTripsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: ListView.separated(
                     itemBuilder: (context, index) {
-                      return TripCard(model: state.data![index]);
+                      return Container();
                     },
                     separatorBuilder: (context, index) {
                       return AppDividers.devider(height: 10.h);

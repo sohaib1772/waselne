@@ -86,7 +86,7 @@ class MyBookingsCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(LocaleKeys.myBookingInfo_bookingDate.tr()),
-                Text(AppFormater.dateFormat(model.tripStart ?? "")),
+                Text(AppFormater.dateFormat(model.tripStart ?? "","")),
               ],
             ),
             Row(

@@ -10,7 +10,7 @@ part of 'favorites_drivers_api.dart';
 
 class _FavoritesDriversApi implements FavoritesDriversApi {
   _FavoritesDriversApi(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'http://192.168.170.27:8000/api/';
+    baseUrl ??= 'http://192.168.204.27:8000/api/';
   }
 
   final Dio _dio;

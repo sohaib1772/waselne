@@ -13,9 +13,30 @@ class BookingCubit extends Cubit<BookingStates> {
   
   BookingRepository tripRepository;
 
-  Future<void> bookTrip({required int seatCount,String? details,required int tripId})async{
+
+  bool checkStartPoint = false;
+  bool checkEndPoint = false;
+
+  TextEditingController detailsController = TextEditingController();
+  TextEditingController seatsCountController = TextEditingController(text: "1");
+
+  void changeSeatsCount(int seatCount){
+    seatsCountController.text = seatCount.toString();
+    emit(BookingChagneSeatsCountState());
+  }
+  void changeCheckStartPoint(bool value){
+    checkStartPoint = value;
+    emit(BookignChangeCheckStates(startPoint: checkStartPoint,endPoint: checkEndPoint));
+  }
+
+  void changeCheckEndPoint(bool value){
+    checkEndPoint = value;
+    emit(BookignChangeCheckStates(endPoint: checkEndPoint,startPoint: checkStartPoint));
+  }
+
+  Future<void> bookTrip({required int tripId})async{
     emit(BookingLoadingState());
-    ApiResult result = await tripRepository.bookTrip({"seats_number":seatCount,"nots":details,"trip_id":tripId});
+    ApiResult result = await tripRepository.bookTrip({"seats_number":int.tryParse(seatsCountController.text)??0,"nots":detailsController.text??"","trip_id":tripId});
     if(result.success!){
       emit(BookingSuccessState());
     }else{
@@ -23,19 +44,21 @@ class BookingCubit extends Cubit<BookingStates> {
     }
   }
 
-  Future<void> saveTrip({required int tripId})async{
-    emit(BookingLoadingState());
-    ApiResult result = await tripRepository.saveTrip({"tripId":tripId});
+  Future<void> saveTrip({required HomeTripModel tripModel})async{
+    emit(BookignSaveTripLoadingState());
+    ApiResult result = await tripRepository.saveTrip({"tripId":tripModel.id});
     if(result.success!){
+      tripModel.isSaved =1 ;
       emit(BookingSaveTripSuccessState());
     }else{
       emit(BookingErrorState(result.message ?? ""));
     }
   }
-  Future<void> unSaveTrip({required int tripId,})async{
-    emit(BookingLoadingState());
-    ApiResult result = await tripRepository.unSaveTrip({"tripId":tripId});
+  Future<void> unSaveTrip({required HomeTripModel tripModel,})async{
+    emit(BookignSaveTripLoadingState());
+    ApiResult result = await tripRepository.unSaveTrip({"tripId":tripModel.id});
     if(result.success!){
+      tripModel.isSaved = 0;
       emit(BookingUnSaveTripSuccessState());
     }else{
       emit(BookingErrorState(result.message ?? ""));

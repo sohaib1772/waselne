@@ -22,18 +22,24 @@ class HomeCubit extends Cubit<HomeStates> {
   int nextPage = 1;
   bool firstTime = true;
   bool canRequest = true;
-  List<HomeTripModel> trips = [];
+  List<HomeTripsDateGroupModel> trips = [];
   List<CityModel> cities = [];
   Map<String, dynamic> params = {};
+
   Future<void> getHomeData({bool resetPages = false}) async {
+    // to reset the pages when the user apply filter
     if (resetPages) {
       trips.clear();
       nextPage = 1;
       emit(HomeFilterLoadingState());
     }
+
+     // to prevent multiple requests at the same time
     if (!canRequest) return;
     canRequest = false;
 
+    // when the user open the app for the first time and he didn't apply any filter
+    // we need to get the cities first then get the home data
     if (firstTime) {
       emit(HomeLoadingState());
       bool isGettingCities = await getCities();
@@ -46,19 +52,29 @@ class HomeCubit extends Cubit<HomeStates> {
       nextPage: nextPage,
       params: params,
     );
+    
     if (result.success! == true) {
+
+      // when user scroll to the end of the list and there is more data to show
       if ((result.data as HomeResponseModel).pagination!.totalPages! >=
           nextPage) {
         nextPage++;
         trips.addAll(result.data!.data!);
       } else {
+
+        // when user scroll to the end of the list and there is no more data to show
+        // we need to show the no more data to show state
         emit(HomeNoMoreDataToShowState());
         canRequest = true;
         return;
       }
-
+      // make sure that the first time is false to prevent getting the cities again
+      // and to prevent showing the loading state again
       firstTime = false;
       emit(HomeSuccessState(trips, result.data.pagination.total));
+
+      // let the user scroll again to load more data
+      // and make sure that the loading state is not shown again
       canRequest = true;
     } else {
       emit(HomeErrorState(result.message!));
@@ -74,6 +90,28 @@ class HomeCubit extends Cubit<HomeStates> {
     } else {
       emit(HomeErrorState(result.message!));
       return false;
+    }
+  }
+
+  Future<void> saveTrip({required HomeTripModel tripModel})async{
+    emit(HomeSaveTripLoadingState(tripModel.id ?? 0));
+    ApiResult result = await _homeRepository.saveTrip({"tripId":tripModel.id});
+    if(result.success!){
+      tripModel.isSaved = 1;
+      emit(HomeSaveTripSuccessState(result.message ?? ""));
+
+    }else{
+      emit(HomeErrorState(result.message ?? ""));
+    }
+  }
+  Future<void> unSaveTrip({required HomeTripModel tripModel,})async{
+        emit(HomeSaveTripLoadingState(tripModel.id ?? 0));
+    ApiResult result = await _homeRepository.unSaveTrip({"tripId":tripModel.id});
+    if(result.success!){
+      tripModel.isSaved = 0;
+      emit(HomeUnSaveTripSuccessState(result.message ?? ""));
+    }else{
+      emit(HomeErrorState(result.message ?? ""));
     }
   }
 }

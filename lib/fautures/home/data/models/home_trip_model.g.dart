@@ -24,14 +24,14 @@ HomeTripModel _$HomeTripModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$HomeTripModelToJson(HomeTripModel instance) =>
     <String, dynamic>{
       'trip_id': instance.id,
-      'from_city': instance.from,
       'description': instance.description,
-      'to_city': instance.to,
-      'name': instance.nameOfDriver,
-      'trip_start': instance.tripStart,
       'status': instance.status,
+      'name': instance.nameOfDriver,
+      'driver_id': instance.driverId,
+      'from_city': instance.from,
+      'to_city': instance.to,
+      'trip_start': instance.tripStart,
       'seat_price': instance.seatPrice,
       'available_seats': instance.availableSeats,
       'is_saved': instance.isSaved,
-      'driver_id': instance.driverId,
     };

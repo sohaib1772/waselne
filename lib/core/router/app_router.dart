@@ -22,7 +22,7 @@ import 'package:waselne/fautures/home/presentation/screen/home_screen.dart';
 import 'package:waselne/fautures/main_layout/presentation/cubit/main_cubit.dart';
 import 'package:waselne/fautures/main_layout/presentation/screens/main_layout_screen.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
-import 'package:waselne/fautures/booking/presentation/screen/booking_screen.dart';
+import 'package:waselne/fautures/booking/presentation/screen/trip_info_screen.dart';
 import 'package:waselne/fautures/my_booking/data/models/my_booking_response_model.dart';
 import 'package:waselne/fautures/my_booking/presentation/cubit/my_booking_cubit.dart';
 import 'package:waselne/fautures/my_booking/presentation/screen/my_booking_edit_screen.dart';
@@ -68,14 +68,16 @@ class AppRouter {
             name: AppRouterNames.tripInfo,
             pageBuilder: (context, state) {
               var model = state.extra; // trip model
+              String date = state.uri.queryParameters["date"] ?? "0";
               return AppRouterAnimations.slideAnimation(
                 child: BlocProvider(
                   create: (context) => getIt<BookingCubit>(),
-                  child: BookingScreen(model: model),
+                  child: TripInfoScreen(model: model,date: date,),
                 ),
                 state: state,
               );
             },
+           
           ),
           GoRoute(
             path: "/driver-profile",
@@ -87,7 +89,7 @@ class AppRouter {
                 child: BlocProvider(
                   create: (context) => getIt<DriverProfileCubit>(),
                   child: DriverProfileScreen(
-                    driverId: int.tryParse(driverId) ?? 0,
+                    model: int.tryParse(driverId) ?? 0,
                   ),
                 ),
                 state: state,

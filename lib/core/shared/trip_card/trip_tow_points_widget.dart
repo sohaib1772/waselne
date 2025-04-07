@@ -11,11 +11,13 @@ class TripTowPointsWidget extends StatelessWidget {
     required this.pointTwo,
     required this.startTime,
     required this.endTime,
+    this.height = 60,
   });
   String pointOne;
   String pointTwo;
   String startTime;
   String endTime;
+  double height;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,7 +25,7 @@ class TripTowPointsWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: 60.h,
+          height: height.h,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -32,10 +34,10 @@ class TripTowPointsWidget extends StatelessWidget {
             ],
           ),
         ),
-        AppDividers.devider(width: 5.w),
+        AppDividers.devider(width: 15.w),
 
         Container(
-          height: 60.h,
+          height: height.h,
           child: Column(
             children: [
               Stack(
@@ -73,7 +75,7 @@ class TripTowPointsWidget extends StatelessWidget {
         ),
         AppDividers.devider(width: 5.w),
         Container(
-          height: 60.h,
+          height: height.h,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

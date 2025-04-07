@@ -18,22 +18,22 @@ class TripCardPointsAndPrice extends StatelessWidget {
                 TripTowPointsWidget(
                   pointOne: model.from[context.locale.languageCode],
                   pointTwo: model.to[context.locale.languageCode],
-                  startTime: "12:00 AM",
+                  startTime: model.tripStart,
                   endTime: "08:00 PM",
                 ),
 
                 Container(
-                  padding: EdgeInsets.all(4.r),
+                  padding: EdgeInsets.symmetric(horizontal:  8.r,vertical: 4.r),
                   decoration:  BoxDecoration(
                     color: AppColors.blueWith6Opacity,
                     borderRadius: BorderRadius.circular(9.r),
                     
                   ),
                   child: Row(children: [
-                    Icon(Icons.monetization_on,color: Colors.white,size: 17.sp,),
+                    Icon(Icons.monetization_on,color: AppColors.teal,size: 20.sp,),
                     Text(
                       AppFormater.moneyFormat(model.seatPrice.toString()) ?? "",
-                      style: AppTextStyle.white16W900,
+                      style: AppTextStyle.teal16W900,
                     ),
                   ],),
                 )

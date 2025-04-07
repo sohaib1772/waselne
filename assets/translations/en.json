@@ -48,7 +48,11 @@
         "any":"Any",
         "welcomeToWaselni":"Welcome to Waselni",
         "yourFavoriteAppRightHere":"Your favorite app right here",
-        "startYourJourney":"Start your journey from here!"
+        "startYourJourney":"Start your journey from here!",
+        "next":"Next",
+        "skip":"Skip",
+        "previous":"Previous",
+        "done":"Done"
 
     },
     "personal":{
@@ -63,7 +67,13 @@
         "Female":"Female",
         "dateOfBirth":"Date of Birth",
         "name":"Name",
-        "age":"Age"
+        "age":"Age",
+        "personalInfo":"Personal Information",
+        "joinUsToday":"Join us today",
+        "location":"Location",
+        "wehreAreYoulocated":"Where are you located ?",
+        "waselniWillUseYourLocation":"Waselni will use your location information to provide you with tailored services and features",
+        "byEnteringYourLocation":"By entering you location, you are agreeing to Waselni’s Terms of Service and are acknowledging our Privacy Notice applies"
         
     },
     "inputValidation":{
@@ -81,7 +91,9 @@
         "addressLength":"Address must be at least 10 characters",
         "genderRequired":"Gender is required",
         "dateOfBirthRequired":"Date of birth is required",
-        "nameFormat":"Name must contain only letters"
+        "nameFormat":"Name must contain only letters",
+        "cityRequired":"City required",
+        "pleaseCheckThePoints":"Please check start and end points"
     },
     "dioErrors":{
         "connectionTimeout":"Connection timeout",
@@ -116,7 +128,7 @@
         "seatCount":"Number of Seats You Want",
         "avilableSeats":"Available Seats",
         "totalPrice":"Total Price",
-        "bookingAddSuccess":"Booking added successfully"
+        "bookingAddSuccess":"Booking sent to driver successfully"
     },
     "driverInfo":{
         "driverInfo":"Driver Info",

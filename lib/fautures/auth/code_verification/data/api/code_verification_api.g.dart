@@ -10,7 +10,7 @@ part of 'code_verification_api.dart';
 
 class _CodeVerificationApi implements CodeVerificationApi {
   _CodeVerificationApi(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'http://192.168.170.27:8000/api/';
+    baseUrl ??= 'http://192.168.204.27:8000/api/';
   }
 
   final Dio _dio;

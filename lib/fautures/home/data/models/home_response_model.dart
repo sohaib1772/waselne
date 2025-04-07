@@ -12,13 +12,22 @@ class HomeResponseModel {
   String? status;
   String? message;
   HomePaginationModel? pagination;
-  List<HomeTripModel>? data;
+  List<HomeTripsDateGroupModel>? data;
 
 
   
   HomeResponseModel({this.status, this.message, this.data});
   factory HomeResponseModel.fromJson(Map<String, dynamic> json) => _$HomeResponseModelFromJson(json);
 }
+
+@JsonSerializable()
+class HomeTripsDateGroupModel{
+  String? date;
+  List<HomeTripModel>? trips;
+  HomeTripsDateGroupModel({this.date, this.trips});
+  factory HomeTripsDateGroupModel.fromJson(Map<String, dynamic> json) => _$HomeTripsDateGroupModelFromJson(json);
+}
+
 @JsonSerializable()
 class HomeCitiesResponseModel {
   String? status;

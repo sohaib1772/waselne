@@ -1,38 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:waselne/core/shared/trip_card/trip_card_driver_info.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
+import 'package:waselne/core/theme/themes/app_colors.dart';
+import 'package:waselne/core/theme/themes/app_text_style.dart';
 
 class DriverInfo extends StatelessWidget {
-  const DriverInfo({super.key});
-
+   DriverInfo({super.key,required this.model});
+  var model;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10.r),
-      width: double.infinity,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r),color: Theme.of(context).colorScheme.primaryContainer),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Name"),
-            Text("07734326683"),
-          ],
-        ),
-        AppDividers.devider(height: 10.h),
-        Text("about me",style: TextStyle(fontWeight: FontWeight.bold),),
-        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet augue nec magna luctus commodo sed at felis. Quisque in nisl convallis, iaculis augue condimentum,"),
-        AppDividers.devider(height: 10.h),
-        Row(
-          children: [
-            Icon(Icons.star,color: Colors.amber,),
-            Text("3.4",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18.sp),)
-          ],
-        )
+          Stack(
+            alignment: Alignment.center,
+            children: [
+            CircleAvatar(
+              backgroundColor: AppColors.filled,
+              radius: (40 + 2).r,
+            ),
+            CircleAvatar(
+              backgroundColor: AppColors.filled,
+              radius: 40.r,
+              child: Text("M",style: AppTextStyle.white16W900,),
+            ),
+          ],),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Mohammed",style: AppTextStyle.white18W600,),
+              AppDividers.devider(height: 15.h),
+              Text("24 years old",style: AppTextStyle.white15W500,),
+            
+        ]),
+                AppDividers.devider(width: 25.w),
+      
+        Row(children: [
+          Icon(Icons.star_rate_rounded,color: Colors.amber,size: 36.sp,),
+          Text("4.5",style:  AppTextStyle.whiteText20Bold,),
+          AppDividers.devider(width: 5.w),
+        ],)
         
-
-      ]),);
+        ],
+      
+      ),
+    );
   }
 }

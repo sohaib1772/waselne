@@ -8,7 +8,7 @@ class AppRegex {
   }
 
   static bool isValidPhoneNumber(String phoneNumber) {
-    return RegExp(r'^\+964[0-9]{10}$').hasMatch(phoneNumber);
+    return RegExp(r'^07[0-9]{9}$').hasMatch(phoneNumber);
   }
 
   static bool isValidName(String name) {

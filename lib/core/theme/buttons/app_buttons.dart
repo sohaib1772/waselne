@@ -10,14 +10,16 @@ class AppButtons {
     double width = double.infinity,
     Color? backgroundColor,
     Color? textColor,
+    double? borderWidth,
   }) {
     return SizedBox(
       width: width.w,
       child: FilledButton.icon(
-        iconAlignment: IconAlignment.end,
+        iconAlignment: IconAlignment.start,
         style: ButtonStyle(
           shape: WidgetStatePropertyAll(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r),
+                side: BorderSide(color: AppColors.border, width: borderWidth ?? 0)),
           ),
           backgroundColor:
               backgroundColor != null
@@ -68,6 +70,7 @@ class AppButtons {
 
   static Widget iconButton({required Function onPressed, required IconData icon,bool darker = true}) {
     return InkWell(
+      borderRadius: BorderRadius.circular(9.r),
       onTap: () => onPressed(),
       radius: 9.r,
       child: Container(
@@ -76,10 +79,7 @@ class AppButtons {
         decoration: BoxDecoration(
           color: darker? AppColors.darkerBlue : AppColors.darkBlue,
           borderRadius: BorderRadius.circular(9.r),
-          border: Border.all(
-            color: AppColors.border,
-            width: .5
-          ),
+         
         ),
         child:Icon(icon,color: Colors.white,),
       ),

@@ -10,7 +10,7 @@ class AppTextFormField extends StatelessWidget {
   TextEditingController controller;
   String hintText;
   IconData? prefixIcon;
-  IconButton ? suffixIcon;
+  Widget ? suffixIcon;
   TextInputAction textInputAction;
   double width;
   TextInputType keyboardType;
@@ -19,7 +19,7 @@ class AppTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return  SizedBox(
       width: width.w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

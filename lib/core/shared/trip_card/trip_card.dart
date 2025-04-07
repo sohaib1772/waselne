@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/helpers/app_local_storage/app_local_storage.dart';
 import 'package:waselne/core/router/app_router.dart';
@@ -12,16 +13,19 @@ import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/themes/app_colors.dart';
 import 'package:waselne/core/theme/themes/app_text_style.dart';
 import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
+import 'package:waselne/fautures/home/presentation/cubit/home_cubit.dart';
+import 'package:waselne/fautures/home/presentation/cubit/home_states.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class TripCard extends StatelessWidget {
-  TripCard({super.key, required this.model});
+  TripCard({super.key, required this.model,required this.date});
   var model;
+  String date;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        AppRouter.routes.pushNamed(AppRouterNames.tripInfo, extra: model);
+        AppRouter.routes.pushNamed(AppRouterNames.tripInfo, extra: model,queryParameters: {"date":date});
       },
       child: Container(
         padding: EdgeInsets.all(14.r),
@@ -57,13 +61,43 @@ class TripCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
               children: [
-                TripCardDriverInfo(name: model.nameOfDriver,rate: "4.2",),
+                TripCardDriverInfo(name: model.nameOfDriver, rate: "4.2",driverId: model.driverId,),
                 InkWell(
-                  
-                  onTap: () {
-                    
+                  onTap: () async {
+                    model.isSaved == 0
+                        ? await context.read<HomeCubit>().saveTrip(
+                          tripModel: model,
+                        )
+                        : await context.read<HomeCubit>().unSaveTrip(
+                          tripModel: model,
+                        );
                   },
-                  child: Icon(Icons.bookmark_border_rounded,color: Colors.white,size: 24.sp,)),
+                  child: BlocBuilder<HomeCubit, HomeStates>(
+                    buildWhen:
+                        (previous, current) =>
+                            current is HomeSaveTripSuccessState ||
+                            current is HomeUnSaveTripSuccessState ||
+                            current is HomeSaveTripLoadingState,
+                    builder: (context, state) {
+                      if (state is HomeSaveTripLoadingState &&
+                          state.tripId == model.id) {
+                        return SizedBox(
+                          width: 24.w,
+                          height: 24.h,
+                          child: CircularProgressIndicator(strokeWidth: 2,color: AppColors.teal,),
+                        );
+                      } else {
+                        return Icon(
+                          model.isSaved == 0
+                              ? Icons.bookmark_border_rounded
+                              : Icons.bookmark,
+                          color: Colors.white,
+                          size: 24.sp,
+                        );
+                      }
+                    },
+                  ),
+                ),
               ],
             ),
           ],

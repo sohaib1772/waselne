@@ -48,4 +48,22 @@ class HomeRepositoryImpl {
       );
     }
   }
+
+  Future<ApiResult> saveTrip(Map<String, dynamic> body) async {
+    try {
+      await _homeApi.saveTrip(body);
+      return ApiResult(data: 1, code: 200, success: true);
+    } on DioException catch (e) {
+      return ApiResult(success: false, dioError: e);
+    }
+  }
+
+  Future<ApiResult> unSaveTrip(Map<String, dynamic> body) async {
+    try {
+      await _homeApi.unSaveTrip(body);
+      return ApiResult(data: 0, code: 200, success: true);
+    } on DioException catch (e) {
+      return ApiResult(success: false, dioError: e);
+    }
+  }
 }

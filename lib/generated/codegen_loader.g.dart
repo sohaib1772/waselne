@@ -63,7 +63,11 @@ class CodegenLoader extends AssetLoader{
     "any": "اي",
     "welcomeToWaselni": "مرحبا بك في وصلني",
     "yourFavoriteAppRightHere": "تطبيقك المفضل هنا",
-    "startYourJourney": "ابدأ رحلتك من هنا !"
+    "startYourJourney": "ابدأ رحلتك من هنا !",
+    "next": "التالي",
+    "skip": "تخطي",
+    "previous": "السابق",
+    "done": "تم"
   },
   "personal": {
     "firstName": "الاسم الاول",
@@ -77,7 +81,13 @@ class CodegenLoader extends AssetLoader{
     "Female": "انثى",
     "dateOfBirth": "تاريخ الميلاد",
     "name": "الاسم",
-    "age": "العمر"
+    "age": "العمر",
+    "personalInfo": "المعلومات الشخصية",
+    "joinUsToday": "انضم الينا اليوم",
+    "location": "الموقع",
+    "wehreAreYoulocated": "اين تسكن ؟",
+    "waselniWillUseYourLocation": "سيستخدم تطبيق وصلني موقعك لتزويد برحلات و عروض خاصة لك",
+    "byEnteringYourLocation": "من خلال ادخال موقعك فانك توافق على شروط خدمة تطبيق وصلني و تقر بان اشعار الخصوصية الخاص بنا يطبق"
   },
   "inputValidation": {
     "passwordLength": "يجب ان تكون كلمة المرور 6 احرف على الاقل",
@@ -94,7 +104,9 @@ class CodegenLoader extends AssetLoader{
     "addressLength": "العنوان يجب ان يكون 10 احرف على الاقل",
     "genderRequired": "الجنس مطلوب",
     "dateOfBirthRequired": "تاريخ الميلاد مطلوب",
-    "nameFormat": "الاسم يجب ان يحتوي على حروف فقط"
+    "nameFormat": "الاسم يجب ان يحتوي على حروف فقط",
+    "cityRequired": "المدينة مطلوبة",
+    "pleaseCheckThePoints": "يرجى تأكيد نقطة الانطلاق و الوصول"
   },
   "dioErrors": {
     "connectionTimeout": "انتهت مهلة الاتصال",
@@ -129,7 +141,7 @@ class CodegenLoader extends AssetLoader{
     "seatCount": "عدد المقاعد",
     "avilableSeats": "المقاعد المتاحة",
     "totalPrice": "السعر الكلي",
-    "bookingAddSuccess": "تم اضافة الحجز بنجاح"
+    "bookingAddSuccess": "تم ارسال الحجز للسائق بنجاح"
   },
   "driverInfo": {
     "driverInfo": "معلومات السائق",
@@ -234,7 +246,11 @@ static const Map<String,dynamic> _en = {
     "any": "Any",
     "welcomeToWaselni": "Welcome to Waselni",
     "yourFavoriteAppRightHere": "Your favorite app right here",
-    "startYourJourney": "Start your journey from here!"
+    "startYourJourney": "Start your journey from here!",
+    "next": "Next",
+    "skip": "Skip",
+    "previous": "Previous",
+    "done": "Done"
   },
   "personal": {
     "firstName": "First Name",
@@ -248,7 +264,13 @@ static const Map<String,dynamic> _en = {
     "Female": "Female",
     "dateOfBirth": "Date of Birth",
     "name": "Name",
-    "age": "Age"
+    "age": "Age",
+    "personalInfo": "Personal Information",
+    "joinUsToday": "Join us today",
+    "location": "Location",
+    "wehreAreYoulocated": "Where are you located ?",
+    "waselniWillUseYourLocation": "Waselni will use your location information to provide you with tailored services and features",
+    "byEnteringYourLocation": "By entering you location, you are agreeing to Waselni’s Terms of Service and are acknowledging our Privacy Notice applies"
   },
   "inputValidation": {
     "passwordLength": "Password must be at least 6 characters",
@@ -265,7 +287,9 @@ static const Map<String,dynamic> _en = {
     "addressLength": "Address must be at least 10 characters",
     "genderRequired": "Gender is required",
     "dateOfBirthRequired": "Date of birth is required",
-    "nameFormat": "Name must contain only letters"
+    "nameFormat": "Name must contain only letters",
+    "cityRequired": "City required",
+    "pleaseCheckThePoints": "Please check start and end points"
   },
   "dioErrors": {
     "connectionTimeout": "Connection timeout",
@@ -300,7 +324,7 @@ static const Map<String,dynamic> _en = {
     "seatCount": "Number of Seats You Want",
     "avilableSeats": "Available Seats",
     "totalPrice": "Total Price",
-    "bookingAddSuccess": "Booking added successfully"
+    "bookingAddSuccess": "Booking sent to driver successfully"
   },
   "driverInfo": {
     "driverInfo": "Driver Info",

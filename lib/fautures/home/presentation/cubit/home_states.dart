@@ -1,3 +1,4 @@
+import 'package:waselne/fautures/home/data/models/home_response_model.dart';
 import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 
 sealed class HomeStates {}
@@ -5,10 +6,23 @@ sealed class HomeStates {}
 class HomeInitialState extends HomeStates {}
 
 class HomeSuccessState extends HomeStates {
-  final List<HomeTripModel> trips;
+  final List<HomeTripsDateGroupModel> trips;
   final int? reasultCounts;
 
   HomeSuccessState(this.trips,this.reasultCounts);
+}
+
+class HomeSaveTripSuccessState extends HomeStates {
+  final String message;
+  HomeSaveTripSuccessState(this.message);
+}
+class HomeUnSaveTripSuccessState extends HomeStates {
+  final String message;
+  HomeUnSaveTripSuccessState(this.message);
+}
+class HomeSaveTripLoadingState extends HomeStates {
+  int tripId;
+  HomeSaveTripLoadingState(this.tripId);
 }
 
 class HomeErrorState extends HomeStates {

@@ -5,14 +5,17 @@ import 'package:waselne/core/theme/themes/app_colors.dart';
 class AppTheme {
   static ThemeData dark = ThemeData(
     useMaterial3: false,
-    scaffoldBackgroundColor: AppColors.darkerBlue,
-    primaryColor: AppColors.darkerBlue,
+    scaffoldBackgroundColor: AppColors.veryDarkBlue,
+    
+    primaryColor: AppColors.veryDarkBlue,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.darkBlue,
-      elevation: 0,
+
+      elevation: 1,
+      shadowColor: Colors.white,
       toolbarHeight: 60.h,
     ),
-    primaryColorDark: AppColors.darkBlue,
+    primaryColorDark: AppColors.veryDarkBlue,
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: AppColors.whiteText),
       titleMedium: TextStyle(color: AppColors.whiteText),

@@ -12,7 +12,11 @@ HomeResponseModel _$HomeResponseModelFromJson(Map<String, dynamic> json) =>
         message: json['message'] as String?,
         data:
             (json['data'] as List<dynamic>?)
-                ?.map((e) => HomeTripModel.fromJson(e as Map<String, dynamic>))
+                ?.map(
+                  (e) => HomeTripsDateGroupModel.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
+                )
                 .toList(),
       )
       ..pagination =
@@ -29,6 +33,20 @@ Map<String, dynamic> _$HomeResponseModelToJson(HomeResponseModel instance) =>
       'pagination': instance.pagination,
       'data': instance.data,
     };
+
+HomeTripsDateGroupModel _$HomeTripsDateGroupModelFromJson(
+  Map<String, dynamic> json,
+) => HomeTripsDateGroupModel(
+  date: json['date'] as String?,
+  trips:
+      (json['trips'] as List<dynamic>?)
+          ?.map((e) => HomeTripModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+);
+
+Map<String, dynamic> _$HomeTripsDateGroupModelToJson(
+  HomeTripsDateGroupModel instance,
+) => <String, dynamic>{'date': instance.date, 'trips': instance.trips};
 
 HomeCitiesResponseModel _$HomeCitiesResponseModelFromJson(
   Map<String, dynamic> json,
