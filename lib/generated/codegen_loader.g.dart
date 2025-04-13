@@ -52,7 +52,7 @@ class CodegenLoader extends AssetLoader{
   },
   "main": {
     "home": "الرئيسية",
-    "favorites": "المفضلة",
+    "favorites": "المفضلين",
     "profile": "اعداد",
     "submit": "ارسال",
     "confirm": "تأكيد",
@@ -67,7 +67,23 @@ class CodegenLoader extends AssetLoader{
     "next": "التالي",
     "skip": "تخطي",
     "previous": "السابق",
-    "done": "تم"
+    "done": "تم",
+    "settings": "الاعدادات",
+    "shareTheApp": "مشاركة التطبيق",
+    "helpAndFaqs": "المساعدة والاسئلة الشائعة",
+    "beginADriver": "التسجيل كسائق !",
+    "logout": "تسجيل الخروج",
+    "deleteSuccess": "تم حذف بنجاح",
+    "deleteFailed": "فشل حذف",
+    "updateSuccess": "تم التحديث بنجاح",
+    "updateFailed": "فشل التحديث",
+    "addSuccess": "تم الاضافة بنجاح",
+    "addFailed": "فشل الاضافة",
+    "editSuccess": "تم التعديل بنجاح",
+    "success": "نجاح !",
+    "failed": "فشل !",
+    "warning": "تحذير !",
+    "areYouSureYouWantToLogOut": "هل انت متأكد من تسجيل الخروج ؟"
   },
   "personal": {
     "firstName": "الاسم الاول",
@@ -150,16 +166,18 @@ class CodegenLoader extends AssetLoader{
     "driverEmail": "البريد الالكتروني",
     "numberOfTrips": "عدد الرحلات",
     "rating": "التقييم",
-    "aboutMe": "نبذة"
+    "aboutMe": "نبذة",
+    "driver": "سائق"
   },
   "profileInfo": {
     "profileInfo": "معلومات الملف الشخصي",
     "updateProfile": "تحديث الملف الشخصي",
     "updateProfileSuccess": "تم تحديث الملف الشخصي بنجاح",
-    "favoritesUsers": "المفضلين",
+    "favoritesUsers": "السائقين المفضلين",
     "myBooking": "حجوزاتي",
     "myTrips": "رحلاتي",
-    "savedTrips": "المحفوظة"
+    "savedTrips": "المحفوظات",
+    "standerUser": "مستخدم عادي"
   },
   "myBookingInfo": {
     "bookID": "رقم الحجز",
@@ -250,7 +268,22 @@ static const Map<String,dynamic> _en = {
     "next": "Next",
     "skip": "Skip",
     "previous": "Previous",
-    "done": "Done"
+    "done": "Done",
+    "settings": "Settings",
+    "shareTheApp": "Share the app",
+    "helpAndFaqs": "Help and FAQs",
+    "beginADriver": "Begin a driver",
+    "logout": "Logout",
+    "deleteSuccess": "Deleted successfully",
+    "deleteFailed": "Failed to delete",
+    "updateSuccess": "Updated successfully",
+    "updateFailed": "Failed to update",
+    "addSuccess": "Added successfully",
+    "addFailed": "Failed to add",
+    "success:": "Success !",
+    "failed:": "Failed !",
+    "warning:": "Warning !",
+    "areYouSureYouWantToLogOut": "Loggin out are you sure ?"
   },
   "personal": {
     "firstName": "First Name",
@@ -333,7 +366,8 @@ static const Map<String,dynamic> _en = {
     "driverEmail": "Driver Email",
     "numberOfTrips": "Number of Trips",
     "rating": "Rating",
-    "aboutMe": "About me"
+    "aboutMe": "About me",
+    "driver": "Driver"
   },
   "profileInfo": {
     "profileInfo": "Profile Info",
@@ -342,7 +376,8 @@ static const Map<String,dynamic> _en = {
     "favoritesUsers": "Favorites",
     "myBooking": "Bookings",
     "myTrips": "My Trips",
-    "savedTrips": "Saved Trips"
+    "savedTrips": "Saved Trips",
+    "standerUser": "Stander User"
   },
   "myBookingInfo": {
     "bookID": "Booking ID",

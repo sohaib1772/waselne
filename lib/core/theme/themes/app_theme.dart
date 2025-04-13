@@ -7,7 +7,7 @@ class AppTheme {
     useMaterial3: false,
     scaffoldBackgroundColor: AppColors.veryDarkBlue,
     
-    primaryColor: AppColors.veryDarkBlue,
+    primaryColor: AppColors.teal,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.darkBlue,
 
@@ -15,11 +15,16 @@ class AppTheme {
       shadowColor: Colors.white,
       toolbarHeight: 60.h,
     ),
-    primaryColorDark: AppColors.veryDarkBlue,
+    
+    primaryColorDark: AppColors.teal,
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: AppColors.whiteText),
       titleMedium: TextStyle(color: AppColors.whiteText),
     ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.teal
+    ),
+
     inputDecorationTheme: InputDecorationTheme(
       focusColor: AppColors.whiteText,
 

@@ -1,22 +1,28 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:waselne/core/helpers/app_local_storage/app_local_storage.dart';
+import 'package:waselne/core/helpers/app_secure/app_secure.dart';
 import 'package:waselne/core/injection/di.dart';
 import 'package:waselne/core/router/app_router_animations.dart';
 import 'package:waselne/core/router/app_router_names.dart';
+import 'package:waselne/core/shared/models/cities_response_model.dart';
+import 'package:waselne/core/shared/widgets/app_loading_screen.dart';
 import 'package:waselne/fautures/auth/change_password/presentation/cubit/change_password_cubit.dart';
 import 'package:waselne/fautures/auth/change_password/presentation/screens/change_password_screen.dart';
 import 'package:waselne/fautures/auth/code_verification/presentation/cubit/code_verification_cubit.dart';
 import 'package:waselne/fautures/auth/code_verification/presentation/screens/code_verification_screen.dart';
 import 'package:waselne/fautures/auth/login/presentation/cubit/login_cubit.dart';
 import 'package:waselne/fautures/auth/login/presentation/screens/login_screen.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/screens/personal_info_screen.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:waselne/fautures/auth/sign_up/presentation/screens/sign_up_screen.dart';
+import 'package:waselne/fautures/driver_profile/data/models/driver_model.dart';
 import 'package:waselne/fautures/driver_profile/presentation/cubit/driver_profile_cubit.dart';
 import 'package:waselne/fautures/driver_profile/presentation/screens/driver_profile_screen.dart';
-import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
+import 'package:waselne/fautures/driver_profile/presentation/screens/driver_rating_screen.dart';
+import 'package:waselne/fautures/favorites_drivers/presentation/cubit/favorites_drivers_cubit.dart';
+import 'package:waselne/fautures/favorites_drivers/presentation/screens/favorites_drivers_screen.dart';
 import 'package:waselne/fautures/home/presentation/cubit/home_cubit.dart';
 import 'package:waselne/fautures/home/presentation/screen/home_screen.dart';
 import 'package:waselne/fautures/main_layout/presentation/cubit/main_cubit.dart';
@@ -31,113 +37,165 @@ import 'package:waselne/fautures/my_save_trips/presentation/cubit/my_saved_trips
 import 'package:waselne/fautures/my_save_trips/presentation/screen/my_saved_trips_screen.dart';
 import 'package:waselne/fautures/notifications/presentation/cubit/notifications_cubit.dart';
 import 'package:waselne/fautures/notifications/presentation/screens/notifications_screen.dart';
+import 'package:waselne/main.dart';
 
 class AppRouter {
   static final GoRouter routes = GoRouter(
-    initialLocation: "/login",
+    initialLocation: AppSecure.isValidToken ? "/main" : "/login",
     routes: [
-      GoRoute(path: "/home",
-          name: AppRouterNames.home,
-          
-          pageBuilder: (context, state) {
-            return AppRouterAnimations.fadeAnimation(
-              child: BlocProvider(
-                create: (context) => getIt<HomeCubit>()..getHomeData(),
-                child: HomeScreen(),
-              ),
-              state: state,
-            );
-          },
+      GoRoute(
+        path: "/main",
+        name: AppRouterNames.main,
+        pageBuilder: (context, state) {
+
+          String screen = (state.extra ?? "") as String;
+          return AppRouterAnimations.fadeAnimation(
+            child: BlocProvider(
+              create: (context) => getIt<MainCubit>()..initScreenIndex(screen),
+              child: MainLayoutScreen(),
+            ),
+            state: state,
+          );
+        },
+        routes: [
+          GoRoute(
+            path: "refresh",
+            name: AppRouterNames.refreshScreen,
+            builder: (context, state) => AppLoadingScreen(),
+          ),
+        ],
       ),
-     GoRoute(
-            path: "/notifications", // show trip details
-            name: AppRouterNames.notifications,
-            pageBuilder: (context, state) {
-              var model = state.extra; // trip model
-              return AppRouterAnimations.slideAnimation(
-                child: BlocProvider(
-                  create: (context) => getIt<NotificationsCubit>(),
-                  child: NotificationsScreen(),
-                ),
-                state: state,
-              );
-            },
-          ),
+      GoRoute(
+        path: "/home",
+        name: AppRouterNames.home,
+
+        pageBuilder: (context, state) {
+          return AppRouterAnimations.fadeAnimation(
+            child: BlocProvider(
+              create: (context) => getIt<HomeCubit>()..getHomeData(),
+              child: HomeScreen(),
+            ),
+            state: state,
+          );
+        },
+      ),
+      GoRoute(
+        path: "/notifications", // show trip details
+        name: AppRouterNames.notifications,
+        pageBuilder: (context, state) {
+          var model = state.extra; // trip model
+          return AppRouterAnimations.fadeAnimation(
+            child: BlocProvider(
+              create: (context) => getIt<NotificationsCubit>(),
+              child: NotificationsScreen(),
+            ),
+            state: state,
+          );
+        },
+      ),
+      GoRoute(
+        path: "/trip-info", // show trip details
+        name: AppRouterNames.tripInfo,
+        pageBuilder: (context, state) {
+          var model = state.extra; // trip model
+          String date = state.uri.queryParameters["date"] ?? "0";
+          return AppRouterAnimations.fadeAnimation(
+            child: BlocProvider(
+              create: (context) => getIt<BookingCubit>(),
+              child: TripInfoScreen(model: model, date: date),
+            ),
+            state: state,
+          );
+        },
+      ),
+      GoRoute(
+        path: "/driver-profile",
+        name: AppRouterNames.driverProfile,
+        pageBuilder: (context, state) {
+          // int driverId = state.extra as int;
+          var driverId = state.uri.queryParameters["driverId"] ?? "0";
+          return AppRouterAnimations.fadeAnimation(
+            child: BlocProvider(
+              create:
+                  (context) =>
+                      getIt<DriverProfileCubit>()
+                        ..getDriverInfo(driverID: int.tryParse(driverId) ?? 0),
+              child: DriverProfileScreen(model: int.tryParse(driverId) ?? 0),
+            ),
+            state: state,
+          );
+        },
+        routes: [
           GoRoute(
-            path: "/trip-info", // show trip details
-            name: AppRouterNames.tripInfo,
+            path: "driver-rating",
+            name: AppRouterNames.driverRating,
             pageBuilder: (context, state) {
-              var model = state.extra; // trip model
-              String date = state.uri.queryParameters["date"] ?? "0";
-              return AppRouterAnimations.slideAnimation(
-                child: BlocProvider(
-                  create: (context) => getIt<BookingCubit>(),
-                  child: TripInfoScreen(model: model,date: date,),
-                ),
-                state: state,
-              );
-            },
-           
-          ),
-          GoRoute(
-            path: "/driver-profile",
-            name: AppRouterNames.driverProfile,
-            pageBuilder: (context, state) {
-              // int driverId = state.extra as int;
-              var driverId = state.uri.queryParameters["driverId"] ?? "0";
+              DriverModel model = state.extra as DriverModel;
               return AppRouterAnimations.fadeAnimation(
-                child: BlocProvider(
-                  create: (context) => getIt<DriverProfileCubit>(),
-                  child: DriverProfileScreen(
-                    model: int.tryParse(driverId) ?? 0,
-                  ),
-                ),
+                child: DriverRatingScreen(driver: model),
                 state: state,
               );
             },
           ),
-          GoRoute(
-            path: "/my-booking",
-            name: AppRouterNames.myBooking,
-            pageBuilder: (context, state) {
-              return AppRouterAnimations.fadeAnimation(
-                child: BlocProvider(
-                  create: (context) => getIt<MyBookingCubit>()..getMyBooking(),
-                  child: MyBookingScreen(),
-                ),
-                state: state,
-              );
-            },
-          ),
-          GoRoute(
-            path: "/my-booking-edit",
-            name: AppRouterNames.myBookingEditScreen,
-            pageBuilder: (context, state) {
-              MyBookingModel model = state.extra as MyBookingModel;
-              return AppRouterAnimations.fadeAnimation(
-                child: BlocProvider(
-                  create: (context) => getIt<MyBookingCubit>(),
-                  child: MyBookingEditScreen(model: model),
-                ),
-                state: state,
-              );
-            },
-          ),
-          GoRoute(
-            path: "/my-saved-trips",
-            name: AppRouterNames.mySavedTrips,
-            pageBuilder: (context, state) {
-              return AppRouterAnimations.fadeAnimation(
-                child: BlocProvider(
-                  create:
-                      (context) =>
-                          getIt<MySavedTripsCubit>()..getMySavedTrips(),
-                  child: MySavedTripsScreen(),
-                ),
-                state: state,
-              );
-            },
-          ),
+        ],
+      ),
+      GoRoute(
+        path: "/my-booking",
+        name: AppRouterNames.myBooking,
+        pageBuilder: (context, state) {
+          return AppRouterAnimations.fadeAnimation(
+            child: BlocProvider(
+              create: (context) => getIt<MyBookingCubit>()..getMyBooking(),
+              child: MyBookingScreen(),
+            ),
+            state: state,
+          );
+        },
+      ),
+      GoRoute(
+        path: "/favorite-drivers",
+        name: AppRouterNames.favoriteDrivers,
+        pageBuilder: (context, state) {
+          return AppRouterAnimations.fadeAnimation(
+            child: BlocProvider(
+              create:
+                  (context) =>
+                      getIt<FavoritesDriversCubit>()..getAllFavoritesDrivers(),
+              child: FavoritesDriversScreen(),
+            ),
+            state: state,
+          );
+        },
+      ),
+      GoRoute(
+        path: "/my-booking-edit",
+        name: AppRouterNames.myBookingEditScreen,
+        pageBuilder: (context, state) {
+          MyTripBookingModel model = state.extra as MyTripBookingModel;
+          String? date = state.uri.queryParameters["date"];
+          return AppRouterAnimations.fadeAnimation(
+            child: BlocProvider(
+              create: (context) => getIt<MyBookingCubit>(),
+              child: MyBookingEditScreen(model: model,date: date??"",),
+            ),
+            state: state,
+          );
+        },
+      ),
+      GoRoute(
+        path: "/my-saved-trips",
+        name: AppRouterNames.mySavedTrips,
+        pageBuilder: (context, state) {
+          return AppRouterAnimations.fadeAnimation(
+            child: BlocProvider(
+              create:
+                  (context) => getIt<MySavedTripsCubit>()..getMySavedTrips(),
+              child: MySavedTripsScreen(),
+            ),
+            state: state,
+          );
+        },
+      ),
       GoRoute(
         path: "/login",
         name: AppRouterNames.login,
@@ -172,7 +230,6 @@ class AppRouter {
           String? sendCode = state.uri.queryParameters["sendCode"];
           String? type = state.uri.queryParameters["type"];
 
-          print("email: ${state.uri.queryParameters}");
           return BlocProvider(
             create:
                 (context) =>

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/shared/app_formater.dart';
-import 'package:waselne/core/shared/city_picker.dart';
+import 'package:waselne/core/shared/widgets/city_picker.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/themes/app_colors.dart';

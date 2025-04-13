@@ -38,7 +38,7 @@
     },
     "main":{
         "home":"الرئيسية",
-        "favorites":"المفضلة",
+        "favorites":"المفضلين",
         "profile":"اعداد",
         "submit":"ارسال",
         "confirm":"تأكيد",
@@ -53,7 +53,23 @@
         "next":"التالي",
         "skip":"تخطي",
         "previous":"السابق",
-        "done":"تم"
+        "done":"تم",
+        "settings":"الاعدادات",
+        "shareTheApp":"مشاركة التطبيق",
+        "helpAndFaqs":"المساعدة والاسئلة الشائعة",
+        "beginADriver":"التسجيل كسائق !",
+        "logout":"تسجيل الخروج",
+        "deleteSuccess":"تم حذف بنجاح",
+        "deleteFailed":"فشل حذف",
+        "updateSuccess":"تم التحديث بنجاح",
+        "updateFailed":"فشل التحديث",
+        "addSuccess":"تم الاضافة بنجاح",
+        "addFailed":"فشل الاضافة",
+        "editSuccess":"تم التعديل بنجاح",
+        "success":"نجاح !",
+        "failed":"فشل !",
+        "warning":"تحذير !",
+        "areYouSureYouWantToLogOut":"هل انت متأكد من تسجيل الخروج ؟"
         
     },
     "personal":{
@@ -75,6 +91,7 @@
         "wehreAreYoulocated":"اين تسكن ؟",
         "waselniWillUseYourLocation":"سيستخدم تطبيق وصلني موقعك لتزويد برحلات و عروض خاصة لك",
         "byEnteringYourLocation":"من خلال ادخال موقعك فانك توافق على شروط خدمة تطبيق وصلني و تقر بان اشعار الخصوصية الخاص بنا يطبق"
+        
         
     },
     "inputValidation":{
@@ -141,16 +158,18 @@
         "driverEmail":"البريد الالكتروني",
         "numberOfTrips":"عدد الرحلات",
         "rating":"التقييم",
-        "aboutMe":"نبذة"
+        "aboutMe":"نبذة",
+        "driver":"سائق"
     },
     "profileInfo":{
         "profileInfo":"معلومات الملف الشخصي",
         "updateProfile":"تحديث الملف الشخصي",
         "updateProfileSuccess":"تم تحديث الملف الشخصي بنجاح",
-        "favoritesUsers":"المفضلين",
+        "favoritesUsers":"السائقين المفضلين",
         "myBooking":"حجوزاتي",
         "myTrips":"رحلاتي",
-        "savedTrips":"المحفوظة"
+        "savedTrips":"المحفوظات",
+        "standerUser":"مستخدم عادي"
     },
     "myBookingInfo":{
         "bookID" : "رقم الحجز",

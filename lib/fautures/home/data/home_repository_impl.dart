@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:waselne/core/network/api_reasult.dart';
+import 'package:waselne/core/shared/models/cities_response_model.dart';
 import 'package:waselne/fautures/home/data/api/home_api.dart';
 import 'package:waselne/fautures/home/data/models/home_response_model.dart';
 
@@ -29,14 +30,13 @@ class HomeRepositoryImpl {
         code: e.response?.statusCode,
         data: null,
         success: false,
-        message: e.toString(),
       );
     }
   }
 
   Future<ApiResult> getCities() async {
     try {
-      HomeCitiesResponseModel data = await _homeApi.getCities();
+      CitiesResponseModel data = await _homeApi.getCities();
       return ApiResult(data: data.data, success: true, code: 200);
     } on DioException catch (e) {
       return ApiResult(

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
+import 'package:waselne/core/shared/app_regex.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';
@@ -42,6 +43,9 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             hintText: LocaleKeys.auth_email.tr(),
             prefixIcon: Icons.email_outlined,
             validator: (value) {
+              if(!AppRegex.isValidEmail(value)){
+                return LocaleKeys.inputValidation_emailFormat.tr();
+              }
               if (value == null || value.isEmpty) {
                 return LocaleKeys.errors_thisFieldIsRequired.tr();
               }
@@ -96,8 +100,9 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                     }
                     return AppButtons.normalButton(
                       onPressed: () {
-                        AppRouter.routes.pushReplacementNamed(AppRouterNames.main);
-                        if (formKey.currentState!.validate()) {}
+                        if (formKey.currentState!.validate()) {
+                          context.read<LoginCubit>().login(emailController.text, passwordController.text);
+                        }
                       },
                       label: LocaleKeys.auth_login.tr(),
                     );

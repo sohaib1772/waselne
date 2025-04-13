@@ -11,8 +11,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:waselne/core/helpers/google_sign_in/google_sign_in_helper.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
-import 'package:waselne/core/shared/entry_screens_header.dart';
-import 'package:waselne/core/shared/lang_picker.dart';
+import 'package:waselne/core/shared/widgets/app_dialog.dart';
+import 'package:waselne/core/shared/widgets/entry_screens_header.dart';
+import 'package:waselne/core/shared/widgets/lang_picker.dart';
 import 'package:waselne/core/theme/buttons/app_auth_buttons.dart';
 
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
@@ -36,6 +37,9 @@ class LoginScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: BlocListener<LoginCubit, LoginStates>(
             listener: (context, state) {
+              if (state is LoginSuccess) {
+                AppRouter.routes.goNamed(AppRouterNames.main);
+              }
               if (state is LoginWithGoogleSuccess) {
                 if (state.cities != null) {
                   AppRouter.routes.pushNamed(
@@ -43,20 +47,30 @@ class LoginScreen extends StatelessWidget {
                     extra: state.cities,
                   );
                 } else {
-                  AppRouter.routes.goNamed(AppRouterNames.home);
+                  AppRouter.routes.goNamed(AppRouterNames.main);
                 }
               } else if (state is LoginError) {
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text(state.message)));
+                showDialog(
+                  context: context,
+                  builder:
+                      (context) => AppDialog(
+                        message: state.message,
+                        title: LocaleKeys.main_failed.tr(),
+                        type: AppDialogType.error,
+
+                      ),
+                );
               }
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-               entryScreensHeader(LocaleKeys.main_welcomeToWaselni.tr(), LocaleKeys.main_yourFavoriteAppRightHere.tr(),
-                  dividerHeight: 40),
+                entryScreensHeader(
+                  LocaleKeys.main_welcomeToWaselni.tr(),
+                  LocaleKeys.main_yourFavoriteAppRightHere.tr(),
+                  dividerHeight: 40,
+                ),
                 LoginFormWidget(),
                 AppDividers.devider(height: 20),
                 AppDividers.textDivider(text: LocaleKeys.auth_or.tr()),

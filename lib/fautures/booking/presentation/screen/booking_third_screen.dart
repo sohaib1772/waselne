@@ -2,7 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:waselne/core/shared/money_container.dart';
+import 'package:waselne/core/shared/models/trip_model.dart';
+import 'package:waselne/core/shared/widgets/money_container.dart';
 import 'package:waselne/core/shared/trip_card/trip_tow_points_widget.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
@@ -10,12 +11,11 @@ import 'package:waselne/core/theme/themes/app_colors.dart';
 import 'package:waselne/core/theme/themes/app_text_style.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_states.dart';
-import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class BookingThirdScreen extends StatelessWidget {
   BookingThirdScreen({super.key, required this.model,required this.pageController});
-  HomeTripModel model;
+  TripModel model;
   PageController pageController;
   @override
   Widget build(BuildContext context) {

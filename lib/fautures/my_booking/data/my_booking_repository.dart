@@ -17,7 +17,6 @@ class MyBookingRepository {
         code: e.response?.statusCode,
         data: null,
         success: false,
-        message: e.toString(),
       );
     }
   }

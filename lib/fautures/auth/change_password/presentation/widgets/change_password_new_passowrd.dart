@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:waselne/core/shared/new_password_fields.dart';
+import 'package:waselne/core/shared/widgets/new_password_fields.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/fautures/auth/change_password/presentation/cubit/change_password_cubit.dart';

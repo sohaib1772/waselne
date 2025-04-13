@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
-import 'package:waselne/core/shared/entry_screens_header.dart';
-import 'package:waselne/core/shared/lang_picker.dart';
+import 'package:waselne/core/shared/widgets/entry_screens_header.dart';
+import 'package:waselne/core/shared/widgets/lang_picker.dart';
 
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';

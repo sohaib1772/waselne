@@ -41,17 +41,17 @@ class DioErrorCodes{
     }
     switch (res.statusCode) {
       case 400:
-        return _handleValidationErrors(res.data);
+        return handleValidationErrors(res.data);
       case 401:
-        return LocaleKeys.dioErrors_unknownError.tr();
+        return LocaleKeys.dioErrors_unauthorized.tr();
       case 403:
         return LocaleKeys.dioErrors_forbidden.tr();
       case 409:
-        return _handleValidationErrors(res.data);
+        return handleValidationErrors(res.data);
       case 404:
         return LocaleKeys.dioErrors_notFound.tr();
       case 422:
-        return _handleValidationErrors(res.data);
+        return handleValidationErrors(res.data);
       case 429:
         return LocaleKeys.dioErrors_tooManyRequests.tr();
       case 500:
@@ -61,7 +61,7 @@ class DioErrorCodes{
     }
   }
 
-  static String _handleValidationErrors(dynamic data) {
+  static String handleValidationErrors(dynamic data) {
     if (data is Map<String, dynamic> && (data.containsKey("errors") || data.containsKey("error"))) {
       var errors = {};
       if(data.containsKey("error")){

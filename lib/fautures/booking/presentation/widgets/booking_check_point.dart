@@ -1,15 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:waselne/core/shared/models/trip_model.dart';
 import 'package:waselne/core/shared/trip_card/trip_tow_points_widget.dart';
 import 'package:waselne/core/theme/themes/app_colors.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_states.dart';
-import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 
 class BookingCheckPoint extends StatelessWidget {
    BookingCheckPoint({super.key,required this.model});
-  HomeTripModel model;
+  TripModel model;
   @override
   Widget build(BuildContext context) {
     return Padding(

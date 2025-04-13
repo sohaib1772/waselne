@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
-import 'package:waselne/core/theme/buttons/app_buttons.dart';
+import 'package:waselne/core/shared/models/cities_response_model.dart';
 import 'package:waselne/core/theme/scaffolds/main_scaffold.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_cubit.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/cubit/personal_info_states.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/widgets/personal_info_first_widget.dart';
 import 'package:waselne/fautures/auth/personal_info/presentation/widgets/personal_info_second_widget.dart';
-import 'package:waselne/generated/locale_keys.g.dart';
 
 class PersonalInfoScreen extends StatelessWidget {
   PersonalInfoScreen({super.key,this.token,this.cities});
@@ -26,7 +24,7 @@ class PersonalInfoScreen extends StatelessWidget {
         child: BlocListener<PersonalInfoCubit, PersonalInfoStates>(
           listener: (context, state) {
             if (state is PersonalInfoSuccess) {
-              AppRouter.routes.goNamed(AppRouterNames.home);
+              AppRouter.routes.goNamed(AppRouterNames.main);
             }
             else if (state is PersonalInfoError) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));

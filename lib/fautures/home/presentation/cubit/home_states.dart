@@ -1,12 +1,12 @@
+import 'package:waselne/core/shared/models/trip_model.dart';
 import 'package:waselne/fautures/home/data/models/home_response_model.dart';
-import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 
 sealed class HomeStates {}
 
 class HomeInitialState extends HomeStates {}
 
 class HomeSuccessState extends HomeStates {
-  final List<HomeTripsDateGroupModel> trips;
+  final List<TripsDateGroupModel> trips;
   final int? reasultCounts;
 
   HomeSuccessState(this.trips,this.reasultCounts);

@@ -16,5 +16,7 @@ class AppTextStyle {
   static  TextStyle whiteText12W400 = TextStyle(color: AppColors.whiteText, fontSize: 12, fontWeight: FontWeight.w400);
   static  TextStyle white12 = TextStyle(color: AppColors.whiteText, fontSize: 12);
   static  TextStyle white26Bold = TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold);
+  static  TextStyle white36W700 = TextStyle(color: Colors.white, fontSize: 36, fontWeight: FontWeight.w700);
   static  TextStyle whiteText20Bold = TextStyle(color: AppColors.whiteText, fontSize: 20, fontWeight: FontWeight.bold);
+  static  TextStyle whiteText16Bold = TextStyle(color: AppColors.whiteText, fontSize: 16, fontWeight: FontWeight.bold);
 }

@@ -1,5 +1,5 @@
 
-import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
+import 'package:waselne/core/shared/models/cities_response_model.dart';
 
 abstract class PersonalInfoStates {}
 

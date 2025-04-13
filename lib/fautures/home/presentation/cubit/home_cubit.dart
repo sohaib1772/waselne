@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/network/api_reasult.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
+import 'package:waselne/core/shared/models/cities_response_model.dart';
+import 'package:waselne/core/shared/models/trip_model.dart';
+import 'package:waselne/core/shared/shared_api/repositories/save_unsave_trips_repo.dart';
 import 'package:waselne/fautures/home/data/home_repository_impl.dart';
-import 'package:waselne/fautures/home/data/models/home_cities_model.dart';
 import 'package:waselne/fautures/home/data/models/home_response_model.dart';
-import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 import 'package:waselne/fautures/home/presentation/cubit/home_states.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
-  HomeCubit(this._homeRepository) : super(HomeInitialState()) {
+  HomeCubit(this._homeRepository,this.saveUnsaveTripsRepo) : super(HomeInitialState()) {
     scrollController.addListener(() async {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
@@ -22,10 +22,10 @@ class HomeCubit extends Cubit<HomeStates> {
   int nextPage = 1;
   bool firstTime = true;
   bool canRequest = true;
-  List<HomeTripsDateGroupModel> trips = [];
+  List<TripsDateGroupModel> trips = [];
   List<CityModel> cities = [];
   Map<String, dynamic> params = {};
-
+  SaveUnsaveTripsRepo saveUnsaveTripsRepo;
   Future<void> getHomeData({bool resetPages = false}) async {
     // to reset the pages when the user apply filter
     if (resetPages) {
@@ -93,9 +93,9 @@ class HomeCubit extends Cubit<HomeStates> {
     }
   }
 
-  Future<void> saveTrip({required HomeTripModel tripModel})async{
+  Future<void> saveTrip({required TripModel tripModel})async{
     emit(HomeSaveTripLoadingState(tripModel.id ?? 0));
-    ApiResult result = await _homeRepository.saveTrip({"tripId":tripModel.id});
+    ApiResult result = await saveUnsaveTripsRepo.saveTrip({"tripId":tripModel.id});
     if(result.success!){
       tripModel.isSaved = 1;
       emit(HomeSaveTripSuccessState(result.message ?? ""));
@@ -104,9 +104,9 @@ class HomeCubit extends Cubit<HomeStates> {
       emit(HomeErrorState(result.message ?? ""));
     }
   }
-  Future<void> unSaveTrip({required HomeTripModel tripModel,})async{
+  Future<void> unSaveTrip({required TripModel tripModel,})async{
         emit(HomeSaveTripLoadingState(tripModel.id ?? 0));
-    ApiResult result = await _homeRepository.unSaveTrip({"tripId":tripModel.id});
+    ApiResult result = await saveUnsaveTripsRepo.unSaveTrip({"tripId":tripModel.id});
     if(result.success!){
       tripModel.isSaved = 0;
       emit(HomeUnSaveTripSuccessState(result.message ?? ""));

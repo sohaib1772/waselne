@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/shared/app_formater.dart';
+import 'package:waselne/core/shared/models/trip_model.dart';
 import 'package:waselne/core/shared/trip_card/trip_tow_points_widget.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
@@ -12,7 +13,6 @@ import 'package:waselne/fautures/booking/presentation/cubit/booking_cubit.dart';
 import 'package:waselne/fautures/booking/presentation/cubit/booking_states.dart';
 import 'package:waselne/fautures/booking/presentation/widgets/booking_check_point.dart';
 import 'package:waselne/fautures/booking/presentation/widgets/booking_select_seats.dart';
-import 'package:waselne/fautures/home/data/models/home_trip_model.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class BookingSecondScreen extends StatelessWidget {
@@ -23,7 +23,7 @@ class BookingSecondScreen extends StatelessWidget {
     required this.controller,
   });
   PageController controller;
-  HomeTripModel model;
+  TripModel model;
   String date;
   @override
   Widget build(BuildContext context) {

@@ -10,8 +10,11 @@ class ApiResult<T> {
   bool? success;
   DioException? dioError;
   ApiResult({this.data,this.dioError,this.message, this.code, this.success}){
-    if(dioError != null){
+    if(dioError != null && message == null){
       message = ErrorHandler.handleDioError(dioError);
+    }else{
+      this.message = message;
     }
+    
   }
 }

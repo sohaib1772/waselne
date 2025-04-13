@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waselne/core/router/app_router.dart';
 import 'package:waselne/core/router/app_router_names.dart';
 import 'package:waselne/core/shared/app_regex.dart';
-import 'package:waselne/core/shared/new_password_fields.dart';
+import 'package:waselne/core/shared/widgets/new_password_fields.dart';
 import 'package:waselne/core/theme/buttons/app_buttons.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/text_fields/app_text_form_field.dart';

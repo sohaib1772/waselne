@@ -9,3 +9,6 @@ class AppChangeLanguageState extends AppStates{
   Locale locale;
   AppChangeLanguageState(this.locale);
 }
+class AppNormalState extends AppStates{
+ 
+}

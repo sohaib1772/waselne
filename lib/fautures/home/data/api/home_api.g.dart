@@ -66,12 +66,12 @@ class _HomeApi implements HomeApi {
   }
 
   @override
-  Future<HomeCitiesResponseModel> getCities() async {
+  Future<CitiesResponseModel> getCities() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HomeCitiesResponseModel>(
+    final _options = _setStreamType<CitiesResponseModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -82,9 +82,9 @@ class _HomeApi implements HomeApi {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late HomeCitiesResponseModel _value;
+    late CitiesResponseModel _value;
     try {
-      _value = HomeCitiesResponseModel.fromJson(_result.data!);
+      _value = CitiesResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

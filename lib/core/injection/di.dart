@@ -2,7 +2,11 @@
 
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:waselne/core/helpers/app_secure/api/app_secure_api.dart';
 import 'package:waselne/core/network/dio_factory.dart';
+import 'package:waselne/core/shared/shared_api/repositories/add_driver_to_favorite_repo.dart';
+import 'package:waselne/core/shared/shared_api/repositories/save_unsave_trips_repo.dart';
+import 'package:waselne/core/shared/shared_api/shared_api.dart';
 import 'package:waselne/fautures/auth/change_password/data/api/change_password_api.dart';
 import 'package:waselne/fautures/auth/change_password/data/change_password_repository_impl.dart';
 import 'package:waselne/fautures/auth/change_password/presentation/cubit/change_password_cubit.dart';
@@ -47,6 +51,11 @@ GetIt getIt = GetIt.instance;
 Future<void> diInit() async {
   Dio dio = await DioFactory.getDio() ;
   getIt.registerLazySingleton<Dio>(()=>dio);
+  getIt.registerLazySingleton<SharedApi>(() => SharedApi(getIt()),);
+  getIt.registerLazySingleton<AddDriverToFavoriteRepo>(() => AddDriverToFavoriteRepo(getIt()),);
+  getIt.registerLazySingleton<SaveUnsaveTripsRepo>(() => SaveUnsaveTripsRepo(getIt()),);
+
+
 
   getIt.registerLazySingleton<LoginApi>(() => LoginApi(getIt()),);
   getIt.registerLazySingleton<LoginRepositoryImpl>(() => LoginRepositoryImpl(loginApi: getIt()),);
@@ -72,7 +81,7 @@ Future<void> diInit() async {
 
   getIt.registerLazySingleton<HomeApi>(() => HomeApi(getIt()),);
   getIt.registerLazySingleton<HomeRepositoryImpl>(() => HomeRepositoryImpl(getIt()),);
-  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()),);
+  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt(),getIt()),);
 
 
   getIt.registerLazySingleton<BookingApi>(() => BookingApi(getIt()),);
@@ -85,16 +94,16 @@ Future<void> diInit() async {
 
   getIt.registerLazySingleton<MySavedTripsApi>(() => MySavedTripsApi(getIt()),);
   getIt.registerLazySingleton<MySavedTripsRepository>(() => MySavedTripsRepository(getIt()),);
-  getIt.registerFactory<MySavedTripsCubit>(() => MySavedTripsCubit(getIt()),);
+  getIt.registerFactory<MySavedTripsCubit>(() => MySavedTripsCubit(getIt(),getIt()),);
 
   getIt.registerLazySingleton<DriverProfileApi>(() => DriverProfileApi(getIt()),);
-  getIt.registerLazySingleton<DriverProfileRepository>(() => DriverProfileRepository(driverProfileApi: getIt()),);
-  getIt.registerFactory<DriverProfileCubit>(() => DriverProfileCubit(getIt()),);
+  getIt.registerLazySingleton<DriverProfileRepository>(() => DriverProfileRepository(driverProfileApi: getIt(),),);
+  getIt.registerFactory<DriverProfileCubit>(() => DriverProfileCubit(getIt(),getIt()),);
 
 
   getIt.registerLazySingleton<FavoritesDriversApi>(() => FavoritesDriversApi(getIt()),);
   getIt.registerLazySingleton<FavoritesDriversRepository>(() => FavoritesDriversRepository(api:  getIt()),);
-  getIt.registerFactory<FavoritesDriversCubit>(() => FavoritesDriversCubit(getIt()),);
+  getIt.registerFactory<FavoritesDriversCubit>(() => FavoritesDriversCubit(getIt(),getIt()),);
 
 
   
@@ -104,4 +113,7 @@ Future<void> diInit() async {
 
   
   getIt.registerFactory<ProfileCubit>(() => ProfileCubit(),);
+
+    getIt.registerLazySingleton<AppSecureApi>(() => AppSecureApi(getIt()),);
+
 }

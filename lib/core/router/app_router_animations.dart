@@ -20,7 +20,7 @@ class AppRouterAnimations {
   }
   static CustomTransitionPage fadeAnimation({required Widget child,required GoRouterState state}) {
     return CustomTransitionPage(
-      transitionDuration: Duration(milliseconds: 200),
+      transitionDuration: Duration(milliseconds: 100),
       key: state.pageKey,
       child: child,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {

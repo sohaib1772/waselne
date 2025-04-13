@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:waselne/core/shared/money_container.dart';
+import 'package:waselne/core/shared/widgets/money_container.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/themes/app_colors.dart';
 import 'package:waselne/core/theme/themes/app_text_style.dart';

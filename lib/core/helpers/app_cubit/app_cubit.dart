@@ -8,12 +8,13 @@ class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
 
   String lang = "en";
-  void changeLanguage(BuildContext context, String locale) async{
+
+  void changeLanguage(BuildContext context, String locale) async {
+    emit(AppChangeLanguageState(Locale(locale)));
     lang = locale;
     await context.setLocale(Locale(locale));
-    AppLocalStorage.secureStorage.write(key: AppLocalStorageKeys.lang, value: locale);
-    
-    emit(AppChangeLanguageState(Locale(locale)));
+    await AppLocalStorage.secureStorage.write(key: AppLocalStorageKeys.lang, value: locale);
+    emit(AppNormalState());
+      // إصدار الحالة الجديدة بعد تغيير اللغة
   }
-
 }

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:waselne/core/shared/city_picker.dart';
+import 'package:waselne/core/shared/models/cities_response_model.dart';
+import 'package:waselne/core/shared/widgets/city_picker.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 import 'package:waselne/generated/locale_keys.g.dart';
 
 class HomeFilterCitiesPickers extends StatefulWidget {

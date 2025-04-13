@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:waselne/core/shared/app_constans.dart';
 import 'package:waselne/fautures/auth/code_verification/data/models/create_account_response_model.dart';
+import 'package:waselne/fautures/auth/login/data/models/login_response_model.dart';
 
 part 'login_api.g.dart';
 @RestApi(baseUrl: AppConstans.baseUrl)
@@ -11,7 +12,7 @@ abstract class LoginApi {
   factory LoginApi(Dio dio, {String? baseUrl}) = _LoginApi;
 
   @POST('/login')
-  Future<void> login(@Body() Map<String, dynamic> body);
+  Future<LoginResponseModel> login(@Body() Map<String, dynamic> body);
 
 
   @POST('loginwithGoogel')

@@ -7,6 +7,17 @@ import 'package:waselne/fautures/auth/login/presentation/cubit/login_states.dart
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit(this.loginRepository) : super(LoginInitial());
   final LoginRepositoryImpl loginRepository;
+
+  Future<void> login(String email,String password)async{
+    emit(LoginLoading());
+    ApiResult result = await loginRepository.login(email, password);
+    if (result.success! == true){
+      await loginRepository.uploadUserDevice(NotificationsApi.getFCMToken() ?? "",NotificationsApi.getUUID() ?? "");
+      emit(LoginSuccess());
+    }else{
+      emit(LoginError(message: result.message??"error"));
+    }
+  }
   Future<void> loginWithGoogle(String token) async {
       emit(LoginLoading());
       ApiResult result = await loginRepository.loginWithGoogle(

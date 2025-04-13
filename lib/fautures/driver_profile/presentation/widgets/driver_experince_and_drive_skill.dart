@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/themes/app_text_style.dart';
+import 'package:waselne/fautures/driver_profile/data/models/driver_model.dart';
 
 class DriverExperinceAndDriveSkill extends StatelessWidget {
-  const DriverExperinceAndDriveSkill({super.key});
-
+   DriverExperinceAndDriveSkill({super.key,required this.model});
+  DriverModel model;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,11 +28,7 @@ class DriverExperinceAndDriveSkill extends StatelessWidget {
             children: [
               Icon(Icons.drive_eta_rounded, color: Colors.white, size: 24.sp),
               AppDividers.devider(width: 10.w),
-              Text("4.2 / 5", style: AppTextStyle.white15W500),
-              AppDividers.devider(width: 10.w),
-              Icon(Icons.circle, color: Colors.white, size: 5.sp),
-              AppDividers.devider(width: 10.w),
-              Text("Good driving skill", style: AppTextStyle.white15W500),
+              Text(model.carType??"", style: AppTextStyle.white15W500),
             ],
           ),
           AppDividers.devider(height: 10.h),

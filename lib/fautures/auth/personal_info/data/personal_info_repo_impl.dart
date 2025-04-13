@@ -2,8 +2,8 @@
 
 import 'package:dio/dio.dart';
 import 'package:waselne/core/network/api_reasult.dart';
+import 'package:waselne/core/shared/models/cities_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/data/api/personal_info_api.dart';
-import 'package:waselne/fautures/auth/personal_info/data/models/cities_response_model.dart';
 import 'package:waselne/fautures/auth/personal_info/data/models/personal_info_model.dart';
 
 class PersonalInfoRepoImpl{

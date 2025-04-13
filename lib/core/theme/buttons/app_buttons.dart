@@ -85,4 +85,40 @@ class AppButtons {
       ),
     );
   }
+
+  static Widget widgetButton({ required Widget child,required Function onTap,double radius = 10,WidgetButtonBorderSide borderSide = WidgetButtonBorderSide.all}) {
+    return TextButton(
+      style: ButtonStyle(
+        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+        
+          borderRadius: _setBorderRadius(borderSide,radius: radius),
+        ))
+      ),
+      onPressed:()=> onTap(), child: child);
+  }
+ static BorderRadiusGeometry _setBorderRadius(WidgetButtonBorderSide side,{double radius = 10}) {
+  switch (side) {
+    case WidgetButtonBorderSide.all:
+      return BorderRadius.circular(10.r);
+    case WidgetButtonBorderSide.bottom:
+      return BorderRadius.only(bottomLeft: Radius.circular(radius.r),bottomRight: Radius.circular(radius.r));
+    case WidgetButtonBorderSide.top:
+      return BorderRadius.only(topLeft: Radius.circular(radius.r),topRight: Radius.circular(radius.r));
+    case WidgetButtonBorderSide.left:
+      return BorderRadius.only(topLeft: Radius.circular(radius.r),bottomLeft: Radius.circular(radius.r));
+    case WidgetButtonBorderSide.right:
+      return BorderRadius.only(topRight: Radius.circular(radius.r),bottomRight: Radius.circular(radius.r));
+
+  }
 }
+
+}
+
+enum WidgetButtonBorderSide  {
+  all,
+  bottom,
+  top,
+  left,
+  right
+}
+

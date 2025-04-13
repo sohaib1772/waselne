@@ -10,10 +10,9 @@ class AppDividers {
       width: width.w,
     );
   }
-  static Widget horizontalLineDivider({double height = 1}) {
+  static Widget horizontalLineDivider({double height = 1,bool setMargin = true}) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 0,vertical: 10.r),
-      padding: EdgeInsets.symmetric(horizontal: 0.r,vertical: 10.r), 
+      margin:setMargin ? EdgeInsets.symmetric(horizontal: 0,vertical: 10.r) : EdgeInsets.zero,
       height: height.h,
       width: double.infinity,
       color: AppColors.border,

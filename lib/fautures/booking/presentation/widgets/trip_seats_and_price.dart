@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/shared/app_formater.dart';
-import 'package:waselne/core/shared/money_container.dart';
+import 'package:waselne/core/shared/widgets/money_container.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/themes/app_colors.dart';
 import 'package:waselne/core/theme/themes/app_text_style.dart';

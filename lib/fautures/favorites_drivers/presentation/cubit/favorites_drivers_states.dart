@@ -1,3 +1,5 @@
+import 'package:waselne/fautures/favorites_drivers/data/models/favorite_drivers_response_model.dart';
+
 sealed class FavoritesDriversStates {
 }
 
@@ -11,4 +13,10 @@ class FavoritesDriversError extends FavoritesDriversStates {
   FavoritesDriversError({this.message});
 }
 
-class FavoritesDriversSuccess extends FavoritesDriversStates {}
+class FavoritesDriversSuccess extends FavoritesDriversStates {
+  List<FavoriteDriversModel>? drivers;
+
+  FavoritesDriversSuccess({this.drivers});
+}
+
+class FavoriteDriversRemoveSuccess extends FavoritesDriversStates {}

@@ -1,12 +1,13 @@
 
 
 import 'package:json_annotation/json_annotation.dart';
+import 'package:waselne/core/shared/models/trip_model.dart';
 part 'my_booking_response_model.g.dart';
 @JsonSerializable()
 class MyBookingResponseModel {
   String? message;
   String? success;
-  List<MyBookingModel>? data;
+  List<TripsDateGroupModel>? data;
 
   MyBookingResponseModel({this.message, this.success,this.data});
 
@@ -15,33 +16,14 @@ class MyBookingResponseModel {
 }
 
 @JsonSerializable()
-class MyBookingModel{
+class MyTripBookingModel extends TripModel{
   @JsonKey(name: "booking_id")
-  int? id;
-  @JsonKey(name: "driver_id")
-  int? driverId;
+  int? bookingId;
   String? status;
+  String? nots;
   @JsonKey(name: "seats_number")
-  int? seatsNumber;
-  @JsonKey(name: "trip_start")
-  String? tripStart;
-  @JsonKey(name: "nots")
-  String? details;
-  @JsonKey(name: "from_city")
-  String? startPoint;
-  @JsonKey(name: "to_city")
-  String? endPoint;
-  @JsonKey(name: "total_price")
-  int? totalPrice;
-  @JsonKey(name: "trip_id")
-  int? tripId;
-  @JsonKey(name: "driver_name")
-  String? driverName;
-  
+  int? myBookingSeatsCount;
 
-  MyBookingModel({this.id, this.driverId, this.status, this.seatsNumber, this.tripStart, this.details, this.startPoint, this.endPoint,this.totalPrice,this.driverName});
-
-  factory MyBookingModel.fromJson(Map<String, dynamic> json) => _$MyBookingModelFromJson(json);
-  Map<String, dynamic> toJson() => _$MyBookingModelToJson(this);
-
+  MyTripBookingModel({this.bookingId,this.nots,this.status});
+  factory MyTripBookingModel.fromJson(Map<String, dynamic> json) => _$MyTripBookingModelFromJson(json);
 }

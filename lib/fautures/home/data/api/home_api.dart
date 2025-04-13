@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:waselne/core/shared/app_constans.dart';
+import 'package:waselne/core/shared/models/cities_response_model.dart';
 import 'package:waselne/fautures/home/data/models/home_response_model.dart';
 part 'home_api.g.dart';
 @RestApi(baseUrl: AppConstans.baseUrl)
@@ -24,7 +25,7 @@ abstract class HomeApi{
   );
 
   @GET("cities")
-  Future<HomeCitiesResponseModel> getCities();
+  Future<CitiesResponseModel> getCities();
 
    @POST("trips/saved")
   Future<void> saveTrip(@Body() Map<String,dynamic> body);

@@ -52,7 +52,22 @@
         "next":"Next",
         "skip":"Skip",
         "previous":"Previous",
-        "done":"Done"
+        "done":"Done",
+        "settings":"Settings",
+        "shareTheApp":"Share the app",
+        "helpAndFaqs":"Help and FAQs",
+        "beginADriver":"Begin a driver",
+        "logout":"Logout",
+        "deleteSuccess":"Deleted successfully",
+        "deleteFailed":"Failed to delete",
+        "updateSuccess":"Updated successfully",
+        "updateFailed":"Failed to update",
+        "addSuccess":"Added successfully",
+        "addFailed":"Failed to add",
+        "success:":"Success !",
+        "failed:":"Failed !",
+        "warning:":"Warning !",
+        "areYouSureYouWantToLogOut":"Loggin out are you sure ?"
 
     },
     "personal":{
@@ -137,7 +152,8 @@
         "driverEmail":"Driver Email",
         "numberOfTrips":"Number of Trips",
         "rating":"Rating",
-        "aboutMe":"About me"
+        "aboutMe":"About me",
+        "driver":"Driver"
     },
     "profileInfo":{
         "profileInfo":"Profile Info",
@@ -146,7 +162,8 @@
         "favoritesUsers":"Favorites",
         "myBooking":"Bookings",
         "myTrips":"My Trips",
-        "savedTrips":"Saved Trips"
+        "savedTrips":"Saved Trips",
+        "standerUser":"Stander User"
     },
     "myBookingInfo":{
         "bookID" : "Booking ID",

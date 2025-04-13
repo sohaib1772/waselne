@@ -1,11 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waselne/core/theme/dividers/app_dividers.dart';
 import 'package:waselne/core/theme/themes/app_text_style.dart';
+import 'package:waselne/fautures/driver_profile/data/models/driver_model.dart';
+import 'package:waselne/generated/locale_keys.g.dart';
 
 class DriverAboutMe extends StatelessWidget {
-  const DriverAboutMe({super.key});
-
+   DriverAboutMe({super.key,required this.model});
+  DriverModel model;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,10 +19,10 @@ class DriverAboutMe extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("About me", style: AppTextStyle.white16W900),
+                        Text(LocaleKeys.driverInfo_aboutMe.tr(), style: AppTextStyle.white16W900),
                         AppDividers.devider(height: 10.h),
                         Text(
-                          "This is like the description or the bio of the driver so the user can take a look on the driver",
+                         model.aboutMe ??"",
                           style: AppTextStyle.whiteText12W400,
                         ),
                         AppDividers.devider(height: 18.h),
